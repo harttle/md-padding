@@ -58,4 +58,14 @@ noremap <buffer> <F6> <Esc>:%!npx md-padding %<CR>
 
 ### 在 VS Code 中使用
 
-TODO: 补充
+从 Marketplace 安装 [Markdown Padding](https://marketplace.visualstudio.com/items?itemName=harttle.md-padding-vscode)。
+打开一个 Markdown 文件后，支持这些操作：
+
+- Command。打开 *命令面板*，输入 Markdown Padding 并回车。*命令面板* 快捷键：
+  - Windows：Ctrl + Shift + P
+  - Mac：Command + Shift + P
+  - Linux：Ctrl + Shift + P
+- Formatting。在编辑器里右键点格式化，或者：
+  - Windows：Shift + Alt + F
+  - Mac：Shift + Option + F
+  - Linux：Ctrl + Shift + I
