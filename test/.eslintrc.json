@@ -1,0 +1,22 @@
+{
+  "extends": ["../.eslintrc.json"],
+  "env": {
+    "jest/globals": true
+  },
+  "plugins": [
+    "jest",
+    "@typescript-eslint"
+  ],
+  "globals": {
+    "myComponent": true,
+    "san": true,
+    "wrap": true,
+    "clickInfo": true,
+    "LI": true,
+    "loadInvokeCount": true,
+    "loadSuccess": true,
+    "entityStr": true,
+    "Label": true,
+    "triggerEvent": true
+  }
+}

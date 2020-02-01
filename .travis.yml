@@ -1,0 +1,29 @@
+language: node_js
+node_js: "10"
+jobs:
+  include:
+    - stage: test
+      name: 'Unit on Node.js8'
+      node_js: "8"
+      install: npm ci
+      script: npm test
+    - stage: test
+      name: 'Unit on Node.js10'
+      install: npm ci
+      script: npm test
+    - stage: test
+      name: 'Lint'
+      install: npm ci
+      script: npm run lint
+    - stage: test
+      name: 'Coverage'
+      install: npm ci
+      script: npm run coveralls
+    - stage: release
+      if: branch = master
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        install: npm ci
+        script: npx semantic-release
