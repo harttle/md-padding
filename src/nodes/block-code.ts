@@ -15,6 +15,7 @@ export class BlockCode implements Node {
     this.closed = closed
     this.langClosed = langClosed
   }
+
   toMarkdown () {
     return '```' + this.lang +
       (this.langClosed ? '\n' : '') +

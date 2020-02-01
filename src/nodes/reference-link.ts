@@ -10,9 +10,11 @@ export class ReferenceLink implements Node {
     this.children = children
     this.target = target
   }
+
   text () {
     return this.children.map(x => x.toMarkdown()).join('')
   }
+
   toMarkdown () {
     return `[${this.text()}][${this.target}]`
   }

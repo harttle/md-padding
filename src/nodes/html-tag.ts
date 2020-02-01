@@ -9,6 +9,7 @@ export class HTMLTag implements Node {
   constructor (text: string) {
     this.text = text
   }
+
   toMarkdown () {
     return `<${this.text}>`
   }

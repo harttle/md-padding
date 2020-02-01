@@ -13,6 +13,7 @@ export class InlineCode implements Node {
     this.delimiter = delimiter
     this.code = code
   }
+
   toMarkdown () {
     return this.delimiter + this.code + this.delimiter
   }

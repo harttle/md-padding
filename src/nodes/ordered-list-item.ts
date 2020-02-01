@@ -11,6 +11,7 @@ export class OrderedListItem implements Node {
     this.prefix = prefix
     this.children = children
   }
+
   toMarkdown () {
     return this.prefix + this.children.map(x => x.toMarkdown()).join('')
   }
