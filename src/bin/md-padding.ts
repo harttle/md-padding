@@ -1,4 +1,4 @@
-#!/bin/env node
+#!/usr/bin/env node
 import { padMarkdown } from '../index'
 import { readFileSync, writeFileSync } from 'fs'
 import * as yargs from 'yargs'
