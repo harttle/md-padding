@@ -53,7 +53,8 @@ Examples:
 可以绑定一个快捷键 `F6` 来修复当前文件：
 
 ```vim
-noremap <buffer> <F6> <Esc>:%!npx md-padding %<CR>
+" 绑一个 Vim Filter
+noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 ```
 
 ### 在 VS Code 中使用
