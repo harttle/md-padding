@@ -18,21 +18,9 @@ export function padBetweenNodes (tokens: Node[]): Node[] {
 function needPadding (lhs: Node, rhs: Node) {
   if (isBlank(lhs) || isBlank(rhs)) return false
 
-  if (isPunctuation(lhs)) {
-    if (lhs.needPaddingAfter()) return !isPunctuation(rhs)
-    if (lhs.isFullSize()) return false
-    return false
-  }
-  if (isPunctuation(rhs)) {
-    if (rhs.needPaddingBefore()) return !isPunctuation(lhs)
-    if (rhs.isFullSize()) return false
-    return false
-  }
-  if (isAlphabetNumeric(lhs)) {
-    return !isPunctuation(rhs) && !isAlphabetNumeric(rhs)
-  }
-  if (isUnicodeString(lhs)) {
-    return !isPunctuation(rhs) && !isUnicodeString(rhs)
-  }
+  if (isPunctuation(lhs)) return lhs.needPaddingAfter(rhs)
+  if (isPunctuation(rhs)) return rhs.needPaddingBefore(lhs)
+  if (isAlphabetNumeric(lhs)) return !isAlphabetNumeric(rhs)
+  if (isUnicodeString(lhs)) return !isUnicodeString(rhs)
   return true
 }

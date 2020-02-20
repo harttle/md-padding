@@ -1,6 +1,7 @@
 import { NodeKind } from './node-kind'
 import { Node } from './node'
-import { isPunctuation, isFullwidthPunctuation } from '../utils/char'
+import { isNumeric, isStartCharacter, isEndCharacter, isPunctuationCharacter, isFullwidthPunctuation } from '../utils/char'
+import { isAlphabetNumeric, isPunctuation } from './type-guards'
 
 export class Punctuation implements Node {
   readonly children: Node[] = []
@@ -12,12 +13,24 @@ export class Punctuation implements Node {
     this.char = char
   }
 
-  needPaddingAfter () {
-    return ',<>=!'.includes(this.char)
+  needPaddingAfter (next: Node) {
+    if (this.isFullSize()) return false
+    if (isPunctuation(next)) return false
+    if (isAlphabetNumeric(next) && isNumeric(next.text[0]) && ',.'.includes(this.char)) return false
+    if (isEndCharacter(this.char)) return true
+    if (isStartCharacter(this.char)) return false
+    if ('<>='.includes(this.char)) return true
+    return false
   }
 
-  needPaddingBefore () {
-    return '<>='.includes(this.char)
+  needPaddingBefore (prev: Node) {
+    if (this.isFullSize()) return false
+    if (isPunctuation(prev)) return false
+    if (isAlphabetNumeric(prev) && isNumeric(prev.text.slice(-1)) && ',.'.includes(this.char)) return false
+    if (isStartCharacter(this.char)) return true
+    if (isEndCharacter(this.char)) return false
+    if ('<>='.includes(this.char)) return true
+    return false
   }
 
   isFullSize () {
@@ -37,6 +50,6 @@ export class Punctuation implements Node {
   }
 
   static is (char: any): char is string {
-    return isPunctuation(char)
+    return isPunctuationCharacter(char)
   }
 }

@@ -70,9 +70,23 @@ describe('padding()', () => {
       expect(padMarkdown('a，b""。c'))
         .toEqual('a，b ""。c')
     })
-    it('should not pad on punctuations', () => {
+    it('should not pad between link and comma', () => {
       expect(padMarkdown('refer to <http://foo>,'))
         .toEqual('refer to <http://foo>,')
+    })
+    it('should not pad between non-ascii and comman', () => {
+      expect(padMarkdown('不要信任终端用浅色背景的人,'))
+        .toEqual('不要信任终端用浅色背景的人,')
+    })
+    it('should pad between numbers and comma', () => {
+      expect(padMarkdown('a total of 2,000,000 people'))
+        .toEqual('a total of 2,000,000 people')
+    })
+    it('should not pad between puncs', () => {
+      expect(padMarkdown('...,,/:!')).toEqual('...,,/:!')
+    })
+    it('should pad between numbers and dots', () => {
+      expect(padMarkdown('version 2.2.3')).toEqual('version 2.2.3')
     })
     it('should not pad on single quote', () => {
       expect(padMarkdown("dont't you leave me alone"))
