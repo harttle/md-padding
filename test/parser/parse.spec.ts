@@ -43,6 +43,42 @@ describe('parse()', () => {
         text: 'foo'
       })
     })
+    it('should parse inline image with attributes', () => {
+      // see: https://kramdown.gettalong.org/syntax.html#images
+      const doc = parse('![smiley](smiley.png){:height="36px" width="36px"}')
+      expect(doc.children).toHaveLength(1)
+      const [img] = doc.children
+      expect(img).toMatchObject({
+        kind: NodeKind.InlineImage,
+        target: 'smiley.png',
+        attributes: ':height="36px" width="36px"'
+      })
+
+      expect(img.children).toHaveLength(1)
+      const [text] = img.children
+      expect(text).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: 'smiley'
+      })
+    })
+  })
+  it('should parse reference image with attributes', () => {
+    // see: https://kramdown.gettalong.org/syntax.html#images
+    const doc = parse('![smiley][smiley]{:height="36px" width="36px"}')
+    expect(doc.children).toHaveLength(1)
+    const [img] = doc.children
+    expect(img).toMatchObject({
+      kind: NodeKind.ReferenceImage,
+      target: 'smiley',
+      attributes: ':height="36px" width="36px"'
+    })
+
+    expect(img.children).toHaveLength(1)
+    const [text] = img.children
+    expect(text).toMatchObject({
+      kind: NodeKind.AlphabetNumeric,
+      text: 'smiley'
+    })
   })
 
   describe('ReferenceImage', () => {

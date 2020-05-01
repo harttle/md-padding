@@ -1,12 +1,13 @@
 export enum State {
   // markdown syntax
   LinkText,           // [
-  ReferingUrl,      // [xx](
+  ReferingUrl,        // [xx](
   ReferingID,         // [xx][
   ReferenceLinkUrl,   // [xx]:
-  ImageText,      // ![
-  ImageReferingUrl, // ![xx](
+  ImageText,          // ![
+  ImageReferingUrl,   // ![xx](
   ImageReferingID,    // ![xx][
+  ImageAttributes,    // ![xx]{
   HTMLTag,            // <
   Emphasis,           // *
   Strong,             // **

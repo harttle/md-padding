@@ -2,20 +2,19 @@ import { NodeKind } from './node-kind'
 import { Node } from './node'
 
 export class ReferenceImage implements Node {
-  readonly children: Node[] = []
-  readonly target: string
   readonly kind = NodeKind.ReferenceImage
 
-  constructor (children: Node[], target: string) {
-    this.children = children
-    this.target = target
-  }
+  constructor (
+    public readonly children: Node[],
+    public readonly target: string,
+    public readonly attributes?: string) {}
 
   text () {
     return this.children.map(x => x.toMarkdown()).join('')
   }
 
   toMarkdown () {
-    return `![${this.text()}][${this.target}]`
+    const attr = this.attributes === undefined ? '' : `{${this.attributes}}`
+    return `![${this.text()}][${this.target}]${attr}`
   }
 }

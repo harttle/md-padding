@@ -43,25 +43,52 @@ describe('padding()', () => {
   })
 
   describe('links', () => {
-    it('should padd between footnote links', () => {
+    it('should pad between footnote links', () => {
       expect(padMarkdown('refer to[foo][bar]please'))
         .toEqual('refer to [foo][bar] please')
     })
-    it('should padd between inline links', () => {
+    it('should pad between inline links', () => {
       expect(padMarkdown('refer to[foo](http://foo)please'))
         .toEqual('refer to [foo](http://foo) please')
     })
-    it('should padd between bare links', () => {
+    it('should pad between bare links', () => {
       expect(padMarkdown('refer to<http://foo>please'))
         .toEqual('refer to <http://foo> please')
     })
-    it('should not padd in link urls', () => {
+    it('should not pad inside link urls', () => {
       expect(padMarkdown('[foo](http://example.com?foo=**bar**)'))
         .toEqual('[foo](http://example.com?foo=**bar**)')
     })
     it('should pad strong inside link text', () => {
       expect(padMarkdown('refer to [this is**important**](http://example.com)'))
         .toEqual('refer to [this is **important**](http://example.com)')
+    })
+  })
+
+  describe('images', () => {
+    it('should pad between footnote links', () => {
+      expect(padMarkdown('refer to![foo][bar]please'))
+        .toEqual('refer to ![foo][bar] please')
+    })
+    it('should pad between inline links', () => {
+      expect(padMarkdown('refer to![foo](http://foo)please'))
+        .toEqual('refer to ![foo](http://foo) please')
+    })
+    it('should not pad inside link urls', () => {
+      expect(padMarkdown('![foo](http://example.com?foo=**bar**)'))
+        .toEqual('![foo](http://example.com?foo=**bar**)')
+    })
+    it('should pad strong inside alt text', () => {
+      expect(padMarkdown('refer to ![this is**important**](http://example.com)'))
+        .toEqual('refer to ![this is **important**](http://example.com)')
+    })
+    it('should not pad inside inline image attributes', () => {
+      expect(padMarkdown('![ ](test.png){width=8cm}'))
+        .toEqual('![ ](test.png){width=8cm}')
+    })
+    it('should not pad inside reference image attributes', () => {
+      expect(padMarkdown('![ ][img]{width=8cm}'))
+        .toEqual('![ ][img]{width=8cm}')
     })
   })
 

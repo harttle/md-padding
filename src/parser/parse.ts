@@ -41,6 +41,8 @@ export function parse (str: string) {
   let inlineCodeDelimiter: InlineCodeDelimiter = '`'
   let linkText: Node[] = []
   let imageText: Node[] = []
+  let imageHref
+  let imageId
 
   push(State.Init)
   while (i < str.length) {
@@ -73,13 +75,36 @@ export function parse (str: string) {
     }
 
     // Images
-    else if (state === State.ImageReferingID && c === ']') {
-      resolve(new ReferenceImage(imageText, popMarkdown()))
+    else if (state === State.ImageAttributes && c === '}') {
+      const attr = popMarkdown()
+      if (imageId !== undefined) {
+        resolve(new ReferenceImage(imageText, imageId, attr))
+        imageId = undefined
+      } else {
+        resolve(new InlineImage(imageText, imageHref, attr))
+        imageHref = undefined
+      }
       i++
     }
+    else if (state === State.ImageReferingID && c === ']') {
+      if (c2 === ']{') {
+        imageId = popMarkdown()
+        push(State.ImageAttributes)
+        i += 2
+      } else {
+        resolve(new ReferenceImage(imageText, popMarkdown()))
+        i++
+      }
+    }
     else if (state === State.ImageReferingUrl && c === ')') {
-      resolve(new InlineImage(imageText, popMarkdown()))
-      i++
+      if (c2 === '){') {
+        imageHref = popMarkdown()
+        push(State.ImageAttributes)
+        i += 2
+      } else {
+        resolve(new InlineImage(imageText, popMarkdown()))
+        i++
+      }
     }
     else if (state === State.ImageText && c === ']') {
       imageText = popNodes()
