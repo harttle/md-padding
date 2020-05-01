@@ -110,7 +110,8 @@ Examples:
 					<h3>在 Vim 中使用</h3>
 				</a>
 				<p>可以绑定一个快捷键 <code>F6</code> 来修复当前文件：</p>
-				<pre><code class="language-vim"><span class="hljs-keyword">noremap</span> <span class="hljs-symbol">&lt;buffer&gt;</span> <span class="hljs-symbol">&lt;F6&gt;</span> <span class="hljs-symbol">&lt;Esc&gt;</span>:%!npx md-padding %<span class="hljs-symbol">&lt;CR&gt;</span></code></pre>
+				<pre><code class="language-vim"><span class="hljs-comment">" 绑一个 Vim Filter</span>
+<span class="hljs-keyword">noremap</span> <span class="hljs-symbol">&lt;buffer&gt;</span> <span class="hljs-symbol">&lt;F6&gt;</span> <span class="hljs-symbol">&lt;Esc&gt;</span>:%!npx md-padding<span class="hljs-symbol">&lt;CR&gt;</span></code></pre>
 				<a href="#在-vs-code-中使用" id="在-vs-code-中使用" style="color: inherit; text-decoration: none;">
 					<h3>在 VS Code 中使用</h3>
 				</a>

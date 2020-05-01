@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/harttle/md-padding/compare/v1.0.2...v1.0.3) (2020-05-01)
+
+
+### Bug Fixes
+
+* recognize image attributes, fixes [#2](https://github.com/harttle/md-padding/issues/2) ([dbc091f](https://github.com/harttle/md-padding/commit/dbc091f8410ca2a5f43f54f40d39cda0700ba66f))
+
 ## [1.0.2](https://github.com/harttle/md-padding/compare/v1.0.1...v1.0.2) (2020-02-10)
 
 
