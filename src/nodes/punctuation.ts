@@ -19,7 +19,7 @@ export class Punctuation implements Node {
     if (isAlphabetNumeric(next) && isNumeric(next.text[0]) && ',.'.includes(this.char)) return false
     if (isEndCharacter(this.char)) return true
     if (isStartCharacter(this.char)) return false
-    if ('<>='.includes(this.char)) return true
+    // if ('<>='.includes(this.char)) return true
     return false
   }
 
@@ -29,7 +29,7 @@ export class Punctuation implements Node {
     if (isAlphabetNumeric(prev) && isNumeric(prev.text.slice(-1)) && ',.'.includes(this.char)) return false
     if (isStartCharacter(this.char)) return true
     if (isEndCharacter(this.char)) return false
-    if ('<>='.includes(this.char)) return true
+    // if ('<>='.includes(this.char)) return true
     return false
   }
 
