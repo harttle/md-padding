@@ -144,4 +144,15 @@ describe('padding()', () => {
       expect(padMarkdown('a=b')).toEqual('a = b')
     })
   })
+  describe('compatible to markdown plugins', () => {
+    it('should be compatible to vscode MPE plugin', () => {
+      const input = '@import "image.png" {width="300px" alt="image"}'
+      expect(padMarkdown(input)).toEqual(input)
+    })
+    it('should be compatible to vscode MPE plugin (multiline)', () => {
+      const input = '@import "image.png" {width="300px" alt="image"}\nfoo=bar'
+      const output = '@import "image.png" {width="300px" alt="image"}\nfoo = bar'
+      expect(padMarkdown(input)).toEqual(output)
+    })
+  })
 })

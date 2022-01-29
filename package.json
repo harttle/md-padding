@@ -25,7 +25,6 @@
     "build": "tsc && chmod a+x dist/bin/*",
     "build-watch": "tsc --watch",
     "test": "jest",
-    "coveralls": "jest --coverage && cat coverage/lcov.info | coveralls",
     "coverage": "jest --coverage",
     "version": "npm run build && npm run docs",
     "semantic-release": "semantic-release"

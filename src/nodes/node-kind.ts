@@ -20,6 +20,7 @@ export enum NodeKind {
   UnorderedListItem = 1 << 17,
   InlineImage = 1 << 18,
   ReferenceImage = 1 << 19,
+  Raw = 1 << 20,
 
   // combinations
   All = -1,

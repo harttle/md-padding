@@ -20,6 +20,7 @@ import { Node } from '../nodes/node'
 import { InlineCode, InlineCodeDelimiter } from '../nodes/inline-code'
 import { BlockCode } from '../nodes/block-code'
 import { Blank } from '../nodes/blank'
+import { Raw } from '../nodes/raw'
 import { OrderedListItem } from '../nodes/ordered-list-item'
 import { UnorderedListItem } from '../nodes/unordered-list-item'
 import { State } from './state'
@@ -248,6 +249,11 @@ export function parse (str: string) {
     } else if (AlphabetNumeric.is(c)) {
       resolve(AlphabetNumeric.create(c))
       i++
+    } else if (str.substr(i, 7) === '@import' && allow(NodeKind.BlockCode)) {
+      const j = str.indexOf('\n', i)
+      const end = j === -1 ? str.length : j
+      resolve(new Raw(str.slice(i, end)))
+      i = end
     } else if (Punctuation.is(c)) {
       resolve(Punctuation.create(c))
       i++
