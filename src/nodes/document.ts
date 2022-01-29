@@ -2,8 +2,10 @@ import { NodeKind } from './node-kind'
 import { Node } from './node'
 
 export class Document implements Node {
-  children: Node[]
-  kind = NodeKind.Document
+  public readonly children: Node[]
+  public readonly kind: NodeKind = NodeKind.Document
+  // serve as a differentiator for Document duck type
+  public readonly isDoc = true
 
   constructor (children: Node[]) {
     this.children = children

@@ -1,6 +1,6 @@
 import { Blank } from '../nodes/blank'
 import { Node } from '../nodes/node'
-import { isUnicodeString, isAlphabetNumeric, isBlank, isPunctuation } from '../nodes/type-guards'
+import { isUnicodeString, isAlphabetNumeric, isBlank, isRaw, isDocument, isPunctuation } from '../nodes/type-guards'
 
 export function padBetweenNodes (tokens: Node[]): Node[] {
   if (tokens.length < 2) return tokens
@@ -17,6 +17,8 @@ export function padBetweenNodes (tokens: Node[]): Node[] {
 
 function needPadding (lhs: Node, rhs: Node) {
   if (isBlank(lhs) || isBlank(rhs)) return false
+  if (isRaw(lhs) || isRaw(rhs)) return false
+  if (isDocument(lhs) || isDocument(rhs)) return false
 
   if (isPunctuation(lhs)) return lhs.needPaddingAfter(rhs)
   if (isPunctuation(rhs)) return rhs.needPaddingBefore(lhs)

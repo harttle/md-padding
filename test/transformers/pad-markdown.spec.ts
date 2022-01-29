@@ -1,7 +1,7 @@
 import { padMarkdown } from '../../src/transformers/pad-markdown'
 
 describe('padding()', () => {
-  describe('code fences', () => {
+  describe('code', () => {
     it('should pad between code fence', () => {
       expect(padMarkdown('file`/foo.txt`not exists'))
         .toEqual('file `/foo.txt` not exists')
@@ -9,6 +9,29 @@ describe('padding()', () => {
     it('should ignore padded code fence', () => {
       expect(padMarkdown('file `/foo.txt` not exists'))
         .toEqual('file `/foo.txt` not exists')
+    })
+  })
+
+  describe('code fences', () => {
+    it('should not pad comment if language not specified', () => {
+      const input = 'sample: \n```\nint a ; // X11就很好\nint  b;\n```'
+      const output = 'sample: \n```\nint a ; // X11就很好\nint  b;\n```'
+      expect(padMarkdown(input)).toEqual(output)
+    })
+    it('should pad line comment in cpp', () => {
+      const input = 'sample: \n```cpp\nint a ; // X11就很好\nint  b;\n```'
+      const output = 'sample: \n```cpp\nint a ; // X11 就很好\nint  b;\n```'
+      expect(padMarkdown(input)).toEqual(output)
+    })
+    it('should pad block comment in javascript', () => {
+      const input = 'sample: \n```javascript\nwindow.alert(1) ; /* X11就很好\nrefer to<http://x11.org>.*/var  b;\n```'
+      const output = 'sample: \n```javascript\nwindow.alert(1) ; /* X11 就很好\nrefer to <http://x11.org>.*/var  b;\n```'
+      expect(padMarkdown(input)).toEqual(output)
+    })
+    it('should pad block comment in bash', () => {
+      const input = 'sample: \n```bash\necho X11就很好 # X11就很好\n```'
+      const output = 'sample: \n```bash\necho X11就很好 # X11 就很好\n```'
+      expect(padMarkdown(input)).toEqual(output)
     })
   })
 

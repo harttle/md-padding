@@ -28,8 +28,9 @@ import { Stack } from '../utils/stack'
 import { Mask } from './mask'
 import { stateMasks } from './state-masks'
 import { Context } from './context'
+import { parseCode } from './parse-code'
 
-export function parse (str: string) {
+export function parse (str: string): Document {
   const stack = new Stack<Context>()
   const mask = new Mask()
 
@@ -71,7 +72,7 @@ export function parse (str: string) {
       i++
     }
     else if (state === State.BlockCode && c3 === '```') {
-      resolve(new BlockCode(codeLang, popMarkdown()))
+      resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse)))
       i += 3
     }
 
@@ -345,11 +346,11 @@ export function parse (str: string) {
         resolve(new UnorderedListItem(listPrefix, popNodes()))
         break
       case State.BlockCode:
-        resolve(new BlockCode(codeLang, popMarkdown(), false))
+        resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse), false))
         break
       case State.BlockCodeLang:
         codeLang = popMarkdown()
-        resolve(new BlockCode(codeLang, '', false, false))
+        resolve(new BlockCode(codeLang, [], false, false))
         break
       default:
         return false

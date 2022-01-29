@@ -1,4 +1,4 @@
-export enum NodeKind {
+export const enum NodeKind {
   // concrete constructs
   Blank = 1,
   Punctuation = 1 << 1,

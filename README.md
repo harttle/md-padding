@@ -22,7 +22,8 @@
 
 ![raw.md 和 formated.md 之间的 Diff](https://user-images.githubusercontent.com/4427974/73588871-6e8d5600-4509-11ea-8c42-9debaaad9008.png)
 
-## 在命令行使用
+## 使用说明
+### 在命令行使用
 
 可以 `npm i -g md-padding` 后使用，也可以用 `npx md-padding`：
 
@@ -70,3 +71,17 @@ noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
   - Windows：Shift + Alt + F
   - Mac：Shift + Option + F
   - Linux：Ctrl + Shift + I
+
+## 支持说明
+
+### 中英混排
+中英混排的正文内容，会确保中英之间的空格。
+
+### 标点符号
+需要空格的标点（比如半角逗号），会在适当的位置追加空格。
+
+### 代码注释
+代码格式化不是本仓库的功能之一，请使用对应语言的 prettifier。但代码中的注释会被当做 Markdown 正文来格式化，目前支持这些语言的注释：
+
+- cpp, c, java, javascript, typescript, csharp
+- bash, python, ruby

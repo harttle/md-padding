@@ -11,6 +11,8 @@
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "sourceMap": true,
     "suppressImplicitAnyIndexErrors": true
   },

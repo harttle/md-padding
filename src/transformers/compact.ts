@@ -4,7 +4,7 @@ import { AlphabetNumeric } from '../nodes/alphabet-numeric'
 import { isUnicodeString, isAlphabetNumeric } from '../nodes/type-guards'
 import { preOrder } from '../utils/dfs'
 
-export function compactTree (root: Node) {
+export function compactTree<T extends Node> (root: T): T {
   preOrder(root, node => compactArray(node.children))
   return root
 }

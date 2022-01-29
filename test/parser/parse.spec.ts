@@ -1,5 +1,6 @@
 import { parse } from '../../src/parser/parse'
 import { NodeKind } from '../../src/nodes/node-kind'
+import { BlockCode } from '../../src/nodes/block-code'
 
 describe('parse()', () => {
   describe('AlphabetNumeric', () => {
@@ -476,30 +477,33 @@ describe('parse()', () => {
     it('should parse block code', () => {
       const doc = parse('```\ncode\n```')
       expect(doc.children).toHaveLength(1)
-      expect(doc.children[0]).toMatchObject({
+      const blockCode = doc.children[0] as BlockCode
+      expect(blockCode).toMatchObject({
         kind: NodeKind.BlockCode,
-        code: 'code\n',
         lang: ''
       })
+      expect(blockCode.getCode()).toEqual('code\n')
     })
     it('should ignore emphasis inside block code', () => {
       const doc = parse('```cpp\nwhat *is* this```')
 
       expect(doc.children).toHaveLength(1)
+      const blockCode = doc.children[0] as BlockCode
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.BlockCode,
-        code: 'what *is* this',
         lang: 'cpp'
       })
+      expect(blockCode.getCode()).toEqual('what *is* this')
     })
     it('should tokenize block code with lang', () => {
       const doc = parse('```cpp\ncode\n```')
       expect(doc.children).toHaveLength(1)
+      const blockCode = doc.children[0] as BlockCode
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.BlockCode,
-        code: 'code\n',
         lang: 'cpp'
       })
+      expect(blockCode.getCode()).toEqual('code\n')
     })
     it('should parse mixed text and code', () => {
       const doc = parse('A`inline code`B```\nblock code\n```C')
@@ -517,11 +521,12 @@ describe('parse()', () => {
         kind: NodeKind.AlphabetNumeric,
         text: 'B'
       })
-      expect(doc.children[3]).toMatchObject({
+      const blockCode = doc.children[3] as BlockCode
+      expect(blockCode).toMatchObject({
         kind: NodeKind.BlockCode,
-        lang: '',
-        code: 'block code\n'
+        lang: ''
       })
+      expect(blockCode.getCode()).toEqual('block code\n')
       expect(doc.children[4]).toMatchObject({
         kind: NodeKind.AlphabetNumeric,
         text: 'C'

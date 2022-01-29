@@ -17,9 +17,6 @@
     "no-multi-spaces": "off",
     "no-labels": "off",
     "brace-style": "off",
-    "no-var": 2,
-    "prefer-const": 2,
-    "no-labels": "off",
     "no-useless-constructor": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
@@ -27,7 +24,7 @@
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "debug" }],
+    "@typescript-eslint/no-unused-vars": "off",
     "no-unused-vars": "off",
     "no-dupe-class-members": "off",
     "import/export": "off"

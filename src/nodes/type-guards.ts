@@ -25,6 +25,10 @@ export function isBlank (node: Node): node is Blank {
   return node.kind === NodeKind.Blank
 }
 
+export function isRaw (node: Node): node is Blank {
+  return node.kind === NodeKind.Raw
+}
+
 export function isUnicodeString (node: Node): node is UnicodeString {
   return node.kind === NodeKind.UnicodeString
 }
