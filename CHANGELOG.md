@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/harttle/md-padding/compare/v1.0.3...v1.1.0) (2022-01-29)
+
+
+### Bug Fixes
+
+* allow vscode MPE plugin, see [#14](https://github.com/harttle/md-padding/issues/14) ([22e52eb](https://github.com/harttle/md-padding/commit/22e52eb4a0c80715526b0ad5c2067177c797a916))
+
+
+### Features
+
+* format text in code blocks, fixes [#14](https://github.com/harttle/md-padding/issues/14) ([d9d74f9](https://github.com/harttle/md-padding/commit/d9d74f9ee9c45cdbc20504f9a45bee9c9d68030c))
+
 ## [1.0.3](https://github.com/harttle/md-padding/compare/v1.0.2...v1.0.3) (2020-05-01)
 
 

@@ -98,7 +98,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#children" class="tsd-kind-icon">children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#closed" class="tsd-kind-icon">closed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#code" class="tsd-kind-icon">code</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#kind" class="tsd-kind-icon">kind</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#lang" class="tsd-kind-icon">lang</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#langclosed" class="tsd-kind-icon">lang<wbr>Closed</a></li>
@@ -107,6 +106,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#getcode" class="tsd-kind-icon">get<wbr>Code</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a></li>
 							</ul>
 						</section>
@@ -119,13 +119,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Block<wbr>Code<span class="tsd-signature-symbol">(</span>lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, closed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, langClosed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_block_code_.blockcode.html" class="tsd-signature-type">BlockCode</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Block<wbr>Code<span class="tsd-signature-symbol">(</span>lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, children<span class="tsd-signature-symbol">: </span><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span>, closed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, langClosed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_block_code_.blockcode.html" class="tsd-signature-type">BlockCode</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L10">nodes/block-code.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L9">nodes/block-code.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -134,7 +134,7 @@
 									<h5>lang: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>code: <span class="tsd-signature-type">string</span></h5>
+									<h5>children: <a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> closed: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
@@ -157,7 +157,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L5">nodes/block-code.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L5">nodes/block-code.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,17 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">closed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L9">nodes/block-code.ts:9</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="code" class="tsd-anchor"></a>
-					<h3>code</h3>
-					<div class="tsd-signature tsd-kind-icon">code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L7">nodes/block-code.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L8">nodes/block-code.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,7 +178,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#kind">kind</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L8">nodes/block-code.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L7">nodes/block-code.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -198,7 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">lang<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L6">nodes/block-code.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L6">nodes/block-code.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -208,13 +198,30 @@
 					<div class="tsd-signature tsd-kind-icon">lang<wbr>Closed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L10">nodes/block-code.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L9">nodes/block-code.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcode" class="tsd-anchor"></a>
+					<h3>get<wbr>Code</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Code<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L18">nodes/block-code.ts:18</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="tomarkdown" class="tsd-anchor"></a>
 					<h3>to<wbr>Markdown</h3>
@@ -226,7 +233,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#tomarkdown">toMarkdown</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/dbc091f/src/nodes/block-code.ts#L19">nodes/block-code.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/85444fb/src/nodes/block-code.ts#L22">nodes/block-code.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -263,9 +270,6 @@
 								<a href="_nodes_block_code_.blockcode.html#closed" class="tsd-kind-icon">closed</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_block_code_.blockcode.html#code" class="tsd-kind-icon">code</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_nodes_block_code_.blockcode.html#kind" class="tsd-kind-icon">kind</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -273,6 +277,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_nodes_block_code_.blockcode.html#langclosed" class="tsd-kind-icon">lang<wbr>Closed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_nodes_block_code_.blockcode.html#getcode" class="tsd-kind-icon">get<wbr>Code</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_nodes_block_code_.blockcode.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a>

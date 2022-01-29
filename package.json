@@ -1,6 +1,6 @@
 {
   "name": "md-padding",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "修复 Markdown 中的混排空格：中英文、数字、链接等。",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

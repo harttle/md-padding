@@ -87,8 +87,11 @@
 				</ul>
 				<p><a href="https://github.com/harttle/md-padding/tree/master/demo">这里</a> 有个例子：</p>
 				<p><img src="https://user-images.githubusercontent.com/4427974/73588871-6e8d5600-4509-11ea-8c42-9debaaad9008.png" alt="raw.md 和 formated.md 之间的 Diff"></p>
+				<a href="#使用说明" id="使用说明" style="color: inherit; text-decoration: none;">
+					<h2>使用说明</h2>
+				</a>
 				<a href="#在命令行使用" id="在命令行使用" style="color: inherit; text-decoration: none;">
-					<h2>在命令行使用</h2>
+					<h3>在命令行使用</h3>
 				</a>
 				<p>可以 <code>npm i -g md-padding</code> 后使用，也可以用 <code>npx md-padding</code>：</p>
 				<pre><code class="language-bash"><span class="hljs-comment"># 输出 README.md 格式化后的内容</span>
@@ -130,6 +133,25 @@ Examples:
 							<li>Linux：Ctrl + Shift + I</li>
 						</ul>
 					</li>
+				</ul>
+				<a href="#支持说明" id="支持说明" style="color: inherit; text-decoration: none;">
+					<h2>支持说明</h2>
+				</a>
+				<a href="#中英混排" id="中英混排" style="color: inherit; text-decoration: none;">
+					<h3>中英混排</h3>
+				</a>
+				<p>中英混排的正文内容，会确保中英之间的空格。</p>
+				<a href="#标点符号" id="标点符号" style="color: inherit; text-decoration: none;">
+					<h3>标点符号</h3>
+				</a>
+				<p>需要空格的标点（比如半角逗号），会在适当的位置追加空格。</p>
+				<a href="#代码注释" id="代码注释" style="color: inherit; text-decoration: none;">
+					<h3>代码注释</h3>
+				</a>
+				<p>代码格式化不是本仓库的功能之一，请使用对应语言的 prettifier。但代码中的注释会被当做 Markdown 正文来格式化，目前支持这些语言的注释：</p>
+				<ul>
+					<li>cpp, c, java, javascript, typescript, csharp</li>
+					<li>bash, python, ruby</li>
 				</ul>
 			</div>
 		</div>
@@ -191,6 +213,9 @@ Examples:
 						<a href="modules/_nodes_quoted_.html">&quot;nodes/quoted&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_nodes_raw_.html">&quot;nodes/raw&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_nodes_reference_definition_.html">&quot;nodes/reference-<wbr>definition&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -225,6 +250,9 @@ Examples:
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_parser_parse_.html">&quot;parser/parse&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_parser_parse_code_.html">&quot;parser/parse-<wbr>code&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_parser_state_.html">&quot;parser/state&quot;</a>
