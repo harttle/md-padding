@@ -16,7 +16,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          npm run build:dist
+          npm run build
       - name: Test
         run: |
           npm run lint
