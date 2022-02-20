@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/harttle/md-padding/compare/v1.1.0...v1.1.1) (2022-02-20)
+
+
+### Bug Fixes
+
+* jsdom block quote not correctly parsed ([9849569](https://github.com/harttle/md-padding/commit/984956923b9fcd25314482109e793e85e9ee5d21))
+
 # [1.1.0](https://github.com/harttle/md-padding/compare/v1.0.3...v1.1.0) (2022-01-29)
 
 
