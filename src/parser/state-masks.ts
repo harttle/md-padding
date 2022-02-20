@@ -3,7 +3,7 @@ import { NodeKind } from '../nodes/node-kind'
 
 export const stateMasks = {
   [State.InlineCode]: ~NodeKind.Text,
-  [State.BlockCode]: ~NodeKind.Text,
+  [State.BlockCodeBody]: ~NodeKind.Text,
   [State.Emphasis]: ~NodeKind.Inline | NodeKind.Emphasis,
   [State.Strong]: ~NodeKind.Inline | NodeKind.Strong,
   [State.Strikethrough]: ~NodeKind.Inline | NodeKind.Strikethrough,

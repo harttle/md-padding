@@ -28,6 +28,11 @@ describe('padding()', () => {
       const output = 'sample: \n```javascript\nwindow.alert(1) ; /* X11 就很好\nrefer to <http://x11.org>.*/var  b;\n```'
       expect(padMarkdown(input)).toEqual(output)
     })
+    it('should pad jsdom comment in javascript', () => {
+      const input = 'sample: \n```javascript\n/**\n * @param {string} s 字符串s\n * @return {string}\n */\nvar longestPalindrome = function(s) {}\n```'
+      const output = 'sample: \n```javascript\n/**\n * @param {string} s 字符串 s\n * @return {string}\n */\nvar longestPalindrome = function(s) {}\n```'
+      expect(padMarkdown(input)).toEqual(output)
+    })
     it('should pad block comment in bash', () => {
       const input = 'sample: \n```bash\necho X11就很好 # X11就很好\n```'
       const output = 'sample: \n```bash\necho X11就很好 # X11 就很好\n```'

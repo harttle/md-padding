@@ -31,7 +31,7 @@ function * cpp (code: string, parseMarkdown: documentParser) {
     if (c2 === '//') {
       const j = code.indexOf('\n', i)
       const end = j === -1 ? N : j
-      if (i > prevI) {
+      if (i + 2 > prevI) {
         yield new Raw(code.slice(prevI, i + 2))
       }
       yield parseMarkdown(code.slice(i + 2, end))
@@ -39,7 +39,7 @@ function * cpp (code: string, parseMarkdown: documentParser) {
     } else if (c2 === '/*') {
       const j = code.indexOf('*/', i)
       const end = j === -1 ? N : j
-      if (i > prevI) {
+      if (i + 2 > prevI) {
         yield new Raw(code.slice(prevI, i + 2))
       }
       yield parseMarkdown(code.slice(i + 2, end))

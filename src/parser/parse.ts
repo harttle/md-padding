@@ -68,10 +68,10 @@ export function parse (str: string): Document {
     // Code Blocks
     else if (state === State.BlockCodeLang && str[i] === '\n') {
       codeLang = popMarkdown()
-      push(State.BlockCode)
+      push(State.BlockCodeBody)
       i++
     }
-    else if (state === State.BlockCode && c3 === '```') {
+    else if (state === State.BlockCodeBody && c3 === '```') {
       resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse)))
       i += 3
     }
@@ -345,7 +345,7 @@ export function parse (str: string): Document {
       case State.UnorderedListItem:
         resolve(new UnorderedListItem(listPrefix, popNodes()))
         break
-      case State.BlockCode:
+      case State.BlockCodeBody:
         resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse), false))
         break
       case State.BlockCodeLang:

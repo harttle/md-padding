@@ -14,7 +14,7 @@ export enum State {
   Strikethrough,      // ~~
   InlineCode,         // `
   BlockCodeLang,      // ```
-  BlockCode,          // ```cpp\n
+  BlockCodeBody,      // ```cpp\n
   OrderedListItem,    // 1.<space>
   UnorderedListItem,  // *<space>
 
