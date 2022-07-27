@@ -83,5 +83,6 @@ noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 ### 代码注释
 代码格式化不是本仓库的功能之一，请使用对应语言的 prettifier。但代码中的注释会被当做 Markdown 正文来格式化，目前支持这些语言的注释：
 
-- cpp, c, java, javascript, typescript, csharp
+- cpp, c, java, javascript, typescript, csharp, go
+- sql
 - bash, python, ruby
