@@ -33,6 +33,11 @@ describe('padding()', () => {
       const output = 'sample: \n```javascript\n/**\n * @param {string} s 字符串 s\n * @return {string}\n */\nvar longestPalindrome = function(s) {}\n```'
       expect(padMarkdown(input)).toEqual(output)
     })
+    it('should pad line comment in sql', () => {
+      const input = 'sample: \n```sql\nSELECT * FROM USER; -- 查找所有USER\n```'
+      const output = 'sample: \n```sql\nSELECT * FROM USER; -- 查找所有 USER\n```'
+      expect(padMarkdown(input)).toEqual(output)
+    })
     it('should pad block comment in bash', () => {
       const input = 'sample: \n```bash\necho X11就很好 # X11就很好\n```'
       const output = 'sample: \n```bash\necho X11就很好 # X11 就很好\n```'
