@@ -21,6 +21,7 @@ export const enum NodeKind {
   InlineImage = 1 << 18,
   ReferenceImage = 1 << 19,
   Raw = 1 << 20,
+  Math = 1 << 21,
 
   // combinations
   All = -1,

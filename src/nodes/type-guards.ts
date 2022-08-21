@@ -1,4 +1,5 @@
 import { InlineCode } from './inline-code'
+import { Math } from './math'
 import { ReferenceLink } from './reference-link'
 import { Punctuation } from './punctuation'
 import { UnicodeString } from './unicode-string'
@@ -31,6 +32,10 @@ export function isRaw (node: Node): node is Blank {
 
 export function isUnicodeString (node: Node): node is UnicodeString {
   return node.kind === NodeKind.UnicodeString
+}
+
+export function isMath (node: Node): node is Math {
+  return node.kind === NodeKind.Math
 }
 
 export function isInlineCode (node: Node): node is InlineCode {

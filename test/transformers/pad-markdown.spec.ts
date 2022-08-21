@@ -45,6 +45,14 @@ describe('padding()', () => {
     })
   })
 
+  describe('math', () => {
+    it('should recognize $inline math$', () => {
+      const src = '其实就类似我们学过的科学计数法，其一般形式为$N = S*r^j$，其中$S$称为**尾数**，$j$称为**阶码**，$r$称为**基值**。'
+      const dst = '其实就类似我们学过的科学计数法，其一般形式为 $N = S*r^j$，其中 $S$ 称为 **尾数**，$j$ 称为 **阶码**，$r$ 称为 **基值**。'
+      expect(padMarkdown(src)).toEqual(dst)
+    })
+  })
+
   describe('mixed languages', () => {
     it('should pad between zh_CN and en_US', () => {
       expect(padMarkdown('我是Yang先生'))

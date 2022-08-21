@@ -18,6 +18,7 @@ import { ReferenceDefinition } from '../nodes/reference-definition'
 import { InlineLink } from '../nodes/inline-link'
 import { Node } from '../nodes/node'
 import { InlineCode, InlineCodeDelimiter } from '../nodes/inline-code'
+import { Math, MathDelimiter } from '../nodes/math'
 import { BlockCode } from '../nodes/block-code'
 import { Blank } from '../nodes/blank'
 import { Raw } from '../nodes/raw'
@@ -41,6 +42,7 @@ export function parse (str: string): Document {
   let strongDelimiter: StrongDelimiter = '**'
   let emphasisDelimiter: EmphasisDelimiter = '*'
   let inlineCodeDelimiter: InlineCodeDelimiter = '`'
+  let mathDelimiter: MathDelimiter = '$'
   let linkText: Node[] = []
   let imageText: Node[] = []
   let imageHref
@@ -74,6 +76,14 @@ export function parse (str: string): Document {
     else if (state === State.BlockCodeBody && c3 === '```') {
       resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse)))
       i += 3
+    }
+
+    // Math
+    else if (state === State.Math &&
+      str.substr(i, mathDelimiter.length) === mathDelimiter
+    ) {
+      resolve(new Math(popMarkdown(), mathDelimiter))
+      i += mathDelimiter.length
     }
 
     // Images
@@ -218,6 +228,15 @@ export function parse (str: string): Document {
       inlineCodeDelimiter = c
       push(State.InlineCode)
       i++
+    }
+    else if (c2 === '$$' && allow(NodeKind.Math)) {
+      mathDelimiter = c2
+      push(State.Math)
+      i += 2
+    } else if (c === '$' && allow(NodeKind.Math)) {
+      mathDelimiter = c
+      push(State.Math)
+      i++
     } else if (blankLine && UnorderedListItem.isValidPrefix(c2) && allow(NodeKind.UnorderedListItem)) {
       push(State.UnorderedListItem)
       listPrefix = c2
@@ -299,6 +318,12 @@ export function parse (str: string): Document {
       case State.InlineCode:
         resolve(
           ...[...inlineCodeDelimiter].map(c => Punctuation.create(c)),
+          ...popNodes()
+        )
+        break
+      case State.Math:
+        resolve(
+          ...[...mathDelimiter].map(c => Punctuation.create(c)),
           ...popNodes()
         )
         break
