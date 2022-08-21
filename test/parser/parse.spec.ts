@@ -3,9 +3,11 @@ import { NodeKind } from '../../src/nodes/node-kind'
 import { BlockCode } from '../../src/nodes/block-code'
 
 describe('parse()', () => {
+  const options = { ignoreWords: new Set<string>() }
+
   describe('AlphabetNumeric', () => {
     it('should parse a single word', () => {
-      const doc = parse('foo')
+      const doc = parse('foo', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.AlphabetNumeric,
@@ -16,7 +18,7 @@ describe('parse()', () => {
 
   describe('InlineLink', () => {
     it('should parse inline link', () => {
-      const doc = parse('[foo](bar)')
+      const doc = parse('[foo](bar)', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.InlineLink,
@@ -32,7 +34,7 @@ describe('parse()', () => {
 
   describe('InlineImage', () => {
     it('should parse inline image', () => {
-      const doc = parse('![foo](bar)')
+      const doc = parse('![foo](bar)', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.InlineImage,
@@ -46,7 +48,7 @@ describe('parse()', () => {
     })
     it('should parse inline image with attributes', () => {
       // see: https://kramdown.gettalong.org/syntax.html#images
-      const doc = parse('![smiley](smiley.png){:height="36px" width="36px"}')
+      const doc = parse('![smiley](smiley.png){:height="36px" width="36px"}', options)
       expect(doc.children).toHaveLength(1)
       const [img] = doc.children
       expect(img).toMatchObject({
@@ -65,7 +67,7 @@ describe('parse()', () => {
   })
   it('should parse reference image with attributes', () => {
     // see: https://kramdown.gettalong.org/syntax.html#images
-    const doc = parse('![smiley][smiley]{:height="36px" width="36px"}')
+    const doc = parse('![smiley][smiley]{:height="36px" width="36px"}', options)
     expect(doc.children).toHaveLength(1)
     const [img] = doc.children
     expect(img).toMatchObject({
@@ -84,7 +86,7 @@ describe('parse()', () => {
 
   describe('ReferenceImage', () => {
     it('should parse reference image', () => {
-      const doc = parse('![foo][bar]')
+      const doc = parse('![foo][bar]', options)
       expect(doc.children).toHaveLength(1)
 
       const [image] = doc.children
@@ -104,7 +106,7 @@ describe('parse()', () => {
 
   describe('ReferenceLink', () => {
     it('should parse reference link', () => {
-      const doc = parse('[foo][bar]')
+      const doc = parse('[foo][bar]', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.ReferenceLink,
@@ -118,7 +120,7 @@ describe('parse()', () => {
     })
 
     it('should expand "[foo][bar" when NL found', () => {
-      const doc = parse('[foo][bar')
+      const doc = parse('[foo][bar', options)
       expect(doc.children).toHaveLength(3)
 
       const [square, punc, text] = doc.children
@@ -145,7 +147,7 @@ describe('parse()', () => {
 
   describe('ReferenceDefinition', () => {
     it('should parse reference definition', () => {
-      const doc = parse('[foo]: http://harttle.land')
+      const doc = parse('[foo]: http://harttle.land', options)
       expect(doc.children).toHaveLength(1)
 
       const dfn = doc.children[0]
@@ -156,7 +158,7 @@ describe('parse()', () => {
       expect(dfn.toMarkdown()).toEqual('[foo]: http://harttle.land')
     })
     it('should parse multiple reference definitions', () => {
-      const doc = parse('[foo]: http://harttle.land\n[bar]: http://example.com')
+      const doc = parse('[foo]: http://harttle.land\n[bar]: http://example.com', options)
       expect(doc.children).toHaveLength(3)
 
       const [dfn1, blank, dfn2] = doc.children
@@ -181,7 +183,7 @@ describe('parse()', () => {
 
   describe('HTMLTag', () => {
     it('should parse anchor tag', () => {
-      const doc = parse('<http://harttle.land>')
+      const doc = parse('<http://harttle.land>', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.HTMLTag,
@@ -189,7 +191,7 @@ describe('parse()', () => {
       })
     })
     it('should expand unclosed tag when read NL', () => {
-      const doc = parse('<foo')
+      const doc = parse('<foo', options)
       expect(doc.children).toHaveLength(2)
 
       const [punc, text] = doc.children
@@ -206,7 +208,7 @@ describe('parse()', () => {
 
   describe('InlineCode', () => {
     it('should parse inline code', () => {
-      const doc = parse('`code`')
+      const doc = parse('`code`', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.InlineCode,
@@ -214,7 +216,7 @@ describe('parse()', () => {
       })
     })
     it('should support doulbe `` inline code', () => {
-      const doc = parse('``code``')
+      const doc = parse('``code``', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.InlineCode,
@@ -222,7 +224,7 @@ describe('parse()', () => {
       })
     })
     it('should ignore quoted inside inline code', () => {
-      const doc = parse('`"code"`')
+      const doc = parse('`"code"`', options)
       expect(doc.children).toHaveLength(1)
 
       const code = doc.children[0]
@@ -234,7 +236,7 @@ describe('parse()', () => {
       })
     })
     it('should ignore emphasis inside inline code', () => {
-      const doc = parse('`what *is* this`')
+      const doc = parse('`what *is* this`', options)
 
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
@@ -243,7 +245,7 @@ describe('parse()', () => {
       })
     })
     it('should parse nested code inside link text', () => {
-      const doc = parse('[`code`](bar)')
+      const doc = parse('[`code`](bar)', options)
       expect(doc.children).toHaveLength(1)
 
       const link = doc.children[0]
@@ -263,7 +265,7 @@ describe('parse()', () => {
 
   describe('Emphasis', () => {
     it('should not parse as emphasis if not in word boundary', () => {
-      const doc = parse('a_single_word')
+      const doc = parse('a_single_word', options)
       expect(doc.children).toHaveLength(5)
 
       const [t1, p1, t2, p2, t3] = doc.children
@@ -289,7 +291,7 @@ describe('parse()', () => {
       })
     })
     it('should expand emphasis when NL', () => {
-      const doc = parse('*important\nnote')
+      const doc = parse('*important\nnote', options)
       expect(doc.children).toHaveLength(4)
 
       const [punc, text1, blank, text2] = doc.children
@@ -311,7 +313,7 @@ describe('parse()', () => {
       })
     })
     it('should expand unclosed emphasis when EOF', () => {
-      const doc = parse('not *important')
+      const doc = parse('not *important', options)
       expect(doc.children).toHaveLength(4)
 
       const [text1, blank, punc, text2] = doc.children
@@ -336,7 +338,7 @@ describe('parse()', () => {
 
   describe('Quoted', () => {
     it('should expand quoted when NL found', () => {
-      const doc = parse('"someone\nsaid')
+      const doc = parse('"someone\nsaid', options)
       expect(doc.children).toHaveLength(4)
 
       const [punc, text1, blank, text2] = doc.children
@@ -361,7 +363,7 @@ describe('parse()', () => {
 
   describe('SquareQuoted', () => {
     it('should expand "[xx" as a Punctuation + AlphabetNumeric', () => {
-      const doc = parse('[xx')
+      const doc = parse('[xx', options)
       expect(doc.children).toHaveLength(2)
 
       const [punc, alphabet] = doc.children
@@ -375,7 +377,7 @@ describe('parse()', () => {
       })
     })
     it('should handle "[xx\n" as a Punctuation + AlphabetNumeric + blank', () => {
-      const doc = parse('[xx\n')
+      const doc = parse('[xx\n', options)
       expect(doc.children).toHaveLength(3)
 
       const [punc, alphabet, blank] = doc.children
@@ -396,7 +398,7 @@ describe('parse()', () => {
 
   describe('Strong', () => {
     it('should allow nested emphasis', () => {
-      const doc = parse('**_foo_**')
+      const doc = parse('**_foo_**', options)
       expect(doc.children).toHaveLength(1)
 
       const strong = doc.children[0]
@@ -421,7 +423,7 @@ describe('parse()', () => {
     })
 
     it('should expand repeatedly Strong when NL found', () => {
-      const doc = parse('**_foo\n**bar**')
+      const doc = parse('**_foo\n**bar**', options)
       expect(doc.children).toHaveLength(6)
 
       const [p1, p2, p3, t1, blank, s1] = doc.children
@@ -450,7 +452,7 @@ describe('parse()', () => {
     })
 
     it('should expand Strong when EOF found', () => {
-      const doc = parse('**_foo')
+      const doc = parse('**_foo', options)
       expect(doc.children).toHaveLength(4)
 
       const [p1, p2, p3, t1] = doc.children
@@ -475,7 +477,7 @@ describe('parse()', () => {
 
   describe('BlockCode', () => {
     it('should parse block code', () => {
-      const doc = parse('```\ncode\n```')
+      const doc = parse('```\ncode\n```', options)
       expect(doc.children).toHaveLength(1)
       const blockCode = doc.children[0] as BlockCode
       expect(blockCode).toMatchObject({
@@ -485,7 +487,7 @@ describe('parse()', () => {
       expect(blockCode.getCode()).toEqual('code\n')
     })
     it('should ignore emphasis inside block code', () => {
-      const doc = parse('```cpp\nwhat *is* this```')
+      const doc = parse('```cpp\nwhat *is* this```', options)
 
       expect(doc.children).toHaveLength(1)
       const blockCode = doc.children[0] as BlockCode
@@ -496,7 +498,7 @@ describe('parse()', () => {
       expect(blockCode.getCode()).toEqual('what *is* this')
     })
     it('should tokenize block code with lang', () => {
-      const doc = parse('```cpp\ncode\n```')
+      const doc = parse('```cpp\ncode\n```', options)
       expect(doc.children).toHaveLength(1)
       const blockCode = doc.children[0] as BlockCode
       expect(doc.children[0]).toMatchObject({
@@ -506,7 +508,7 @@ describe('parse()', () => {
       expect(blockCode.getCode()).toEqual('code\n')
     })
     it('should parse mixed text and code', () => {
-      const doc = parse('A`inline code`B```\nblock code\n```C')
+      const doc = parse('A`inline code`B```\nblock code\n```C', options)
       expect(doc.children).toHaveLength(5)
 
       expect(doc.children[0]).toMatchObject({
@@ -536,7 +538,7 @@ describe('parse()', () => {
 
   describe('UnorderedListItem', () => {
     it('should parse unordered list item', () => {
-      const doc = parse('* foo\n* bar')
+      const doc = parse('* foo\n* bar', options)
       expect(doc.children).toHaveLength(3)
 
       const [item1, blank, item2] = doc.children

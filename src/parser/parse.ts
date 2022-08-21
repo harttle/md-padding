@@ -31,8 +31,10 @@ import { Mask } from './mask'
 import { stateMasks } from './state-masks'
 import { Context } from './context'
 import { parseCode } from './parse-code'
+import { matchSubstring } from '../utils/string'
+import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
 
-export function parse (str: string): Document {
+export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
   const stack = new Stack<Context>()
   const mask = new Mask()
 
@@ -62,9 +64,7 @@ export function parse (str: string): Document {
     }
 
     // Inline Code
-    if (state === State.InlineCode &&
-      str.substr(i, inlineCodeDelimiter.length) === inlineCodeDelimiter
-    ) {
+    if (state === State.InlineCode && matchSubstring(str, i, inlineCodeDelimiter)) {
       resolve(new InlineCode(popMarkdown(), inlineCodeDelimiter))
       i += inlineCodeDelimiter.length
     }
@@ -76,14 +76,12 @@ export function parse (str: string): Document {
       i++
     }
     else if (state === State.BlockCodeBody && c3 === blockCodeDelimiter) {
-      resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse)))
+      resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse, options)))
       i += 3
     }
 
     // Math
-    else if (state === State.Math &&
-      str.substr(i, mathDelimiter.length) === mathDelimiter
-    ) {
+    else if (state === State.Math && matchSubstring(str, i, mathDelimiter)) {
       resolve(new Math(popMarkdown(), mathDelimiter))
       i += mathDelimiter.length
     }
@@ -273,10 +271,12 @@ export function parse (str: string): Document {
     } else if (Blank.is(c)) {
       resolve(new Blank(c))
       i++
+    } else if (handleIgnores()) {
+      // do nothing, already handled
     } else if (AlphabetNumeric.is(c)) {
       resolve(AlphabetNumeric.create(c))
       i++
-    } else if (str.substr(i, 7) === '@import' && allow(NodeKind.BlockCode)) {
+    } else if (matchSubstring(str, i, '@import') && allow(NodeKind.BlockCode)) {
       const j = str.indexOf('\n', i)
       const end = j === -1 ? str.length : j
       resolve(new Raw(str.slice(i, end)))
@@ -307,6 +307,17 @@ export function parse (str: string): Document {
   }
 
   return compactTree(new Document(popNodes()))
+
+  function handleIgnores (): boolean {
+    for (const ignore of options.ignoreWords) {
+      if (matchSubstring(str, i, ignore)) {
+        resolve(new Raw(ignore))
+        i += ignore.length
+        return true
+      }
+    }
+    return false
+  }
 
   function forceCloseInlineNodes () {
     switch (stack.top().state) {
@@ -378,7 +389,7 @@ export function parse (str: string): Document {
         resolve(new UnorderedListItem(listPrefix, popNodes()))
         break
       case State.BlockCodeBody:
-        resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse), false))
+        resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse, options), false))
         break
       case State.BlockCodeLang:
         codeLang = popMarkdown()

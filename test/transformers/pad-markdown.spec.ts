@@ -91,6 +91,19 @@ describe('padding()', () => {
     })
   })
 
+  describe('options', () => {
+    it('should support ignore list', () => {
+      const src = '伦敦时间是 UTC±0'
+      expect(padMarkdown(src)).toEqual('伦敦时间是 UTC ± 0')
+      expect(padMarkdown(src, { ignoreWords: ['UTC±0'] })).toEqual('伦敦时间是 UTC±0')
+    })
+    it('should support ignore list in code block', () => {
+      const src = '```cpp\n//伦敦时间是 UTC±0\n```'
+      expect(padMarkdown(src)).toEqual('```cpp\n//伦敦时间是 UTC ± 0\n```')
+      expect(padMarkdown(src, { ignoreWords: ['UTC±0'] })).toEqual('```cpp\n//伦敦时间是 UTC±0\n```')
+    })
+  })
+
   describe('emphasis, strong, strikethrough', () => {
     it('should maintain space between text and emphasis', () => {
       expect(padMarkdown('what should be _emphasised_ is'))
