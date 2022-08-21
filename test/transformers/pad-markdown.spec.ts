@@ -18,6 +18,11 @@ describe('padding()', () => {
       const output = 'sample: \n```\nint a ; // X11就很好\nint  b;\n```'
       expect(padMarkdown(input)).toEqual(output)
     })
+    it('should not pad string in JavaScript', () => {
+      const input = "```javascript\nlet s = 'https://google.com?q=天气'```"
+      const output = "```javascript\nlet s = 'https://google.com?q=天气'```"
+      expect(padMarkdown(input)).toEqual(output)
+    })
     it('should pad line comment in cpp', () => {
       const input = 'sample: \n```cpp\nint a ; // X11就很好\nint  b;\n```'
       const output = 'sample: \n```cpp\nint a ; // X11 就很好\nint  b;\n```'
