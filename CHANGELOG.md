@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/harttle/md-padding/compare/v1.1.1...v1.2.0) (2022-08-21)
+
+
+### Bug Fixes
+
+* string in code block recognized as comment, fixes [#20](https://github.com/harttle/md-padding/issues/20) ([d9cbee7](https://github.com/harttle/md-padding/commit/d9cbee779b54e5898964d67f0cb1b7fe82cf71b9))
+
+
+### Features
+
+* support front matter, closes [#22](https://github.com/harttle/md-padding/issues/22) ([b426e96](https://github.com/harttle/md-padding/commit/b426e96ff4a22e3797b5482949717d7f562306f9))
+* support ignore list, fixes [#21](https://github.com/harttle/md-padding/issues/21) ([453eee6](https://github.com/harttle/md-padding/commit/453eee6c2fef45014192a2ebfb566c0c7a42865e))
+* support math block, fixes [#23](https://github.com/harttle/md-padding/issues/23) ([44bda74](https://github.com/harttle/md-padding/commit/44bda744e90a2ba91f90c05736d0ef94d1d66d11))
+
 ## [1.1.1](https://github.com/harttle/md-padding/compare/v1.1.0...v1.1.1) (2022-02-20)
 
 

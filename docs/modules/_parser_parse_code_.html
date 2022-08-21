@@ -76,11 +76,19 @@
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#documentparser" class="tsd-kind-icon">document<wbr>Parser</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#cpp" class="tsd-kind-icon">cpp</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#javascript" class="tsd-kind-icon">javascript</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#sql" class="tsd-kind-icon">sql</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#bash" class="tsd-kind-icon">bash</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#cpp" class="tsd-kind-icon">cpp</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_parser_parse_code_.html#createcstyleparser" class="tsd-kind-icon">createCStyle<wbr>Parser</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_parser_parse_code_.html#parsecode" class="tsd-kind-icon">parse<wbr>Code</a></li>
 							</ul>
 						</section>
@@ -98,10 +106,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="documentparser" class="tsd-anchor"></a>
 					<h3>document<wbr>Parser</h3>
-					<div class="tsd-signature tsd-kind-icon">document<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a></div>
+					<div class="tsd-signature tsd-kind-icon">document<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L4">parser/parse-code.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L6">parser/parse-code.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -109,7 +117,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -117,6 +125,9 @@
 										<ul class="tsd-parameters">
 											<li>
 												<h5>content: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>options: <a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a></h4>
@@ -127,19 +138,52 @@
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="cpp" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> cpp</h3>
+					<div class="tsd-signature tsd-kind-icon">cpp<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = createCStyleParser(&#x27;//&#x27;, [&#x27;/*&#x27;, &#x27;*/&#x27;], [[&#x27;&quot;&#x27;, &#x27;&quot;&#x27;]])</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L8">parser/parse-code.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="javascript" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> javascript</h3>
+					<div class="tsd-signature tsd-kind-icon">javascript<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = createCStyleParser(&#x27;//&#x27;, [&#x27;/*&#x27;, &#x27;*/&#x27;], [[&#x27;&quot;&#x27;, &#x27;&quot;&#x27;], [&quot;&#x27;&quot;, &quot;&#x27;&quot;], [&#x27;&#x60;&#x27;, &#x27;&#x60;&#x27;]])</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L9">parser/parse-code.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="sql" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sql</h3>
+					<div class="tsd-signature tsd-kind-icon">sql<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = createCStyleParser(&#x27;--&#x27;, [&#x27;/*&#x27;, &#x27;*/&#x27;], [[&#x27;&quot;&#x27;, &#x27;&quot;&#x27;]])</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L10">parser/parse-code.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="bash" class="tsd-anchor"></a>
 					<h3>bash</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">bash<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parseMarkdown<span class="tsd-signature-symbol">: </span><a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">bash<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parseMarkdown<span class="tsd-signature-symbol">: </span><a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L56">parser/parse-code.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L87">parser/parse-code.ts:87</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -149,6 +193,9 @@
 								</li>
 								<li>
 									<h5>parseMarkdown: <a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a></h5>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -156,28 +203,31 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="cpp" class="tsd-anchor"></a>
-					<h3>cpp</h3>
+					<a name="createcstyleparser" class="tsd-anchor"></a>
+					<h3>createCStyle<wbr>Parser</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">cpp<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parseMarkdown<span class="tsd-signature-symbol">: </span><a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">createCStyle<wbr>Parser<span class="tsd-signature-symbol">(</span>inlineCommentPrefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, delimitedComment<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span>, traps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L26">parser/parse-code.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L40">parser/parse-code.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>code: <span class="tsd-signature-type">string</span></h5>
+									<h5>inlineCommentPrefix: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>parseMarkdown: <a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a></h5>
+									<h5>delimitedComment: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></h5>
+								</li>
+								<li>
+									<h5>traps: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Generator</span><span class="tsd-signature-symbol">&lt;</span><a href="../classes/_nodes_document_.document.html" class="tsd-signature-type">Document</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -185,13 +235,13 @@
 					<a name="parsecode" class="tsd-anchor"></a>
 					<h3>parse<wbr>Code</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Code<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parseMarkdown<span class="tsd-signature-symbol">: </span><a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Code<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parseMarkdown<span class="tsd-signature-symbol">: </span><a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L18">parser/parse-code.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L32">parser/parse-code.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -204,6 +254,9 @@
 								</li>
 								<li>
 									<h5>parseMarkdown: <a href="_parser_parse_code_.html#documentparser" class="tsd-signature-type">documentParser</a></h5>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_transformers_pad_markdown_options_.normalizedpadmarkdownoptions.html" class="tsd-signature-type">NormalizedPadMarkdownOptions</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -219,7 +272,7 @@
 					<div class="tsd-signature tsd-kind-icon">parsers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L6">parser/parse-code.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L11">parser/parse-code.ts:11</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -228,7 +281,7 @@
 						<div class="tsd-signature tsd-kind-icon">bash<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#bash" class="tsd-signature-type">bash</a><span class="tsd-signature-symbol"> = bash</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L13">parser/parse-code.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L24">parser/parse-code.ts:24</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -238,17 +291,37 @@
 						<div class="tsd-signature tsd-kind-icon">c<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L8">parser/parse-code.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L14">parser/parse-code.ts:14</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.c_" class="tsd-anchor"></a>
+						<h3>c#</h3>
+						<div class="tsd-signature tsd-kind-icon">c#<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L19">parser/parse-code.ts:19</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.c__" class="tsd-anchor"></a>
+						<h3>c++</h3>
+						<div class="tsd-signature tsd-kind-icon">c++<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L13">parser/parse-code.ts:13</a></li>
 							</ul>
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
 						<a name="parsers.cpp-1" class="tsd-anchor"></a>
 						<h3>cpp</h3>
-						<div class="tsd-signature tsd-kind-icon">cpp<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<div class="tsd-signature tsd-kind-icon">cpp<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L7">parser/parse-code.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L12">parser/parse-code.ts:12</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -258,7 +331,17 @@
 						<div class="tsd-signature tsd-kind-icon">csharp<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L11">parser/parse-code.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L18">parser/parse-code.ts:18</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.go" class="tsd-anchor"></a>
+						<h3>go</h3>
+						<div class="tsd-signature tsd-kind-icon">go<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L22">parser/parse-code.ts:22</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -268,17 +351,37 @@
 						<div class="tsd-signature tsd-kind-icon">java<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L9">parser/parse-code.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L15">parser/parse-code.ts:15</a></li>
 							</ul>
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
-						<a name="parsers.javascript" class="tsd-anchor"></a>
+						<a name="parsers.javascript-1" class="tsd-anchor"></a>
 						<h3>javascript</h3>
-						<div class="tsd-signature tsd-kind-icon">javascript<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<div class="tsd-signature tsd-kind-icon">javascript<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L10">parser/parse-code.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L16">parser/parse-code.ts:16</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.js" class="tsd-anchor"></a>
+						<h3>js</h3>
+						<div class="tsd-signature tsd-kind-icon">js<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = javascript</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L17">parser/parse-code.ts:17</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.py" class="tsd-anchor"></a>
+						<h3>py</h3>
+						<div class="tsd-signature tsd-kind-icon">py<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#bash" class="tsd-signature-type">bash</a><span class="tsd-signature-symbol"> = bash</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L28">parser/parse-code.ts:28</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -288,7 +391,7 @@
 						<div class="tsd-signature tsd-kind-icon">python<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#bash" class="tsd-signature-type">bash</a><span class="tsd-signature-symbol"> = bash</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L14">parser/parse-code.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L27">parser/parse-code.ts:27</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -298,17 +401,57 @@
 						<div class="tsd-signature tsd-kind-icon">ruby<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#bash" class="tsd-signature-type">bash</a><span class="tsd-signature-symbol"> = bash</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L15">parser/parse-code.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L29">parser/parse-code.ts:29</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.sh" class="tsd-anchor"></a>
+						<h3>sh</h3>
+						<div class="tsd-signature tsd-kind-icon">sh<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#bash" class="tsd-signature-type">bash</a><span class="tsd-signature-symbol"> = bash</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L26">parser/parse-code.ts:26</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.shell" class="tsd-anchor"></a>
+						<h3>shell</h3>
+						<div class="tsd-signature tsd-kind-icon">shell<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#bash" class="tsd-signature-type">bash</a><span class="tsd-signature-symbol"> = bash</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L25">parser/parse-code.ts:25</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.sql-1" class="tsd-anchor"></a>
+						<h3>sql</h3>
+						<div class="tsd-signature tsd-kind-icon">sql<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L23">parser/parse-code.ts:23</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
+						<a name="parsers.ts" class="tsd-anchor"></a>
+						<h3>ts</h3>
+						<div class="tsd-signature tsd-kind-icon">ts<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L21">parser/parse-code.ts:21</a></li>
 							</ul>
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
 						<a name="parsers.typescript" class="tsd-anchor"></a>
 						<h3>typescript</h3>
-						<div class="tsd-signature tsd-kind-icon">typescript<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = cpp</span></div>
+						<div class="tsd-signature tsd-kind-icon">typescript<span class="tsd-signature-symbol">:</span> <a href="_parser_parse_code_.html#cpp" class="tsd-signature-type">cpp</a><span class="tsd-signature-symbol"> = javascript</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/parser/parse-code.ts#L12">parser/parse-code.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/parser/parse-code.ts#L20">parser/parse-code.ts:20</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -331,11 +474,20 @@
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_parser_parse_code_.html#documentparser" class="tsd-kind-icon">document<wbr>Parser</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_parser_parse_code_.html#cpp" class="tsd-kind-icon">cpp</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_parser_parse_code_.html#javascript" class="tsd-kind-icon">javascript</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_parser_parse_code_.html#sql" class="tsd-kind-icon">sql</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_parser_parse_code_.html#bash" class="tsd-kind-icon">bash</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_parser_parse_code_.html#cpp" class="tsd-kind-icon">cpp</a>
+						<a href="_parser_parse_code_.html#createcstyleparser" class="tsd-kind-icon">createCStyle<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_parser_parse_code_.html#parsecode" class="tsd-kind-icon">parse<wbr>Code</a>

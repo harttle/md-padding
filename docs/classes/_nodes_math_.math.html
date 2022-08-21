@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Raw | md-padding</title>
+	<title>Math | md-padding</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_nodes_raw_.html">&quot;nodes/raw&quot;</a>
+					<a href="../modules/_nodes_math_.html">&quot;nodes/math&quot;</a>
 				</li>
 				<li>
-					<a href="_nodes_raw_.raw.html">Raw</a>
+					<a href="_nodes_math_.math.html">Math</a>
 				</li>
 			</ul>
-			<h1>Class Raw</h1>
+			<h1>Class Math</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Raw</span>
+						<span class="target">Math</span>
 					</li>
 				</ul>
 			</section>
@@ -90,21 +90,22 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_nodes_raw_.raw.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_nodes_math_.math.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_raw_.raw.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_raw_.raw.html#content" class="tsd-kind-icon">content</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_raw_.raw.html#kind" class="tsd-kind-icon">kind</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_math_.math.html#children" class="tsd-kind-icon">children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_math_.math.html#code" class="tsd-kind-icon">code</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_math_.math.html#delimiter" class="tsd-kind-icon">delimiter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_math_.math.html#kind" class="tsd-kind-icon">kind</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nodes_raw_.raw.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nodes_math_.math.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a></li>
 							</ul>
 						</section>
 					</div>
@@ -116,22 +117,25 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Raw<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Math<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, delimiter<span class="tsd-signature-symbol">: </span><a href="../modules/_nodes_math_.html#mathdelimiter" class="tsd-signature-type">MathDelimiter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_math_.math.html" class="tsd-signature-type">Math</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/raw.ts#L7">nodes/raw.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/math.ts#L10">nodes/math.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>content: <span class="tsd-signature-type">string</span></h5>
+									<h5>code: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>delimiter: <a href="../modules/_nodes_math_.html#mathdelimiter" class="tsd-signature-type">MathDelimiter</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_nodes_raw_.raw.html" class="tsd-signature-type">Raw</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_nodes_math_.math.html" class="tsd-signature-type">Math</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -145,28 +149,38 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/raw.ts#L5">nodes/raw.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/math.ts#L7">nodes/math.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="content" class="tsd-anchor"></a>
-					<h3>content</h3>
-					<div class="tsd-signature tsd-kind-icon">content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="code" class="tsd-anchor"></a>
+					<h3>code</h3>
+					<div class="tsd-signature tsd-kind-icon">code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/raw.ts#L6">nodes/raw.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/math.ts#L8">nodes/math.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="delimiter" class="tsd-anchor"></a>
+					<h3>delimiter</h3>
+					<div class="tsd-signature tsd-kind-icon">delimiter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/math.ts#L10">nodes/math.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="kind" class="tsd-anchor"></a>
 					<h3>kind</h3>
-					<div class="tsd-signature tsd-kind-icon">kind<span class="tsd-signature-symbol">:</span> <a href="../enums/_nodes_node_kind_.nodekind.html" class="tsd-signature-type">NodeKind</a><span class="tsd-signature-symbol"> = NodeKind.Raw</span></div>
+					<div class="tsd-signature tsd-kind-icon">kind<span class="tsd-signature-symbol">:</span> <a href="../enums/_nodes_node_kind_.nodekind.html" class="tsd-signature-type">NodeKind</a><span class="tsd-signature-symbol"> = NodeKind.Math</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#kind">kind</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/raw.ts#L7">nodes/raw.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/math.ts#L9">nodes/math.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -184,7 +198,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#tomarkdown">toMarkdown</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/raw.ts#L13">nodes/raw.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/math.ts#L17">nodes/math.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -200,7 +214,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_nodes_raw_.html">&quot;nodes/raw&quot;</a>
+						<a href="../modules/_nodes_math_.html">&quot;nodes/math&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -209,27 +223,33 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_nodes_raw_.raw.html" class="tsd-kind-icon">Raw</a>
+						<a href="_nodes_math_.math.html" class="tsd-kind-icon">Math</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_nodes_raw_.raw.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_nodes_math_.math.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_raw_.raw.html#children" class="tsd-kind-icon">children</a>
+								<a href="_nodes_math_.math.html#children" class="tsd-kind-icon">children</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_raw_.raw.html#content" class="tsd-kind-icon">content</a>
+								<a href="_nodes_math_.math.html#code" class="tsd-kind-icon">code</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_raw_.raw.html#kind" class="tsd-kind-icon">kind</a>
+								<a href="_nodes_math_.math.html#delimiter" class="tsd-kind-icon">delimiter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_nodes_math_.math.html#kind" class="tsd-kind-icon">kind</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_nodes_raw_.raw.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a>
+								<a href="_nodes_math_.math.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_nodes_math_.html#mathdelimiter" class="tsd-kind-icon">Math<wbr>Delimiter</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

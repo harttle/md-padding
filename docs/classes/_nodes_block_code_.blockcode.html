@@ -98,6 +98,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#children" class="tsd-kind-icon">children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#closed" class="tsd-kind-icon">closed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#delimiter" class="tsd-kind-icon">delimiter</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#kind" class="tsd-kind-icon">kind</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#lang" class="tsd-kind-icon">lang</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_block_code_.blockcode.html#langclosed" class="tsd-kind-icon">lang<wbr>Closed</a></li>
@@ -119,19 +120,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Block<wbr>Code<span class="tsd-signature-symbol">(</span>lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, children<span class="tsd-signature-symbol">: </span><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span>, closed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, langClosed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_block_code_.blockcode.html" class="tsd-signature-type">BlockCode</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Block<wbr>Code<span class="tsd-signature-symbol">(</span>lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, delimiter<span class="tsd-signature-symbol">: </span><a href="../modules/_nodes_block_code_.html#blockcodedelimiter" class="tsd-signature-type">BlockCodeDelimiter</a>, children<span class="tsd-signature-symbol">: </span><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span>, closed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, langClosed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_block_code_.blockcode.html" class="tsd-signature-type">BlockCode</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L9">nodes/block-code.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L12">nodes/block-code.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>lang: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>delimiter: <a href="../modules/_nodes_block_code_.html#blockcodedelimiter" class="tsd-signature-type">BlockCodeDelimiter</a></h5>
 								</li>
 								<li>
 									<h5>children: <a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span></h5>
@@ -157,7 +161,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L5">nodes/block-code.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L7">nodes/block-code.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,7 +171,17 @@
 					<div class="tsd-signature tsd-kind-icon">closed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L8">nodes/block-code.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L10">nodes/block-code.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="delimiter" class="tsd-anchor"></a>
+					<h3>delimiter</h3>
+					<div class="tsd-signature tsd-kind-icon">delimiter<span class="tsd-signature-symbol">:</span> <a href="../modules/_nodes_block_code_.html#blockcodedelimiter" class="tsd-signature-type">BlockCodeDelimiter</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L12">nodes/block-code.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -178,7 +192,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#kind">kind</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L7">nodes/block-code.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L9">nodes/block-code.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">lang<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L6">nodes/block-code.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L8">nodes/block-code.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -198,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">lang<wbr>Closed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L9">nodes/block-code.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L11">nodes/block-code.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L18">nodes/block-code.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L22">nodes/block-code.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -233,7 +247,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#tomarkdown">toMarkdown</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/9849569/src/nodes/block-code.ts#L22">nodes/block-code.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/453eee6/src/nodes/block-code.ts#L26">nodes/block-code.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -270,6 +284,9 @@
 								<a href="_nodes_block_code_.blockcode.html#closed" class="tsd-kind-icon">closed</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_nodes_block_code_.blockcode.html#delimiter" class="tsd-kind-icon">delimiter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_nodes_block_code_.blockcode.html#kind" class="tsd-kind-icon">kind</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -288,6 +305,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_nodes_block_code_.html#blockcodedelimiter" class="tsd-kind-icon">Block<wbr>Code<wbr>Delimiter</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
