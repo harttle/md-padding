@@ -53,6 +53,24 @@ describe('padding()', () => {
     })
   })
 
+  describe('front matter', () => {
+    it('should recognize Jekyll-style front matter', () => {
+      const src = '---date: 2022-08-08 23:53:07\n---\n这是一个demo'
+      const dst = '---date: 2022-08-08 23:53:07\n---\n这是一个 demo'
+      expect(padMarkdown(src)).toEqual(dst)
+    })
+    it('should restrict front matter in the beginning of file', () => {
+      const src = 'd ---date: 2022-08-08 23:53:07\n---\n这是一个demo'
+      const dst = 'd ---date: 2022-08-08 23: 53: 07\n---\n这是一个 demo'
+      expect(padMarkdown(src)).toEqual(dst)
+    })
+    it('should allow empty spaces before front matter', () => {
+      const src = ' \n ---date: 2022-08-08 23:53:07\n---\n这是一个demo'
+      const dst = ' \n ---date: 2022-08-08 23:53:07\n---\n这是一个 demo'
+      expect(padMarkdown(src)).toEqual(dst)
+    })
+  })
+
   describe('mixed languages', () => {
     it('should pad between zh_CN and en_US', () => {
       expect(padMarkdown('我是Yang先生'))

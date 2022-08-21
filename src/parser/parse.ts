@@ -1,4 +1,5 @@
 import { isBlank, isWordBoundary } from '../utils/char'
+import { isBlank as isBlankNode } from '../nodes/type-guards'
 import { InlineImage } from '../nodes/inline-image'
 import { ReferenceImage } from '../nodes/reference-image'
 import { NodeKind } from '../nodes/node-kind'
@@ -19,7 +20,7 @@ import { InlineLink } from '../nodes/inline-link'
 import { Node } from '../nodes/node'
 import { InlineCode, InlineCodeDelimiter } from '../nodes/inline-code'
 import { Math, MathDelimiter } from '../nodes/math'
-import { BlockCode } from '../nodes/block-code'
+import { BlockCode, BlockCodeDelimiter } from '../nodes/block-code'
 import { Blank } from '../nodes/blank'
 import { Raw } from '../nodes/raw'
 import { OrderedListItem } from '../nodes/ordered-list-item'
@@ -42,6 +43,7 @@ export function parse (str: string): Document {
   let strongDelimiter: StrongDelimiter = '**'
   let emphasisDelimiter: EmphasisDelimiter = '*'
   let inlineCodeDelimiter: InlineCodeDelimiter = '`'
+  let blockCodeDelimiter: BlockCodeDelimiter = '```'
   let mathDelimiter: MathDelimiter = '$'
   let linkText: Node[] = []
   let imageText: Node[] = []
@@ -73,8 +75,8 @@ export function parse (str: string): Document {
       push(State.BlockCodeBody)
       i++
     }
-    else if (state === State.BlockCodeBody && c3 === '```') {
-      resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse)))
+    else if (state === State.BlockCodeBody && c3 === blockCodeDelimiter) {
+      resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse)))
       i += 3
     }
 
@@ -218,6 +220,11 @@ export function parse (str: string): Document {
     }
     else if (c3 === '```' && allow(NodeKind.BlockCode)) {
       push(State.BlockCodeLang)
+      i += 3
+    }
+    else if (c3 === '---' && allowFrontMatter()) {
+      push(State.BlockCodeLang)
+      blockCodeDelimiter = c3
       i += 3
     }
     else if (c2 === '``' && allow(NodeKind.InlineCode)) {
@@ -371,11 +378,11 @@ export function parse (str: string): Document {
         resolve(new UnorderedListItem(listPrefix, popNodes()))
         break
       case State.BlockCodeBody:
-        resolve(new BlockCode(codeLang, parseCode(popMarkdown(), codeLang, parse), false))
+        resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse), false))
         break
       case State.BlockCodeLang:
         codeLang = popMarkdown()
-        resolve(new BlockCode(codeLang, [], false, false))
+        resolve(new BlockCode(codeLang, blockCodeDelimiter, [], false, false))
         break
       default:
         return false
@@ -408,5 +415,17 @@ export function parse (str: string): Document {
 
   function allow (kind: NodeKind) {
     return !(mask.mask & kind)
+  }
+
+  function allowFrontMatter () {
+    if (!allow(NodeKind.BlockCode)) return false
+    for (const block of stack) {
+      for (const node of block.nodes) {
+        if (!isBlankNode(node)) {
+          return false
+        }
+      }
+    }
+    return true
   }
 }

@@ -9,6 +9,10 @@ export class Stack<T> {
     return this.data[this.size() - 1]
   }
 
+  [Symbol.iterator] () {
+    return this.data[Symbol.iterator]()
+  }
+
   size () {
     return this.data.length
   }
