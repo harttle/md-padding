@@ -535,16 +535,16 @@ describe('parse()', () => {
       })
     })
     it('when there is front matter, the delimiter of the code block should be ``` instead of ---', () => {
-      const doc = parse('---\ntest:1\n---\n```js\nconsole.log(1)\n```', options);
-      expect(doc.children).toHaveLength(3);
+      const doc = parse('---\ntest:1\n---\n```js\nconsole.log(1)\n```', options)
+      expect(doc.children).toHaveLength(3)
 
-      const [blockCode1, blank, blockCode2] = doc.children;
+      const [blockCode1, blank, blockCode2] = doc.children
 
       expect(blockCode1).toMatchObject({
         kind: NodeKind.BlockCode,
         lang: '',
         delimiter: '---',
-        closed: true,
+        closed: true
       })
       expect(blockCode1.getCode()).toEqual('test:1\n')
 
@@ -557,7 +557,7 @@ describe('parse()', () => {
         kind: NodeKind.BlockCode,
         lang: 'js',
         delimiter: '```',
-        closed: true,
+        closed: true
       })
       expect(blockCode2.getCode()).toEqual('console.log(1)\n')
     })
@@ -590,7 +590,7 @@ describe('parse()', () => {
 
   describe('Math', () => {
     it('should recognize $inline math$ in unordered list', () => {
-      const doc = parse('- 前$Latex$后', options);
+      const doc = parse('- 前$Latex$后', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
         kind: NodeKind.UnorderedListItem,
@@ -604,7 +604,7 @@ describe('parse()', () => {
       expect(math).toMatchObject({
         kind: NodeKind.Math,
         delimiter: '$',
-        code: 'Latex',
+        code: 'Latex'
       })
       expect(after.toMarkdown()).toEqual('后')
     })
