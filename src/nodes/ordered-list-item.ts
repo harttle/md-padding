@@ -17,6 +17,6 @@ export class OrderedListItem implements Node {
   }
 
   static isValidPrefix (str: string) {
-    return isNumeric(str[0]) && str[1] === '.' && str[2] === ''
+    return isNumeric(str[0]) && str[1] === '.' && str[2] === ' '
   }
 }
