@@ -218,6 +218,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     }
     else if (c3 === '```' && allow(NodeKind.BlockCode)) {
       push(State.BlockCodeLang)
+      blockCodeDelimiter = c3
       i += 3
     }
     else if (c3 === '---' && allowFrontMatter()) {
