@@ -32,6 +32,6 @@ export const enum NodeKind {
   Link = InlineLink | ReferenceLink,
   Image = InlineImage | ReferenceImage,
   Style = Strong | Emphasis | Strikethrough,
-  Inline = NaturualConstructs | InlineCode | Link | Style | HTMLTag | InlineImage | ReferenceImage,
+  Inline = NaturualConstructs | InlineCode | Link | Style | HTMLTag | InlineImage | ReferenceImage | Math,
   Block = ~Inline,
 }
