@@ -1,13 +1,11 @@
 # Markdown Padding
 [![npm version](https://img.shields.io/npm/v/md-padding.svg)](https://www.npmjs.org/package/md-padding)
 [![downloads](https://img.shields.io/npm/dm/md-padding.svg)](https://www.npmjs.org/package/md-padding)
-[![Build Status](https://travis-ci.com/harttle/md-padding.svg?branch=master)](https://travis-ci.com/harttle/md-padding)
+[![Check](https://github.com/harttle/md-padding/actions/workflows/check.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/check.yml)
+[![Release](https://github.com/harttle/md-padding/actions/workflows/release.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/release.yml)
 [![Coveralls](https://img.shields.io/coveralls/harttle/md-padding.svg)](https://coveralls.io/github/harttle/md-padding?branch=master)
-[![dependencies](https://img.shields.io/david/harttle/md-padding.svg)](https://david-dm.org/harttle/md-padding)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/harttle/md-padding)
 [![GitHub issues](https://img.shields.io/github/issues-closed/harttle/md-padding.svg)](https://github.com/harttle/md-padding/issues)
-[![David](https://img.shields.io/david/harttle/md-padding.svg)](https://david-dm.org/harttle/md-padding)
-[![David Dev](https://img.shields.io/david/dev/harttle/md-padding.svg)](https://david-dm.org/harttle/md-padding?type=dev)
 [![DUB license](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/harttle/md-padding/blob/master/LICENSE)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)
 
