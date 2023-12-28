@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/harttle/md-padding/compare/v1.2.0...v1.2.1) (2023-12-28)
+
+
+### Bug Fixes
+
+* allow \t as separater ([c8f31f6](https://github.com/harttle/md-padding/commit/c8f31f68a3965af3290aa0c812abbf0dddc64b12))
+* ordered-list prefix, add Math to inline structures, code block parse ([#25](https://github.com/harttle/md-padding/issues/25)) ([ef7694c](https://github.com/harttle/md-padding/commit/ef7694c073ec6036daa2c091148fb8c5a4e50d86))
+
 # [1.2.0](https://github.com/harttle/md-padding/compare/v1.1.1...v1.2.0) (2022-08-21)
 
 
