@@ -1,5 +1,6 @@
 import { NodeKind } from './node-kind'
 import { Node } from './node'
+import { isInlineBlank } from '../utils/char'
 
 export class UnorderedListItem implements Node {
   readonly children: Node[] = []
@@ -16,6 +17,6 @@ export class UnorderedListItem implements Node {
   }
 
   static isValidPrefix (str: string) {
-    return '-+*'.includes(str[0]) && str[1] === ' '
+    return '-+*'.includes(str[0]) && isInlineBlank(str[1])
   }
 }

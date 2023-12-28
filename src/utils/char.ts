@@ -29,6 +29,10 @@ export function isBlank (char: string): boolean {
   return !!/^\s$/.exec(char)
 }
 
+export function isInlineBlank (char: string): boolean {
+  return char === ' ' || char === '\t'
+}
+
 export function isAlphabet (char) {
   return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')
 }

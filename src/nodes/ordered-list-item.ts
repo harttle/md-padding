@@ -1,5 +1,5 @@
 import { NodeKind } from './node-kind'
-import { isNumeric } from '../utils/char'
+import { isNumeric, isInlineBlank } from '../utils/char'
 import { Node } from './node'
 
 export class OrderedListItem implements Node {
@@ -17,6 +17,6 @@ export class OrderedListItem implements Node {
   }
 
   static isValidPrefix (str: string) {
-    return isNumeric(str[0]) && str[1] === '.' && str[2] === ' '
+    return isNumeric(str[0]) && str[1] === '.' && isInlineBlank(str[2])
   }
 }

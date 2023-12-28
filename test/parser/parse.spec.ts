@@ -586,6 +586,28 @@ describe('parse()', () => {
       })
       expect(item2.toMarkdown()).toEqual('* bar')
     })
+    it('should allow \t as prefix separater', () => {
+      const doc = parse('-\tfoo\n*\tbar', options)
+      expect(doc.children).toHaveLength(3)
+
+      const [item1, blank, item2] = doc.children
+      expect(item1).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '-\t'
+      })
+      expect(item1.toMarkdown()).toEqual('-\tfoo')
+
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+
+      expect(item2).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '*\t'
+      })
+      expect(item2.toMarkdown()).toEqual('*\tbar')
+    })
   })
 
   describe('Math', () => {
