@@ -9,16 +9,16 @@ export class BlockquoteItem implements Node {
   readonly prefix: string
   readonly kind = NodeKind.BlockquoteItem
 
-  constructor(prefix: string, children: Node[]) {
+  constructor (prefix: string, children: Node[]) {
     this.prefix = prefix
     this.children = children
   }
 
-  toMarkdown() {
+  toMarkdown () {
     return this.prefix + this.children.map(x => x.toMarkdown()).join('')
   }
 
-  static isValidPrefix(str: string) {
+  static isValidPrefix (str: string) {
     return str[0] === '>' && isInlineBlank(str[1])
   }
 }
