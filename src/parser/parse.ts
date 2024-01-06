@@ -260,7 +260,6 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     } else if (blankLine && BlockquoteItem.isValidPrefix(c2) && allow(NodeKind.BlockquoteItem)) {
       push(State.BlockquoteItem)
       i += 2
-      blankLine = true
       continue
     } else if (c2 === '~~' && allow(NodeKind.Strikethrough)) {
       push(State.Strikethrough)
