@@ -608,6 +608,28 @@ describe('parse()', () => {
       })
       expect(item2.toMarkdown()).toEqual('*\tbar')
     })
+    it('should recognize UnorderedListItem with * prefix in blockquote', () => {
+      const doc = parse('> * **测试**', options)
+      expect(doc.children).toHaveLength(1)
+      const [blockquote] = doc.children
+      expect(blockquote).toMatchObject({
+        kind: NodeKind.BlockquoteItem,
+        prefix: '> '
+      })
+      const [unorderedList] = blockquote.children
+      expect(unorderedList.children).toHaveLength(1)
+      expect(unorderedList).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '* '
+      })
+      const [strong] = unorderedList.children
+      expect(strong.children).toHaveLength(1)
+      expect(strong).toMatchObject({
+        kind: NodeKind.Strong,
+        prefix: '**'
+      })
+      expect(strong.toMarkdown()).toEqual('**测试**')
+    })
   })
 
   describe('Math', () => {

@@ -25,6 +25,7 @@ import { Blank } from '../nodes/blank'
 import { Raw } from '../nodes/raw'
 import { OrderedListItem } from '../nodes/ordered-list-item'
 import { UnorderedListItem } from '../nodes/unordered-list-item'
+import { BlockquoteItem, BlockquotePrefix } from '../nodes/blockquote-item'
 import { State } from './state'
 import { Stack } from '../utils/stack'
 import { Mask } from './mask'
@@ -42,6 +43,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
   let blankLine = true
   let listPrefix = ''
   let codeLang = ''
+  let blockquotePrefix: BlockquotePrefix = '> '
   let strongDelimiter: StrongDelimiter = '**'
   let emphasisDelimiter: EmphasisDelimiter = '*'
   let inlineCodeDelimiter: InlineCodeDelimiter = '`'
@@ -196,6 +198,10 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       resolve(new OrderedListItem(listPrefix, popNodes()), new Blank(c))
       i++
     }
+    else if (state === State.BlockquoteItem && c === "\n") {
+      resolve(new BlockquoteItem(blockquotePrefix, popNodes()), new Blank(c))
+      i++
+    }
 
     // Quoted
     else if (state === State.Quoted && c === '"') {
@@ -251,6 +257,11 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       push(State.OrderedListItem)
       listPrefix = c3
       i += 3
+    } else if (blankLine && BlockquoteItem.isValidPrefix(c2) && allow(NodeKind.BlockquoteItem)) {
+      push(State.BlockquoteItem)
+      i += 2
+      blankLine = true
+      continue
     } else if (c2 === '~~' && allow(NodeKind.Strikethrough)) {
       push(State.Strikethrough)
       i += 2
@@ -388,6 +399,9 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         break
       case State.UnorderedListItem:
         resolve(new UnorderedListItem(listPrefix, popNodes()))
+        break
+      case State.BlockquoteItem:
+        resolve(new BlockquoteItem(blockquotePrefix, popNodes()))
         break
       case State.BlockCodeBody:
         resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse, options), false))

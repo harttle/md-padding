@@ -18,6 +18,7 @@ export enum State {
   BlockCodeBody,      // ```cpp\n
   OrderedListItem,    // 1.<space>
   UnorderedListItem,  // *<space>
+  BlockquoteItem,     // ><space>
 
   // natural language syntax
   Quoted,             // " in natural language
