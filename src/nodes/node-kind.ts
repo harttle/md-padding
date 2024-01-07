@@ -22,6 +22,7 @@ export const enum NodeKind {
   ReferenceImage = 1 << 19,
   Raw = 1 << 20,
   Math = 1 << 21,
+  BlockquoteItem = 1 << 22,
 
   // combinations
   All = -1,
