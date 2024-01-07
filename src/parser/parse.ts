@@ -33,6 +33,7 @@ import { stateMasks } from './state-masks'
 import { Context } from './context'
 import { parseCode } from './parse-code'
 import { matchSubstring } from '../utils/string'
+import { isInlineBlank } from '../utils/char'
 import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
 
 export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
@@ -259,7 +260,10 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       i += 3
     } else if (blankLine && BlockquoteItem.isValidPrefix(c2) && allow(NodeKind.BlockquoteItem)) {
       push(State.BlockquoteItem)
-      i += 2
+      i++
+      if (isInlineBlank(c2[1])) {
+        i++
+      }
       continue
     } else if (c2 === '~~' && allow(NodeKind.Strikethrough)) {
       push(State.Strikethrough)

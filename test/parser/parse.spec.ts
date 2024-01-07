@@ -631,7 +631,7 @@ describe('parse()', () => {
       expect(strong.toMarkdown()).toEqual('**测试**')
     })
     it('should recognize UnorderedListItem with * prefix in nested blockquote', () => {
-      const doc = parse('> > * *测试*', options)
+      const doc = parse('>>* *测试*', options)
       expect(doc.children).toHaveLength(1)
       const [blockquote] = doc.children
       expect(blockquote).toMatchObject({

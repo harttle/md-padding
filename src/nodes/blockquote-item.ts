@@ -1,6 +1,5 @@
 import { NodeKind } from './node-kind'
 import { Node } from './node'
-import { isInlineBlank } from '../utils/char'
 
 export type BlockquotePrefix = '> '
 
@@ -19,6 +18,6 @@ export class BlockquoteItem implements Node {
   }
 
   static isValidPrefix (str: string) {
-    return str[0] === '>' && isInlineBlank(str[1])
+    return str[0] === '>'
   }
 }
