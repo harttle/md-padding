@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Mask | md-padding</title>
+	<title>BlockquoteItem | md-padding</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,37 +56,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_parser_mask_.html">&quot;parser/mask&quot;</a>
+					<a href="../modules/_nodes_blockquote_item_.html">&quot;nodes/blockquote-item&quot;</a>
 				</li>
 				<li>
-					<a href="_parser_mask_.mask.html">Mask</a>
+					<a href="_nodes_blockquote_item_.blockquoteitem.html">BlockquoteItem</a>
 				</li>
 			</ul>
-			<h1>Class Mask</h1>
+			<h1>Class BlockquoteItem</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>By default all nodes are allowd to nest within another,
-							each node defines a list (a bitstring we call <code>mask</code>)
-						of disallowd desendant types.</p>
-					</div>
-					<p>Assume the <code>mask</code> do not distinguish direct or indirect
-						child, so it&#39;s resonable to maintain a total mask
-					combining all ancestors&#39; masks.</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Mask</span>
+						<span class="target">BlockquoteItem</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -94,41 +88,89 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_parser_mask_.mask.html#counts" class="tsd-kind-icon">counts</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_parser_mask_.mask.html#mask" class="tsd-kind-icon">mask</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#children" class="tsd-kind-icon">children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#kind" class="tsd-kind-icon">kind</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#prefix" class="tsd-kind-icon">prefix</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_parser_mask_.mask.html#add" class="tsd-kind-icon">add</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_parser_mask_.mask.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_nodes_blockquote_item_.blockquoteitem.html#isvalidprefix" class="tsd-kind-icon">is<wbr>Valid<wbr>Prefix</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Blockquote<wbr>Item<span class="tsd-signature-symbol">(</span>prefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, children<span class="tsd-signature-symbol">: </span><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_blockquote_item_.blockquoteitem.html" class="tsd-signature-type">BlockquoteItem</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/nodes/blockquote-item.ts#L9">nodes/blockquote-item.ts:9</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>prefix: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>children: <a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_nodes_blockquote_item_.blockquoteitem.html" class="tsd-signature-type">BlockquoteItem</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="counts" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> counts</h3>
-					<div class="tsd-signature tsd-kind-icon">counts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = Array(32).fill(0)</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="children" class="tsd-anchor"></a>
+					<h3>children</h3>
+					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/parser/mask.ts#L12">parser/mask.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/nodes/blockquote-item.ts#L7">nodes/blockquote-item.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="mask" class="tsd-anchor"></a>
-					<h3>mask</h3>
-					<div class="tsd-signature tsd-kind-icon">mask<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<a name="kind" class="tsd-anchor"></a>
+					<h3>kind</h3>
+					<div class="tsd-signature tsd-kind-icon">kind<span class="tsd-signature-symbol">:</span> <a href="../enums/_nodes_node_kind_.nodekind.html" class="tsd-signature-type">NodeKind</a><span class="tsd-signature-symbol"> = NodeKind.BlockquoteItem</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#kind">kind</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/nodes/blockquote-item.ts#L9">nodes/blockquote-item.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="prefix" class="tsd-anchor"></a>
+					<h3>prefix</h3>
+					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/parser/mask.ts#L11">parser/mask.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/nodes/blockquote-item.ts#L8">nodes/blockquote-item.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,48 +178,43 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="add" class="tsd-anchor"></a>
-					<h3>add</h3>
+					<a name="tomarkdown" class="tsd-anchor"></a>
+					<h3>to<wbr>Markdown</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>bitstring<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Markdown<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#tomarkdown">toMarkdown</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/parser/mask.ts#L14">parser/mask.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/nodes/blockquote-item.ts#L16">nodes/blockquote-item.ts:16</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>bitstring: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="remove" class="tsd-anchor"></a>
-					<h3>remove</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>bitstring<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="isvalidprefix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Valid<wbr>Prefix</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Valid<wbr>Prefix<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/parser/mask.ts#L23">parser/mask.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/f26ad2a/src/nodes/blockquote-item.ts#L20">nodes/blockquote-item.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>bitstring: <span class="tsd-signature-type">number</span></h5>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -190,7 +227,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_parser_mask_.html">&quot;parser/mask&quot;</a>
+						<a href="../modules/_nodes_blockquote_item_.html">&quot;nodes/blockquote-<wbr>item&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -199,24 +236,33 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_parser_mask_.mask.html" class="tsd-kind-icon">Mask</a>
+						<a href="_nodes_blockquote_item_.blockquoteitem.html" class="tsd-kind-icon">Blockquote<wbr>Item</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_parser_mask_.mask.html#counts" class="tsd-kind-icon">counts</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_nodes_blockquote_item_.blockquoteitem.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_parser_mask_.mask.html#mask" class="tsd-kind-icon">mask</a>
+								<a href="_nodes_blockquote_item_.blockquoteitem.html#children" class="tsd-kind-icon">children</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_nodes_blockquote_item_.blockquoteitem.html#kind" class="tsd-kind-icon">kind</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_nodes_blockquote_item_.blockquoteitem.html#prefix" class="tsd-kind-icon">prefix</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_parser_mask_.mask.html#add" class="tsd-kind-icon">add</a>
+								<a href="_nodes_blockquote_item_.blockquoteitem.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_parser_mask_.mask.html#remove" class="tsd-kind-icon">remove</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_nodes_blockquote_item_.blockquoteitem.html#isvalidprefix" class="tsd-kind-icon">is<wbr>Valid<wbr>Prefix</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_nodes_blockquote_item_.html#blockquoteprefix" class="tsd-kind-icon">Blockquote<wbr>Prefix</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/harttle/md-padding/compare/v1.2.1...v1.2.2) (2024-01-07)
+
+
+### Bug Fixes
+
+* parse blockquote, allow other blocknodes in blockquote, fixes [#26](https://github.com/harttle/md-padding/issues/26) ([#27](https://github.com/harttle/md-padding/issues/27)) ([f26ad2a](https://github.com/harttle/md-padding/commit/f26ad2aa7e2a75ab0c253714edb3c6dfb142ad34))
+
 ## [1.2.1](https://github.com/harttle/md-padding/compare/v1.2.0...v1.2.1) (2023-12-28)
 
 
