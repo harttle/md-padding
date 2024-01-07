@@ -546,7 +546,7 @@ describe('parse()', () => {
         delimiter: '---',
         closed: true
       })
-      expect(blockCode1.getCode()).toEqual('test:1\n')
+      expect((blockCode1 as BlockCode).getCode()).toEqual('test:1\n')
 
       expect(blank).toMatchObject({
         kind: NodeKind.Blank,
@@ -559,10 +559,50 @@ describe('parse()', () => {
         delimiter: '```',
         closed: true
       })
-      expect(blockCode2.getCode()).toEqual('console.log(1)\n')
+      expect((blockCode2 as BlockCode).getCode()).toEqual('console.log(1)\n')
     })
   })
 
+  describe('OrderedListItem', () => {
+    it('should parse ordered list item', () => {
+      const doc = parse('1. foo\n2. bar', options)
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.OrderedListItem,
+          prefix: '1. '
+        }, {
+          kind: NodeKind.Blank,
+          char: '\n'
+        }, {
+          kind: NodeKind.OrderedListItem,
+          prefix: '2. '
+        }]
+      })
+      expect(doc.toMarkdown()).toEqual('1. foo\n2. bar')
+    })
+    it('should allow spaces around', () => {
+      const doc = parse(' 1.  foo \n 2. bar', options)
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.OrderedListItem,
+          prefix: '1. '
+        }, {
+          kind: NodeKind.Blank,
+          char: '\n'
+        }, {
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.OrderedListItem,
+          prefix: '2. '
+        }]
+      })
+      expect(doc.toMarkdown()).toEqual(' 1.  foo \n 2. bar')
+    })
+  })
   describe('UnorderedListItem', () => {
     it('should parse unordered list item', () => {
       const doc = parse('* foo\n* bar', options)
@@ -586,7 +626,7 @@ describe('parse()', () => {
       })
       expect(item2.toMarkdown()).toEqual('* bar')
     })
-    it('should allow \t as prefix separater', () => {
+    it('should allow \t as prefix separator', () => {
       const doc = parse('-\tfoo\n*\tbar', options)
       expect(doc.children).toHaveLength(3)
 
