@@ -1,4 +1,4 @@
-import { isBlank, isWordBoundary } from '../utils/char'
+import { isBlank, isWordBoundary, isInlineBlank } from '../utils/char'
 import { isBlank as isBlankNode } from '../nodes/type-guards'
 import { InlineImage } from '../nodes/inline-image'
 import { ReferenceImage } from '../nodes/reference-image'
@@ -33,7 +33,6 @@ import { stateMasks } from './state-masks'
 import { Context } from './context'
 import { parseCode } from './parse-code'
 import { matchSubstring } from '../utils/string'
-import { isInlineBlank } from '../utils/char'
 import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
 
 export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
