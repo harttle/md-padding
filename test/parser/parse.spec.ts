@@ -608,15 +608,65 @@ describe('parse()', () => {
       })
       expect(item2.toMarkdown()).toEqual('*\tbar')
     })
+  })
+
+  describe('Blockquote', () => {
+    it('should allow spaces around', () => {
+      const doc = parse('>   foo\n > bar', options)
+      expect(doc.children).toHaveLength(4)
+      const [blockquote, blank1, blank2, blockquote2] = doc.children
+      expect(blockquote).toMatchObject({
+        kind: NodeKind.BlockquoteItem,
+        prefix: '>',
+        children: [{
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.AlphabetNumeric,
+          text: 'foo'
+        }]
+      })
+      expect(blank1).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+      expect(blank2).toMatchObject({
+        kind: NodeKind.Blank,
+        char: ' '
+      })
+      expect(blockquote2).toMatchObject({
+        kind: NodeKind.BlockquoteItem,
+        prefix: '>',
+        children: [{
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.AlphabetNumeric,
+          text: 'bar'
+        }]
+      })
+      expect(doc.toMarkdown()).toEqual('>   foo\n > bar')
+    })
     it('should recognize UnorderedListItem with * prefix in blockquote', () => {
       const doc = parse('> * **测试**', options)
       expect(doc.children).toHaveLength(1)
       const [blockquote] = doc.children
       expect(blockquote).toMatchObject({
         kind: NodeKind.BlockquoteItem,
-        prefix: '> '
+        prefix: '>'
       })
-      const [unorderedList] = blockquote.children
+      expect(blockquote.children).toHaveLength(2)
+      const [blank, unorderedList] = blockquote.children
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: ' '
+      })
       expect(unorderedList.children).toHaveLength(1)
       expect(unorderedList).toMatchObject({
         kind: NodeKind.UnorderedListItem,
@@ -629,27 +679,35 @@ describe('parse()', () => {
         prefix: '**'
       })
       expect(strong.toMarkdown()).toEqual('**测试**')
+      expect(doc.toMarkdown()).toEqual('> * **测试**')
     })
     it('should recognize UnorderedListItem with * prefix in nested blockquote', () => {
-      const doc = parse('>>* *测试*', options)
+      const doc = parse('> >* *测试*', options)
       expect(doc.children).toHaveLength(1)
-      const [blockquote] = doc.children
-      expect(blockquote).toMatchObject({
+      const [_blockquote] = doc.children
+      expect(_blockquote).toMatchObject({
         kind: NodeKind.BlockquoteItem,
-        prefix: '> '
+        prefix: '>'
       })
-      const [blockquote2] = blockquote.children
-      expect(blockquote2.children).toHaveLength(1)
-      expect(blockquote2).toMatchObject({
+
+      expect(_blockquote.children).toHaveLength(2)
+      const [blank, subBlockquote] = _blockquote.children
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: ' '
+      })
+      expect(subBlockquote).toMatchObject({
         kind: NodeKind.BlockquoteItem,
-        prefix: '> '
+        prefix: '>'
       })
-      const [unorderedList] = blockquote2.children
+
+      const [unorderedList] = subBlockquote.children
       expect(unorderedList.children).toHaveLength(1)
       expect(unorderedList).toMatchObject({
         kind: NodeKind.UnorderedListItem,
         prefix: '* '
       })
+
       const [emphasis] = unorderedList.children
       expect(emphasis.children).toHaveLength(1)
       expect(emphasis).toMatchObject({
@@ -657,6 +715,8 @@ describe('parse()', () => {
         prefix: '*'
       })
       expect(emphasis.toMarkdown()).toEqual('*测试*')
+
+      expect(doc.toMarkdown()).toEqual('> >* *测试*')
     })
   })
 

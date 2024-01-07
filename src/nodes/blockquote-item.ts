@@ -1,7 +1,7 @@
 import { NodeKind } from './node-kind'
 import { Node } from './node'
 
-export type BlockquotePrefix = '> '
+export type BlockquotePrefix = '>'
 
 export class BlockquoteItem implements Node {
   readonly children: Node[] = []

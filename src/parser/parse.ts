@@ -43,7 +43,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
   let blankLine = true
   let listPrefix = ''
   let codeLang = ''
-  const blockquotePrefix: BlockquotePrefix = '> '
+  const blockquotePrefix: BlockquotePrefix = '>'
   let strongDelimiter: StrongDelimiter = '**'
   let emphasisDelimiter: EmphasisDelimiter = '*'
   let inlineCodeDelimiter: InlineCodeDelimiter = '`'
@@ -260,9 +260,6 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     } else if (blankLine && BlockquoteItem.isValidPrefix(c2) && allow(NodeKind.BlockquoteItem)) {
       push(State.BlockquoteItem)
       i++
-      if (isInlineBlank(c2[1])) {
-        i++
-      }
       continue
     } else if (c2 === '~~' && allow(NodeKind.Strikethrough)) {
       push(State.Strikethrough)
