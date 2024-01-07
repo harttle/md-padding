@@ -1,4 +1,4 @@
-import { isBlank, isWordBoundary, isInlineBlank } from '../utils/char'
+import { isBlank, isWordBoundary } from '../utils/char'
 import { isBlank as isBlankNode } from '../nodes/type-guards'
 import { InlineImage } from '../nodes/inline-image'
 import { ReferenceImage } from '../nodes/reference-image'
