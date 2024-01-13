@@ -761,7 +761,7 @@ describe('parse()', () => {
     it('should recognize callout', () => {
       const doc = parse('> [!NOTE]\n> 123', options)
       expect(doc.children).toHaveLength(3)
-      const [blockquote1, blank, blockquote2] = doc.children;
+      const [blockquote1, blank, blockquote2] = doc.children
       expect(blockquote1).toMatchObject({
         kind: NodeKind.BlockquoteItem,
         prefix: '>'

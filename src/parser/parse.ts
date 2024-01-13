@@ -25,7 +25,7 @@ import { Blank } from '../nodes/blank'
 import { Raw } from '../nodes/raw'
 import { OrderedListItem } from '../nodes/ordered-list-item'
 import { UnorderedListItem } from '../nodes/unordered-list-item'
-import { Callout } from "../nodes/callout";
+import { Callout } from '../nodes/callout'
 import { BlockquoteItem, BlockquotePrefix } from '../nodes/blockquote-item'
 import { State } from './state'
 import { Stack } from '../utils/stack'
