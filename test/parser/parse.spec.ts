@@ -758,6 +758,45 @@ describe('parse()', () => {
 
       expect(doc.toMarkdown()).toEqual('> >* *测试*')
     })
+    it('should recognize callout', () => {
+      const doc = parse('> [!NOTE]\n> 123', options)
+      expect(doc.children).toHaveLength(3)
+      const [blockquote1, blank, blockquote2] = doc.children
+      expect(blockquote1).toMatchObject({
+        kind: NodeKind.BlockquoteItem,
+        prefix: '>'
+      })
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+      expect(blockquote2).toMatchObject({
+        kind: NodeKind.BlockquoteItem,
+        prefix: '>'
+      })
+
+      expect(blockquote1.children).toHaveLength(2)
+      const [blank2, callout] = blockquote1.children
+      expect(blank2).toMatchObject({
+        kind: NodeKind.Blank,
+        char: ' '
+      })
+      expect(callout).toMatchObject({
+        kind: NodeKind.CalloutItem,
+        text: 'NOTE'
+      })
+
+      expect(blockquote2.children).toHaveLength(2)
+      const [blank3, alphabet] = blockquote2.children
+      expect(blank3).toMatchObject({
+        kind: NodeKind.Blank,
+        char: ' '
+      })
+      expect(alphabet).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: '123'
+      })
+    })
   })
 
   describe('Math', () => {

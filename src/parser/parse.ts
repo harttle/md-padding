@@ -25,6 +25,7 @@ import { Blank } from '../nodes/blank'
 import { Raw } from '../nodes/raw'
 import { OrderedListItem } from '../nodes/ordered-list-item'
 import { UnorderedListItem } from '../nodes/unordered-list-item'
+import { Callout } from '../nodes/callout'
 import { BlockquoteItem, BlockquotePrefix } from '../nodes/blockquote-item'
 import { State } from './state'
 import { Stack } from '../utils/stack'
@@ -43,6 +44,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
   let blankLine = true
   let listPrefix = ''
   let codeLang = ''
+  let calloutType = ''
   const blockquotePrefix: BlockquotePrefix = '>'
   let strongDelimiter: StrongDelimiter = '**'
   let emphasisDelimiter: EmphasisDelimiter = '*'
@@ -133,6 +135,11 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         i++
       }
     }
+    else if (state === State.CalloutItem && c === ']') {
+      calloutType = popMarkdown()
+      resolve(new Callout(calloutType))
+      i++
+    }
 
     // Links
     else if (state === State.ReferingID && c === ']') {
@@ -208,7 +215,10 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       resolve(new Quoted(popNodes()))
       i++
     }
-
+    else if (blankLine && c2 === '[!' && state === State.BlockquoteItem) {
+      push(State.CalloutItem)
+      i += 2
+    }
     // state === State.Text
     else if (c === '[' && allow(NodeKind.Link)) {
       push(State.LinkText)
@@ -408,6 +418,10 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       case State.BlockCodeLang:
         codeLang = popMarkdown()
         resolve(new BlockCode(codeLang, blockCodeDelimiter, [], false, false))
+        break
+      case State.CalloutItem:
+        calloutType = popMarkdown()
+        resolve(new Callout(calloutType))
         break
       default:
         return false

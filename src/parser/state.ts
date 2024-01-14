@@ -19,6 +19,7 @@ export enum State {
   OrderedListItem,    // 1.<space>
   UnorderedListItem,  // *<space>
   BlockquoteItem,     // >
+  CalloutItem,        // [!
 
   // natural language syntax
   Quoted,             // " in natural language
