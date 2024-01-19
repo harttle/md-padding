@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/harttle/md-padding/compare/v1.2.2...v1.3.0) (2024-01-14)
+
+
+### Features
+
+* support callout ([#28](https://github.com/harttle/md-padding/issues/28)) ([2ee118a](https://github.com/harttle/md-padding/commit/2ee118a4f401ab60c04cd602ba14aa2871c3c457))
+
 ## [1.2.2](https://github.com/harttle/md-padding/compare/v1.2.1...v1.2.2) (2024-01-07)
 
 
