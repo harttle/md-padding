@@ -482,14 +482,14 @@ describe('parse()', () => {
 
       const highlight = doc.children[0]
       expect(highlight).toMatchObject({
-        kind: NodeKind.Highlight,
+        kind: NodeKind.Highlight
       })
 
       expect(highlight.children).toHaveLength(1)
       const number = highlight.children[0]
       expect(number).toMatchObject({
         kind: NodeKind.AlphabetNumeric,
-        text: "123"
+        text: '123'
       })
 
       expect(highlight.toMarkdown()).toEqual('==123==')
@@ -536,14 +536,14 @@ describe('parse()', () => {
         char: '\n'
       })
       expect(highlight).toMatchObject({
-        kind: NodeKind.Highlight,
+        kind: NodeKind.Highlight
       })
 
       expect(highlight.children).toHaveLength(1)
       const alphabet = highlight.children[0]
       expect(alphabet).toMatchObject({
         kind: NodeKind.AlphabetNumeric,
-        text: "bar"
+        text: 'bar'
       })
     })
   })

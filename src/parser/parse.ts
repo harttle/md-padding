@@ -9,7 +9,7 @@ import { SquareQuoted } from '../nodes/square-quoted'
 import { Emphasis, EmphasisDelimiter } from '../nodes/empasis'
 import { Quoted } from '../nodes/quoted'
 import { Strong, StrongDelimiter } from '../nodes/strong'
-import { Highlight } from "../nodes/highlight"
+import { Highlight } from '../nodes/highlight'
 import { Strikethrough } from '../nodes/strikethrough'
 import { Document } from '../nodes/document'
 import { compactTree } from '../transformers/compact'
