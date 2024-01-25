@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BlockquoteItem | md-padding</title>
+	<title>Highlight | md-padding</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_nodes_blockquote_item_.html">&quot;nodes/blockquote-item&quot;</a>
+					<a href="../modules/_nodes_highlight_.html">&quot;nodes/highlight&quot;</a>
 				</li>
 				<li>
-					<a href="_nodes_blockquote_item_.blockquoteitem.html">BlockquoteItem</a>
+					<a href="_nodes_highlight_.highlight.html">Highlight</a>
 				</li>
 			</ul>
-			<h1>Class BlockquoteItem</h1>
+			<h1>Class Highlight</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BlockquoteItem</span>
+						<a href="_nodes_delimited_.delimited.html" class="tsd-signature-type">Delimited</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">Highlight</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -90,22 +95,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_nodes_highlight_.highlight.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#kind" class="tsd-kind-icon">kind</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#prefix" class="tsd-kind-icon">prefix</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_nodes_highlight_.highlight.html#children" class="tsd-kind-icon">children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nodes_highlight_.highlight.html#kind" class="tsd-kind-icon">kind</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nodes_blockquote_item_.blockquoteitem.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_nodes_blockquote_item_.blockquoteitem.html#isvalidprefix" class="tsd-kind-icon">is<wbr>Valid<wbr>Prefix</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_nodes_highlight_.highlight.html#text" class="tsd-kind-icon">text</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_nodes_highlight_.highlight.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,108 +117,93 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Blockquote<wbr>Item<span class="tsd-signature-symbol">(</span>prefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, children<span class="tsd-signature-symbol">: </span><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_blockquote_item_.blockquoteitem.html" class="tsd-signature-type">BlockquoteItem</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Highlight<span class="tsd-signature-symbol">(</span>children<span class="tsd-signature-symbol">: </span><a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_nodes_highlight_.highlight.html" class="tsd-signature-type">Highlight</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides <a href="_nodes_delimited_.delimited.html">Delimited</a>.<a href="_nodes_delimited_.delimited.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/blockquote-item.ts#L9">nodes/blockquote-item.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/highlight.ts#L7">nodes/highlight.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>prefix: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
 									<h5>children: <a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_nodes_blockquote_item_.blockquoteitem.html" class="tsd-signature-type">BlockquoteItem</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_nodes_highlight_.highlight.html" class="tsd-signature-type">Highlight</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="children" class="tsd-anchor"></a>
 					<h3>children</h3>
 					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_nodes_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#children">children</a></p>
+						<p>Overrides <a href="_nodes_delimited_.delimited.html">Delimited</a>.<a href="_nodes_delimited_.delimited.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/blockquote-item.ts#L7">nodes/blockquote-item.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/highlight.ts#L6">nodes/highlight.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="kind" class="tsd-anchor"></a>
 					<h3>kind</h3>
-					<div class="tsd-signature tsd-kind-icon">kind<span class="tsd-signature-symbol">:</span> <a href="../enums/_nodes_node_kind_.nodekind.html" class="tsd-signature-type">NodeKind</a><span class="tsd-signature-symbol"> = NodeKind.BlockquoteItem</span></div>
+					<div class="tsd-signature tsd-kind-icon">kind<span class="tsd-signature-symbol">:</span> <a href="../enums/_nodes_node_kind_.nodekind.html" class="tsd-signature-type">NodeKind</a><span class="tsd-signature-symbol"> = NodeKind.Highlight</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#kind">kind</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/blockquote-item.ts#L9">nodes/blockquote-item.ts:9</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="prefix" class="tsd-anchor"></a>
-					<h3>prefix</h3>
-					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/blockquote-item.ts#L8">nodes/blockquote-item.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/highlight.ts#L7">nodes/highlight.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="tomarkdown" class="tsd-anchor"></a>
-					<h3>to<wbr>Markdown</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Markdown<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="text" class="tsd-anchor"></a>
+					<h3>text</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#tomarkdown">toMarkdown</a></p>
+								<p>Inherited from <a href="_nodes_delimited_.delimited.html">Delimited</a>.<a href="_nodes_delimited_.delimited.html#text">text</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/blockquote-item.ts#L16">nodes/blockquote-item.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/delimited.ts#L13">nodes/delimited.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="isvalidprefix" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Valid<wbr>Prefix</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Valid<wbr>Prefix<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="tomarkdown" class="tsd-anchor"></a>
+					<h3>to<wbr>Markdown</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Markdown<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_nodes_node_.node.html">Node</a>.<a href="../interfaces/_nodes_node_.node.html#tomarkdown">toMarkdown</a></p>
+								<p>Inherited from <a href="_nodes_delimited_.delimited.html">Delimited</a>.<a href="_nodes_delimited_.delimited.html#tomarkdown">toMarkdown</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/blockquote-item.ts#L20">nodes/blockquote-item.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/nodes/delimited.ts#L17">nodes/delimited.ts:17</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>str: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -227,7 +216,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_nodes_blockquote_item_.html">&quot;nodes/blockquote-<wbr>item&quot;</a>
+						<a href="../modules/_nodes_highlight_.html">&quot;nodes/highlight&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -236,33 +225,27 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_nodes_blockquote_item_.blockquoteitem.html" class="tsd-kind-icon">Blockquote<wbr>Item</a>
+						<a href="_nodes_highlight_.highlight.html" class="tsd-kind-icon">Highlight</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_nodes_blockquote_item_.blockquoteitem.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_nodes_highlight_.highlight.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_nodes_highlight_.highlight.html#children" class="tsd-kind-icon">children</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_blockquote_item_.blockquoteitem.html#children" class="tsd-kind-icon">children</a>
+								<a href="_nodes_highlight_.highlight.html#kind" class="tsd-kind-icon">kind</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_blockquote_item_.blockquoteitem.html#kind" class="tsd-kind-icon">kind</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_nodes_highlight_.highlight.html#text" class="tsd-kind-icon">text</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_nodes_blockquote_item_.blockquoteitem.html#prefix" class="tsd-kind-icon">prefix</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_nodes_blockquote_item_.blockquoteitem.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_nodes_blockquote_item_.blockquoteitem.html#isvalidprefix" class="tsd-kind-icon">is<wbr>Valid<wbr>Prefix</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_nodes_highlight_.highlight.html#tomarkdown" class="tsd-kind-icon">to<wbr>Markdown</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_nodes_blockquote_item_.html#blockquoteprefix" class="tsd-kind-icon">Blockquote<wbr>Prefix</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

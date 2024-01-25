@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/harttle/md-padding/compare/v1.3.0...v1.4.0) (2024-01-25)
+
+
+### Features
+
+* Support highlight syntax ([#31](https://github.com/harttle/md-padding/issues/31)) ([66af404](https://github.com/harttle/md-padding/commit/66af404963f010a872cbaeeaac58ff7494642b69))
+
 # [1.3.0](https://github.com/harttle/md-padding/compare/v1.2.2...v1.3.0) (2024-01-14)
 
 
