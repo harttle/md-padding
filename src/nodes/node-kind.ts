@@ -24,6 +24,7 @@ export const enum NodeKind {
   Math = 1 << 21,
   BlockquoteItem = 1 << 22,
   CalloutItem = 1 << 23,
+  Highlight = 1 << 24,
 
   // combinations
   All = -1,
@@ -33,7 +34,7 @@ export const enum NodeKind {
   Code = InlineCode | BlockCode,
   Link = InlineLink | ReferenceLink,
   Image = InlineImage | ReferenceImage,
-  Style = Strong | Emphasis | Strikethrough,
+  Style = Strong | Emphasis | Strikethrough | Highlight,
   Inline = NaturualConstructs | InlineCode | Link | Style | HTMLTag | InlineImage | ReferenceImage | Math,
   Block = ~Inline,
 }

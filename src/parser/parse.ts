@@ -9,6 +9,7 @@ import { SquareQuoted } from '../nodes/square-quoted'
 import { Emphasis, EmphasisDelimiter } from '../nodes/empasis'
 import { Quoted } from '../nodes/quoted'
 import { Strong, StrongDelimiter } from '../nodes/strong'
+import { Highlight } from '../nodes/highlight'
 import { Strikethrough } from '../nodes/strikethrough'
 import { Document } from '../nodes/document'
 import { compactTree } from '../transformers/compact'
@@ -178,7 +179,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       i++
     }
 
-    // Strong, Emphasis, Strikethrough
+    // Strong, Emphasis, Strikethrough, highlight
     else if (state === State.Emphasis && c === emphasisDelimiter && c === '_' && isWordBoundary(str[i + 1])) {
       resolve(new Emphasis(popNodes(), emphasisDelimiter))
       i++
@@ -193,6 +194,10 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     }
     else if (state === State.Strikethrough && c2 === '~~') {
       resolve(new Strikethrough(popNodes()))
+      i += 2
+    }
+    else if (state === State.Highlight && c2 === '==') {
+      resolve(new Highlight(popNodes()))
       i += 2
     }
 
@@ -278,6 +283,9 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       strongDelimiter = c2
       i += 2
       push(State.Strong)
+    } else if (c2 === '==' && allow(NodeKind.Highlight)) {
+      i += 2
+      push(State.Highlight)
     } else if (c === '*' && allow(NodeKind.Emphasis)) {
       emphasisDelimiter = c
       i++
@@ -353,6 +361,9 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         break
       case State.Strong:
         resolve(...[...strongDelimiter].map(c => Punctuation.create(c)), ...popNodes())
+        break
+      case State.Highlight:
+        resolve(Punctuation.create('='), Punctuation.create('='), ...popNodes())
         break
       case State.InlineCode:
         resolve(

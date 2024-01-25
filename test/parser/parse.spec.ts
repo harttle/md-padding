@@ -475,6 +475,79 @@ describe('parse()', () => {
     })
   })
 
+  describe('Highlight', () => {
+    it('should allow highlight', () => {
+      const doc = parse('==123==', options)
+      expect(doc.children).toHaveLength(1)
+
+      const highlight = doc.children[0]
+      expect(highlight).toMatchObject({
+        kind: NodeKind.Highlight
+      })
+
+      expect(highlight.children).toHaveLength(1)
+      const number = highlight.children[0]
+      expect(number).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: '123'
+      })
+
+      expect(highlight.toMarkdown()).toEqual('==123==')
+    })
+
+    it('should expand Highlight when EOF found', () => {
+      const doc = parse('==123', options)
+      expect(doc.children).toHaveLength(3)
+
+      const [p1, p2, a1] = doc.children
+      expect(p1).toMatchObject({
+        kind: NodeKind.Punctuation,
+        char: '='
+      })
+      expect(p2).toMatchObject({
+        kind: NodeKind.Punctuation,
+        char: '='
+      })
+      expect(a1).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: '123'
+      })
+    })
+
+    it('should expand repeatedly Highlight when NL found', () => {
+      const doc = parse('==foo\n==bar==', options)
+      expect(doc.children).toHaveLength(5)
+
+      const [p1, p2, a1, blank, highlight] = doc.children
+      expect(p1).toMatchObject({
+        kind: NodeKind.Punctuation,
+        char: '='
+      })
+      expect(p2).toMatchObject({
+        kind: NodeKind.Punctuation,
+        char: '='
+      })
+      expect(a1).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: 'foo'
+      })
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+      expect(highlight).toMatchObject({
+        kind: NodeKind.Highlight
+      })
+
+      expect(highlight.children).toHaveLength(1)
+      const alphabet = highlight.children[0]
+      expect(alphabet).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: 'bar'
+      })
+    })
+  })
+
   describe('BlockCode', () => {
     it('should parse block code', () => {
       const doc = parse('```\ncode\n```', options)
