@@ -726,7 +726,7 @@ describe('parse()', () => {
       const doc = parse('- ```js\n  alert("123")\n  ```\n- 前word后', options)
       expect(doc.children).toHaveLength(3)
 
-      const [item1, blank, item2] = doc.children;
+      const [item1, blank, item2] = doc.children
       expect(blank).toMatchObject({
         kind: NodeKind.Blank,
         char: '\n'
@@ -747,7 +747,7 @@ describe('parse()', () => {
         prefix: '- '
       })
       expect(item2.children).toHaveLength(3)
-      const [u1, a1,u2] = item2.children;
+      const [u1, a1, u2] = item2.children
       expect(u1).toMatchObject({
         kind: NodeKind.UnicodeString,
         text: '前'
