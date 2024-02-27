@@ -721,6 +721,46 @@ describe('parse()', () => {
       })
       expect(item2.toMarkdown()).toEqual('*\tbar')
     })
+
+    it('should recognize fenced code block in UnorderedListItem', () => {
+      const doc = parse('- ```js\n  alert("123")\n  ```\n- 前word后', options)
+      expect(doc.children).toHaveLength(3)
+
+      const [item1, blank, item2] = doc.children;
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+
+      expect(item1).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '- '
+      })
+      expect(item1.children).toHaveLength(1)
+      expect(item1.children[0]).toMatchObject({
+        kind: NodeKind.BlockCode,
+        lang: 'js'
+      })
+
+      expect(item2).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '- '
+      })
+      expect(item2.children).toHaveLength(3)
+      const [u1, a1,u2] = item2.children;
+      expect(u1).toMatchObject({
+        kind: NodeKind.UnicodeString,
+        text: '前'
+      })
+      expect(a1).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: 'word'
+      })
+      expect(u2).toMatchObject({
+        kind: NodeKind.UnicodeString,
+        text: '后'
+      })
+    })
   })
 
   describe('Blockquote', () => {

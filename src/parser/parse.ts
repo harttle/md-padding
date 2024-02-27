@@ -237,7 +237,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       push(State.HTMLTag)
       i++
     }
-    else if (c3 === '```' && allow(NodeKind.BlockCode)) {
+    else if (blankLine && c3 === '```') {
       push(State.BlockCodeLang)
       blockCodeDelimiter = c3
       i += 3
@@ -268,10 +268,12 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       push(State.UnorderedListItem)
       listPrefix = c2
       i += 2
+      continue
     } else if (blankLine && OrderedListItem.isValidPrefix(c3) && allow(NodeKind.OrderedListItem)) {
       push(State.OrderedListItem)
       listPrefix = c3
       i += 3
+      continue
     } else if (blankLine && BlockquoteItem.isValidPrefix(c2) && allow(NodeKind.BlockquoteItem)) {
       push(State.BlockquoteItem)
       i++
