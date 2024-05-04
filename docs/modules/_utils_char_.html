@@ -82,6 +82,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_utils_char_.html#isalphabet" class="tsd-kind-icon">is<wbr>Alphabet</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_utils_char_.html#isblank" class="tsd-kind-icon">is<wbr>Blank</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_utils_char_.html#iscjk" class="tsd-kind-icon">isCJK</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_utils_char_.html#isendcharacter" class="tsd-kind-icon">is<wbr>End<wbr>Character</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_utils_char_.html#isfullwidthpunctuation" class="tsd-kind-icon">is<wbr>Fullwidth<wbr>Punctuation</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_utils_char_.html#isinlineblank" class="tsd-kind-icon">is<wbr>Inline<wbr>Blank</a></li>
@@ -102,7 +103,7 @@
 					<div class="tsd-signature tsd-kind-icon">r<wbr>Fullwidth<wbr>Punctuation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^[、，：。？！；：【】（）「」﹁﹂『』《》〈〉“”‘’﹏…—～‧]$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L10">utils/char.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L10">utils/char.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -112,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">r<wbr>Punctuation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^[\u2000-\u206F\u2E00-\u2E7F\\&#x27;!&quot;#$%&amp;()*+,\-./:;&lt;&#x3D;&gt;?@[\]^_&#x60;{|}~]$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L4">utils/char.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L4">utils/char.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L36">utils/char.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L46">utils/char.ts:46</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -152,13 +153,36 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L27">utils/char.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L37">utils/char.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>char: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="iscjk" class="tsd-anchor"></a>
+					<h3>isCJK</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">isCJK<span class="tsd-signature-symbol">(</span>char<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L23">utils/char.ts:23</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>char: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -175,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L44">utils/char.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L54">utils/char.ts:54</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -198,7 +222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L23">utils/char.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L33">utils/char.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -221,7 +245,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L32">utils/char.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L42">utils/char.ts:42</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -238,19 +262,19 @@
 					<a name="isnumeric" class="tsd-anchor"></a>
 					<h3>is<wbr>Numeric</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Numeric<span class="tsd-signature-symbol">(</span>char<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Numeric<span class="tsd-signature-symbol">(</span>char<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L19">utils/char.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L19">utils/char.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>char: <span class="tsd-signature-type">any</span></h5>
+									<h5>char: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -267,7 +291,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L12">utils/char.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L12">utils/char.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -290,7 +314,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L50">utils/char.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L60">utils/char.ts:60</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -313,7 +337,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/66af404/src/utils/char.ts#L40">utils/char.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/harttle/md-padding/blob/7bf72be/src/utils/char.ts#L50">utils/char.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -352,6 +376,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_utils_char_.html#isblank" class="tsd-kind-icon">is<wbr>Blank</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_utils_char_.html#iscjk" class="tsd-kind-icon">isCJK</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_utils_char_.html#isendcharacter" class="tsd-kind-icon">is<wbr>End<wbr>Character</a>

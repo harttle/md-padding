@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/harttle/md-padding/compare/v1.4.0...v1.5.0) (2024-05-04)
+
+
+### Bug Fixes
+
+* block code parsing ([#33](https://github.com/harttle/md-padding/issues/33)) ([3ba0593](https://github.com/harttle/md-padding/commit/3ba0593857f72d4b297afcae2db133e789e4713c))
+
+
+### Features
+
+* add inline spaces only for CJK/non-CJK, [#36](https://github.com/harttle/md-padding/issues/36) ([19a6e18](https://github.com/harttle/md-padding/commit/19a6e18bc25d9fbad2f5aeb3ee019a46fbf240d7))
+
 # [1.4.0](https://github.com/harttle/md-padding/compare/v1.3.0...v1.4.0) (2024-01-25)
 
 
