@@ -1,8 +1,9 @@
 import { Node } from '../nodes/node'
 import { UnicodeString } from '../nodes/unicode-string'
 import { AlphabetNumeric } from '../nodes/alphabet-numeric'
-import { isUnicodeString, isAlphabetNumeric } from '../nodes/type-guards'
+import { isCJK, isUnicodeString, isAlphabetNumeric } from '../nodes/type-guards'
 import { preOrder } from '../utils/dfs'
+import { CJK } from '../nodes/cjk'
 
 export function compactTree<T extends Node> (root: T): T {
   preOrder(root, node => compactArray(node.children))
@@ -21,6 +22,10 @@ export function compactArray (tokens: Node[]) {
       }
       if (isAlphabetNumeric(curr) && isAlphabetNumeric(prev)) {
         tokens[i - 1] = AlphabetNumeric.create(prev.text + curr.text)
+        continue
+      }
+      if (isCJK(curr) && isCJK(prev)) {
+        tokens[i - 1] = CJK.create(prev.text + curr.text)
         continue
       }
     }

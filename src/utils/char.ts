@@ -16,8 +16,18 @@ export function isPunctuationCharacter (char: any) {
   if (isFullwidthPunctuation(char)) return true
   return false
 }
-export function isNumeric (char) {
+export function isNumeric (char: string) {
   return char >= '0' && char <= '9'
+}
+
+export function isCJK (char: any) {
+  // Common CJK characters
+  if (char >= '\u4E00' && char <= '\u9FFF') return true
+  // Rare CJK characters
+  if (char >= '\u3400' && char <= '\u4DBF') return true
+  // Compatibility Ideographs
+  if (char >= '\uF900' && char <= '\uFAFF') return true
+  return false
 }
 
 export function isFullwidthPunctuation (char) {

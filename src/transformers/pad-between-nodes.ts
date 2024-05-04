@@ -1,6 +1,6 @@
 import { Blank } from '../nodes/blank'
 import { Node } from '../nodes/node'
-import { isUnicodeString, isAlphabetNumeric, isBlank, isRaw, isDocument, isPunctuation } from '../nodes/type-guards'
+import { isBlank, isRaw, isDocument, isPunctuation, isCJK, isLatin } from '../nodes/type-guards'
 
 export function padBetweenNodes (tokens: Node[]): Node[] {
   if (tokens.length < 2) return tokens
@@ -22,7 +22,9 @@ function needPadding (lhs: Node, rhs: Node) {
 
   if (isPunctuation(lhs)) return lhs.needPaddingAfter(rhs)
   if (isPunctuation(rhs)) return rhs.needPaddingBefore(lhs)
-  if (isAlphabetNumeric(lhs)) return !isAlphabetNumeric(rhs)
-  if (isUnicodeString(lhs)) return !isUnicodeString(rhs)
+  if (isCJK(lhs)) return !isCJK(rhs)
+  if (isLatin(lhs)) return !isLatin(rhs)
+
+  // By default, add space between different constructs
   return true
 }

@@ -76,7 +76,7 @@ describe('padding()', () => {
     })
   })
 
-  describe('mixed languages', () => {
+  describe('mixed with zh', () => {
     it('should pad between zh_CN and en_US', () => {
       expect(padMarkdown('我是Yang先生'))
         .toEqual('我是 Yang 先生')
@@ -89,18 +89,25 @@ describe('padding()', () => {
       expect(padMarkdown('X11就很好'))
         .toEqual('X11 就很好')
     })
+    it('should not pad unicode icons', () => {
+      expect(padMarkdown('a©®♣♥11♠♩♪♫a')).toEqual('a©®♣♥11♠♩♪♫a')
+    })
+    it('should not pad Spanish chars', () => {
+      const text = '* Gonzalo Maeso, D., 1971, “La Judería de Soria y el Rabino José Albo”, *Misceláneade Estudios Arabes y Hebraicos*, 20 (2): 119–141.'
+      expect(padMarkdown(text)).toEqual(text)
+    })
   })
 
   describe('options', () => {
     it('should support ignore list', () => {
-      const src = '伦敦时间是 UTC±0'
-      expect(padMarkdown(src)).toEqual('伦敦时间是 UTC ± 0')
-      expect(padMarkdown(src, { ignoreWords: ['UTC±0'] })).toEqual('伦敦时间是 UTC±0')
+      const src = '卧C'
+      expect(padMarkdown(src)).toEqual('卧 C')
+      expect(padMarkdown(src, { ignoreWords: ['卧C'] })).toEqual('卧C')
     })
     it('should support ignore list in code block', () => {
-      const src = '```cpp\n//伦敦时间是 UTC±0\n```'
-      expect(padMarkdown(src)).toEqual('```cpp\n//伦敦时间是 UTC ± 0\n```')
-      expect(padMarkdown(src, { ignoreWords: ['UTC±0'] })).toEqual('```cpp\n//伦敦时间是 UTC±0\n```')
+      const src = '```cpp\n//卧C\n```'
+      expect(padMarkdown(src)).toEqual('```cpp\n//卧 C\n```')
+      expect(padMarkdown(src, { ignoreWords: ['卧C'] })).toEqual('```cpp\n//卧C\n```')
     })
   })
 

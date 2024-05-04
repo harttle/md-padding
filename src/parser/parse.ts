@@ -36,6 +36,7 @@ import { Context } from './context'
 import { parseCode } from './parse-code'
 import { matchSubstring } from '../utils/string'
 import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
+import { CJK } from '../nodes/cjk'
 
 export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
   const stack = new Stack<Context>()
@@ -312,6 +313,9 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       i = end
     } else if (Punctuation.is(c)) {
       resolve(Punctuation.create(c))
+      i++
+    } else if (CJK.is(c)) {
+      resolve(CJK.create(c))
       i++
     } else {
       resolve(new UnicodeString(c))

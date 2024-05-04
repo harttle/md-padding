@@ -25,11 +25,12 @@ export const enum NodeKind {
   BlockquoteItem = 1 << 22,
   CalloutItem = 1 << 23,
   Highlight = 1 << 24,
+  CJK = 1 << 25,
 
   // combinations
   All = -1,
   None = 0,
-  Text = Blank | Punctuation | AlphabetNumeric | UnicodeString,
+  Text = Blank | Punctuation | AlphabetNumeric | UnicodeString | CJK,
   NaturualConstructs = Quoted | SquareQuoted | Text,
   Code = InlineCode | BlockCode,
   Link = InlineLink | ReferenceLink,
