@@ -748,7 +748,7 @@ describe('parse()', () => {
       expect(item2.children).toHaveLength(3)
       const [u1, a1, u2] = item2.children
       expect(u1).toMatchObject({
-        kind: NodeKind.UnicodeString,
+        kind: NodeKind.CJK,
         text: '前'
       })
       expect(a1).toMatchObject({
@@ -756,7 +756,7 @@ describe('parse()', () => {
         text: 'word'
       })
       expect(u2).toMatchObject({
-        kind: NodeKind.UnicodeString,
+        kind: NodeKind.CJK,
         text: '后'
       })
     })
