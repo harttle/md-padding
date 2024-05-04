@@ -581,31 +581,30 @@ describe('parse()', () => {
       expect(blockCode.getCode()).toEqual('code\n')
     })
     it('should parse mixed text and code', () => {
-      const doc = parse('A`inline code`B```\nblock code\n```C', options)
-      expect(doc.children).toHaveLength(5)
-
-      expect(doc.children[0]).toMatchObject({
-        kind: NodeKind.AlphabetNumeric,
-        text: 'A'
+      const doc = parse('A`inline code`B\n```\nblock code\n```C', options)
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.AlphabetNumeric,
+          text: 'A'
+        }, {
+          kind: NodeKind.InlineCode,
+          code: 'inline code'
+        }, {
+          kind: NodeKind.AlphabetNumeric,
+          text: 'B'
+        }, {
+          kind: NodeKind.Blank,
+          char: '\n'
+        }, {
+          kind: NodeKind.BlockCode,
+          lang: ''
+        }, {
+          kind: NodeKind.AlphabetNumeric,
+          text: 'C'
+        }]
       })
-      expect(doc.children[1]).toMatchObject({
-        kind: NodeKind.InlineCode,
-        code: 'inline code'
-      })
-      expect(doc.children[2]).toMatchObject({
-        kind: NodeKind.AlphabetNumeric,
-        text: 'B'
-      })
-      const blockCode = doc.children[3] as BlockCode
-      expect(blockCode).toMatchObject({
-        kind: NodeKind.BlockCode,
-        lang: ''
-      })
+      const blockCode = doc.children[4] as BlockCode
       expect(blockCode.getCode()).toEqual('block code\n')
-      expect(doc.children[4]).toMatchObject({
-        kind: NodeKind.AlphabetNumeric,
-        text: 'C'
-      })
     })
     it('when there is front matter, the delimiter of the code block should be ``` instead of ---', () => {
       const doc = parse('---\ntest:1\n---\n```js\nconsole.log(1)\n```', options)
@@ -720,6 +719,46 @@ describe('parse()', () => {
         prefix: '*\t'
       })
       expect(item2.toMarkdown()).toEqual('*\tbar')
+    })
+
+    it('should recognize fenced code block in UnorderedListItem', () => {
+      const doc = parse('- ```js\n  alert("123")\n  ```\n- 前word后', options)
+      expect(doc.children).toHaveLength(3)
+
+      const [item1, blank, item2] = doc.children
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+
+      expect(item1).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '- '
+      })
+      expect(item1.children).toHaveLength(1)
+      expect(item1.children[0]).toMatchObject({
+        kind: NodeKind.BlockCode,
+        lang: 'js'
+      })
+
+      expect(item2).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '- '
+      })
+      expect(item2.children).toHaveLength(3)
+      const [u1, a1, u2] = item2.children
+      expect(u1).toMatchObject({
+        kind: NodeKind.UnicodeString,
+        text: '前'
+      })
+      expect(a1).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: 'word'
+      })
+      expect(u2).toMatchObject({
+        kind: NodeKind.UnicodeString,
+        text: '后'
+      })
     })
   })
 
