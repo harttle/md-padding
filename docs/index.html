@@ -102,11 +102,13 @@ Options:
   --help, -h      Show help                  [boolean]
   --version       Show version number        [boolean]
   --in-place, -i  edit file in place         [boolean]
+  --ignore-words, -I  ignore padding within/before/after these words  [string]
 
 Examples:
   stdout    md-padding README.md
   in-place  md-padding -i README.md
-  pipe      cat README.md | md-padding</code></pre>
+  pipe      cat README.md | md-padding
+  ignore-words  cat README.md | md-padding -I &#39;=&#39; &#39;::&#39;</code></pre>
 				<a href="#在-vim-中使用" id="在-vim-中使用" style="color: inherit; text-decoration: none;">
 					<h3>在 Vim 中使用</h3>
 				</a>
@@ -132,6 +134,20 @@ Examples:
 						</ul>
 					</li>
 				</ul>
+				<table>
+					<thead>
+						<tr>
+							<th>参数</th>
+							<th>类型</th>
+							<th>描述</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td><code>mdpadding.ignoreWords</code></td>
+							<td><code>Array&lt;string&gt;</code></td>
+							<td>这些字词内部和前后禁止加空格</td>
+						</tr>
+				</tbody></table>
 				<a href="#支持说明" id="支持说明" style="color: inherit; text-decoration: none;">
 					<h2>支持说明</h2>
 				</a>

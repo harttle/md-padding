@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/harttle/md-padding/compare/v1.5.1...v1.6.0) (2024-05-05)
+
+
+### Features
+
+* add `--ignore-words` arg, [#37](https://github.com/harttle/md-padding/issues/37) ([073c169](https://github.com/harttle/md-padding/commit/073c169032c9517e96267c81a5b9250c3b826637))
+* support file list as input ([af8832e](https://github.com/harttle/md-padding/commit/af8832e291d4ecf33865616b720f3de4618f1eb4))
+
 ## [1.5.1](https://github.com/harttle/md-padding/compare/v1.5.0...v1.5.1) (2024-05-05)
 
 
