@@ -27,7 +27,7 @@ yargs
   .option('read-files', {
     alias: 'r',
     type: 'string',
-    description: 'STDIN as file list'
+    description: 'read a file list containing one file per line, use empty value to read from STDIN'
   })
   .alias('help', 'h')
   .example('stdout', 'mdp README.md')

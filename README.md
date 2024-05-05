@@ -41,12 +41,15 @@ Options:
   --version       Show version number        [boolean]
   --in-place, -i  edit file in place         [boolean]
   --ignore-words, -I  ignore padding within/before/after these words  [string]
+  --read-files, -r    read a file list containing one file per line, use empty value to read from STDIN  [string]
 
 Examples:
   stdout    md-padding README.md
   in-place  md-padding -i README.md
   pipe      cat README.md | md-padding
   ignore-words  cat README.md | md-padding -I '=' '::'
+  batch format  cat list.txt | md-padding -r -i
+  equivalent w/ md-padding -r list.txt -i
 ```
 
 ### 在 Vim 中使用
