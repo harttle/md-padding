@@ -7,7 +7,8 @@ const rPunctuation = /^[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_
 // and not neccessarily included by rPunctuation
 // Unfortunately it's not well defined in Unicode,
 // see https://en.wikipedia.org/wiki/Chinese_punctuation for reference
-const rFullwidthPunctuation = /^[、，：。？！；：【】（）「」﹁﹂『』《》〈〉“”‘’﹏…—～‧]$/
+// '·' need to be treated as full-width as will be full in some fonts
+const rFullwidthPunctuation = /^[、，：。？！；：【】（）「」﹁﹂『』《》〈〉“”‘’﹏…—～‧·]$/
 
 export function isPunctuationCharacter (char: any) {
   if (typeof char !== 'string') return false

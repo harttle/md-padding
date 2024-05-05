@@ -13,17 +13,25 @@ export class Punctuation implements Node {
     this.char = char
   }
 
-  needPaddingAfter (next: Node) {
+  needPaddingAfter (next: Node, prev?: Node) {
     if (this.isFullSize()) return false
     if (isPunctuation(next)) return false
     if (isAlphabetNumeric(next) && isNumeric(next.text[0]) && ',.'.includes(this.char)) return false
+    if (this.char === ':') {
+      if (
+        isAlphabetNumeric(next) && isNumeric(next.text[0]) &&
+        prev &&
+        isAlphabetNumeric(prev) && isNumeric(prev.text[prev.text.length - 1])) {
+        return false
+      }
+    }
     if (isEndCharacter(this.char)) return true
     if (isStartCharacter(this.char)) return false
     if ('<>='.includes(this.char)) return true
     return false
   }
 
-  needPaddingBefore (prev: Node) {
+  needPaddingBefore (prev: Node, _next?: Node) {
     if (this.isFullSize()) return false
     if (isPunctuation(prev)) return false
     if (isAlphabetNumeric(prev) && isNumeric(prev.text.slice(-1)) && ',.'.includes(this.char)) return false

@@ -66,7 +66,7 @@ describe('padding()', () => {
     })
     it('should restrict front matter in the beginning of file', () => {
       const src = 'd ---date: 2022-08-08 23:53:07\n---\n这是一个demo'
-      const dst = 'd ---date: 2022-08-08 23: 53: 07\n---\n这是一个 demo'
+      const dst = 'd ---date: 2022-08-08 23:53:07\n---\n这是一个 demo'
       expect(padMarkdown(src)).toEqual(dst)
     })
     it('should allow empty spaces before front matter', () => {
@@ -108,6 +108,11 @@ describe('padding()', () => {
       const src = '```cpp\n//卧C\n```'
       expect(padMarkdown(src)).toEqual('```cpp\n//卧 C\n```')
       expect(padMarkdown(src, { ignoreWords: ['卧C'] })).toEqual('```cpp\n//卧C\n```')
+    })
+    it('should support punct as ignore word', () => {
+      const src = 'a:b'
+      expect(padMarkdown(src)).toEqual('a: b')
+      expect(padMarkdown(src, { ignoreWords: [':'] })).toEqual('a:b')
     })
   })
 
@@ -184,6 +189,12 @@ describe('padding()', () => {
     it('should not pad between link and comma', () => {
       expect(padMarkdown('refer to <http://foo>,'))
         .toEqual('refer to <http://foo>,')
+    })
+    it('should not pad colon when used with numbers', () => {
+      expect(padMarkdown('今天的比分是1:1')).toEqual('今天的比分是 1:1')
+    })
+    it('should not pad middle dot', () => {
+      expect(padMarkdown('《庄子·天下篇》')).toEqual('《庄子·天下篇》')
     })
     it('should not pad between non-ascii and comman', () => {
       expect(padMarkdown('不要信任终端用浅色背景的人,'))
