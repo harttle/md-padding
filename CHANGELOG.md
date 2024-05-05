@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/harttle/md-padding/compare/v1.6.0...v1.7.0) (2024-05-05)
+
+
+### Features
+
+* support read-files arg ([6e6952b](https://github.com/harttle/md-padding/commit/6e6952bfbc79cc0cfc004869f41ac9235c8dd199))
+
 # [1.6.0](https://github.com/harttle/md-padding/compare/v1.5.1...v1.6.0) (2024-05-05)
 
 
