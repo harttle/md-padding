@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/harttle/md-padding/compare/v1.5.0...v1.5.1) (2024-05-05)
+
+
+### Bug Fixes
+
+* not pad : used with numbers, treat · as full-width, [#37](https://github.com/harttle/md-padding/issues/37) ([79f15a2](https://github.com/harttle/md-padding/commit/79f15a22ea61cbc68f2a6c3fdb7df3fe8333f22d))
+
 # [1.5.0](https://github.com/harttle/md-padding/compare/v1.4.0...v1.5.0) (2024-05-04)
 
 
