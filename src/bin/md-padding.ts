@@ -24,20 +24,17 @@ yargs
     description: 'to specify file list, used with -I',
     coerce: (arr) => arr.map((item: any) => String(item))
   })
+  .option('read-files', {
+    alias: 'r',
+    type: 'string',
+    description: 'STDIN as file list'
+  })
   .alias('help', 'h')
   .example('stdout', 'mdp README.md')
   .example('in-place', 'mdp -i README.md')
   .example('pipe', 'cat README.md | mdp')
 
-const file = yargs.argv.file as (undefined | string[])
-const inputFiles: FileList = file || yargs.argv._
-if (inputFiles.length === 0 && yargs.argv.i) {
-  console.error('File not specified, cannot edit in place')
-  process.exit(1)
-}
-if (!inputFiles.length) inputFiles.push(0)  // defaults to STDIN
-
-for (const inputFile of inputFiles) {
+for (const inputFile of getInputFiles()) {
   const input = readFileSync(inputFile, 'utf-8')
   const output = padMarkdown(input, {
     ignoreWords: yargs.argv.ignoreWords as (undefined | string[])
@@ -48,4 +45,21 @@ for (const inputFile of inputFiles) {
   } else {
     process.stdout.write(output)
   }
+}
+
+function getInputFiles () {
+  if (yargs.argv.readFiles !== undefined) {
+    const file = (yargs.argv.readFiles as string) || 0
+    const content = readFileSync(file, 'utf-8')
+    return content.split('\n').map(x => x.trim()).filter(x => !!x)
+  }
+
+  const file = yargs.argv.file as (undefined | string[])
+  const inputFiles: FileList = file || yargs.argv._
+  if (inputFiles.length === 0 && yargs.argv.i) {
+    console.error('File not specified, cannot edit in place')
+    process.exit(1)
+  }
+  if (!inputFiles.length) inputFiles.push(0)  // defaults to STDIN
+  return inputFiles
 }
