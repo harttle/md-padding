@@ -10,6 +10,12 @@ yargs
     type: 'boolean',
     description: 'edit file in place'
   })
+  .option('ignore-words', {
+    alias: 'I',
+    type: 'array',
+    description: 'ignore padding within/before/after these words',
+    coerce: (arr) => arr.map((item: any) => String(item))
+  })
   .alias('help', 'h')
   .example('stdout', 'mdp README.md')
   .example('in-place', 'mdp -i README.md')
@@ -23,7 +29,9 @@ yargs
 
 const inputFile = yargs.argv._[0] || 0 // default to STDIN
 const input = readFileSync(inputFile, 'utf-8')
-const output = padMarkdown(input)
+const output = padMarkdown(input, {
+  ignoreWords: yargs.argv.ignoreWords as (undefined | string[])
+})
 
 if (yargs.argv.i) {
   writeFileSync(inputFile, output)

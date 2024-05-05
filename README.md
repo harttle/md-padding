@@ -40,11 +40,13 @@ Options:
   --help, -h      Show help                  [boolean]
   --version       Show version number        [boolean]
   --in-place, -i  edit file in place         [boolean]
+  --ignore-words, -I  ignore padding within/before/after these words  [string]
 
 Examples:
   stdout    md-padding README.md
   in-place  md-padding -i README.md
   pipe      cat README.md | md-padding
+  ignore-words  cat README.md | md-padding -I '=' '::'
 ```
 
 ### 在 Vim 中使用
@@ -69,6 +71,10 @@ noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
   - Windows：Shift + Alt + F
   - Mac：Shift + Option + F
   - Linux：Ctrl + Shift + I
+
+参数 | 类型 | 描述
+--- | --- | ---
+`mdpadding.ignoreWords` | `Array<string>` | 这些字词内部和前后禁止加空格
 
 ## 支持说明
 
