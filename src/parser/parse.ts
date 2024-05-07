@@ -38,6 +38,12 @@ import { matchSubstring } from '../utils/string'
 import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
 import { CJK } from '../nodes/cjk'
 
+const enum ForceCloseResult {
+  Clean,
+  ReParse,
+  Error
+}
+let count = 0
 export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
   const stack = new Stack<Context>()
   const mask = new Mask()
@@ -65,9 +71,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     const c2 = str.substr(i, 2)
     const c3 = str.substr(i, 3)
 
-    if (c === '\n') {
-      while (forceCloseInlineNodes() !== false); // expand all inline nodes
-    }
+    if (c === '\n' && forceCloseAllInlineNodes() === ForceCloseResult.ReParse) continue
 
     // Inline Code
     if (state === State.InlineCode && matchSubstring(str, i, inlineCodeDelimiter)) {
@@ -330,14 +334,10 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     if (blankLine && !isBlank(c)) {
       blankLine = false
     }
-  }
 
-  while (stack.size() > 1) {
-    // close block nodes if all inline nodes are closed
-    if (forceCloseInlineNodes() === false) {
-      if (forceCloseBlockNodes() === false) {
-        throw new Error(`closing ${stack.top().state} is not implemented`)
-      }
+    if (i >= str.length) {
+      if (forceCloseAllInlineNodes() === ForceCloseResult.ReParse) continue
+      while (stack.size() > 1) forceCloseBlockNodes()
     }
   }
 
@@ -352,6 +352,18 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
       }
     }
     return false
+  }
+
+  function forceCloseAllInlineNodes () {
+    while (true) {
+      const ret = forceCloseInlineNodes()
+      if (ret === false) break
+      else if (typeof ret === 'number') {
+        i = ret
+        return ForceCloseResult.ReParse
+      }
+    }
+    return ForceCloseResult.Clean
   }
 
   function forceCloseInlineNodes () {
@@ -408,8 +420,11 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         )
         break
       case State.HTMLTag:
-        resolve(Punctuation.create('<'), ...popNodes())
-        break
+        // throw new Error(JSON.stringify(stack.top(), null, 4))
+        const next = stack.top().begin + 1
+        popNodes()  // discard HTML content
+        resolve(Punctuation.create('<'))
+        return next  // re-parse
       default:
         return false
     }
@@ -441,7 +456,7 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         resolve(new Callout(calloutType))
         break
       default:
-        return false
+        throw new Error(`closing ${stack.top().state} is not implemented`)
     }
   }
 

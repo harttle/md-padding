@@ -30,6 +30,24 @@ describe('parse()', () => {
         text: 'foo'
       })
     })
+    it('should re-parse inner structures', () => {
+      const doc = parse('[foo*]*', options)
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.Punctuation,
+          char: '[',
+        }, {
+          kind: NodeKind.AlphabetNumeric,
+          text: 'foo'
+        }, {
+          kind: NodeKind.Emphasis,
+          children: [{
+            kind: NodeKind.Punctuation,
+            char: ']'
+          }]
+        }]
+      })
+    })
   })
 
   describe('InlineImage', () => {
@@ -190,7 +208,7 @@ describe('parse()', () => {
         text: 'http://harttle.land'
       })
     })
-    it('should expand unclosed tag when read NL', () => {
+    it('should re-parse unclosed tag when read NL', () => {
       const doc = parse('<foo', options)
       expect(doc.children).toHaveLength(2)
 
@@ -202,6 +220,22 @@ describe('parse()', () => {
       expect(text).toMatchObject({
         kind: NodeKind.AlphabetNumeric,
         text: 'foo'
+      })
+    })
+    it('should re-parse inner structures', () => {
+      const doc = parse('* *<*', options)
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.UnorderedListItem,
+          prefix: '* ',
+          children: [{
+            kind: NodeKind.Emphasis,
+            children: [{
+              kind: NodeKind.Punctuation,
+              char: '<'
+            }]
+          }]
+        }]
       })
     })
   })
@@ -678,25 +712,26 @@ describe('parse()', () => {
   describe('UnorderedListItem', () => {
     it('should parse unordered list item', () => {
       const doc = parse('* foo\n* bar', options)
-      expect(doc.children).toHaveLength(3)
-
-      const [item1, blank, item2] = doc.children
-      expect(item1).toMatchObject({
-        kind: NodeKind.UnorderedListItem,
-        prefix: '* '
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.UnorderedListItem,
+          prefix: '* ',
+          children: [{
+            kind: NodeKind.AlphabetNumeric,
+            text: 'foo'
+          }]
+        }, {
+          kind: NodeKind.Blank,
+          char: '\n'
+        }, {
+          kind: NodeKind.UnorderedListItem,
+          prefix: '* ',
+          children: [{
+            kind: NodeKind.AlphabetNumeric,
+            text: 'bar'
+          }]
+        }]
       })
-      expect(item1.toMarkdown()).toEqual('* foo')
-
-      expect(blank).toMatchObject({
-        kind: NodeKind.Blank,
-        char: '\n'
-      })
-
-      expect(item2).toMatchObject({
-        kind: NodeKind.UnorderedListItem,
-        prefix: '* '
-      })
-      expect(item2.toMarkdown()).toEqual('* bar')
     })
     it('should allow \t as prefix separator', () => {
       const doc = parse('-\tfoo\n*\tbar', options)
@@ -807,30 +842,24 @@ describe('parse()', () => {
     })
     it('should recognize UnorderedListItem with * prefix in blockquote', () => {
       const doc = parse('> * **测试**', options)
-      expect(doc.children).toHaveLength(1)
-      const [blockquote] = doc.children
-      expect(blockquote).toMatchObject({
+      expect(doc.children).toMatchObject([{
         kind: NodeKind.BlockquoteItem,
-        prefix: '>'
-      })
-      expect(blockquote.children).toHaveLength(2)
-      const [blank, unorderedList] = blockquote.children
-      expect(blank).toMatchObject({
-        kind: NodeKind.Blank,
-        char: ' '
-      })
-      expect(unorderedList.children).toHaveLength(1)
-      expect(unorderedList).toMatchObject({
-        kind: NodeKind.UnorderedListItem,
-        prefix: '* '
-      })
-      const [strong] = unorderedList.children
-      expect(strong.children).toHaveLength(1)
-      expect(strong).toMatchObject({
-        kind: NodeKind.Strong,
-        prefix: '**'
-      })
-      expect(strong.toMarkdown()).toEqual('**测试**')
+        prefix: '>',
+        children: [{
+          kind: NodeKind.Blank,
+          char: ' '
+        }, {
+          kind: NodeKind.UnorderedListItem,
+          children: [{
+            kind: NodeKind.Strong,
+            prefix: '**',
+            children: [{
+              kind: NodeKind.CJK,
+              text: '测试'
+            }]
+          }]
+        }]
+      }])
       expect(doc.toMarkdown()).toEqual('> * **测试**')
     })
     it('should recognize UnorderedListItem with * prefix in nested blockquote', () => {
