@@ -1,4 +1,4 @@
-import { isBlank, isWordBoundary } from '../utils/char'
+import { isBlank, isWordBoundary, markdownSpecial } from '../utils/char'
 import { isBlank as isBlankNode } from '../nodes/type-guards'
 import { InlineImage } from '../nodes/inline-image'
 import { ReferenceImage } from '../nodes/reference-image'
@@ -43,7 +43,6 @@ const enum ForceCloseResult {
   ReParse,
   Error
 }
-let count = 0
 export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
   const stack = new Stack<Context>()
   const mask = new Mask()
@@ -73,8 +72,13 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
 
     if (c === '\n' && forceCloseAllInlineNodes() === ForceCloseResult.ReParse) continue
 
+    if (c === '\\' && markdownSpecial.has(str[i + 1])) {
+      resolve(Punctuation.create(str[i + 1], str.slice(i, i + 2)))
+      i += 2
+    }
+
     // Inline Code
-    if (state === State.InlineCode && matchSubstring(str, i, inlineCodeDelimiter)) {
+    else if (state === State.InlineCode && matchSubstring(str, i, inlineCodeDelimiter)) {
       resolve(new InlineCode(popMarkdown(), inlineCodeDelimiter))
       i += inlineCodeDelimiter.length
     }

@@ -6,11 +6,13 @@ import { isAlphabetNumeric, isPunctuation } from './type-guards'
 export class Punctuation implements Node {
   readonly children: Node[] = []
   readonly char: string
+  readonly raw: string
   readonly kind = NodeKind.Punctuation
   private static cache = new Map<string, Punctuation>()
 
-  private constructor (char: string) {
+  private constructor (char: string, raw?: string) {
     this.char = char
+    this.raw = raw ?? char
   }
 
   needPaddingAfter (next: Node, prev?: Node) {
@@ -46,15 +48,15 @@ export class Punctuation implements Node {
   }
 
   toMarkdown () {
-    return this.char
+    return this.raw
   }
 
   // create a flyweight punctuation
-  static create (char: string): Punctuation {
-    if (!Punctuation.cache.has(char)) {
-      Punctuation.cache.set(char, new Punctuation(char))
+  static create (char: string, raw = char): Punctuation {
+    if (!Punctuation.cache.has(raw)) {
+      Punctuation.cache.set(raw, new Punctuation(char, raw))
     }
-    return Punctuation.cache.get(char)!
+    return Punctuation.cache.get(raw)!
   }
 
   static is (char: any): char is string {

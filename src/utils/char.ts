@@ -10,6 +10,17 @@ const rPunctuation = /^[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_
 // '·' need to be treated as full-width as will be full in some fonts
 const rFullwidthPunctuation = /^[、，：。？！；：【】（）「」﹁﹂『』《》〈〉“”‘’﹏…—～‧·]$/
 
+export const markdownSpecial = new Set([
+  '*',
+  '-',
+  '[', ']',
+  '(', ')',
+  '<', '>',
+  '"', "'",
+  '!',
+  '=',
+  '$',
+])
 export function isPunctuationCharacter (char: any) {
   if (typeof char !== 'string') return false
 

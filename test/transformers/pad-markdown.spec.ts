@@ -250,4 +250,11 @@ describe('padding()', () => {
       expect(padMarkdown(input)).toEqual(output)
     })
   })
+  describe('escape', () => {
+    it('should allow \\ escape *', () => {
+      expect(padMarkdown('*foo*bar')).toEqual('*foo* bar')
+      expect(padMarkdown('foo*bar')).toEqual('foo*bar')
+      expect(padMarkdown('\\*foo\\*bar')).toEqual('\\*foo\\*bar')
+    })
+  })
 })
