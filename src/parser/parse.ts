@@ -424,7 +424,6 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         )
         break
       case State.HTMLTag:
-        // throw new Error(JSON.stringify(stack.top(), null, 4))
         const next = stack.top().begin + 1
         popNodes()  // discard HTML content
         resolve(Punctuation.create('<'))

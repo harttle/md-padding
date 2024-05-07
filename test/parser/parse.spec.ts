@@ -35,7 +35,7 @@ describe('parse()', () => {
       expect(doc).toMatchObject({
         children: [{
           kind: NodeKind.Punctuation,
-          char: '[',
+          char: '['
         }, {
           kind: NodeKind.AlphabetNumeric,
           text: 'foo'

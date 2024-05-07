@@ -17,6 +17,7 @@
     "no-multi-spaces": "off",
     "no-labels": "off",
     "brace-style": "off",
+    "no-case-declarations": "off",
     "no-useless-constructor": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",

@@ -19,7 +19,7 @@ export const markdownSpecial = new Set([
   '"', "'",
   '!',
   '=',
-  '$',
+  '$'
 ])
 export function isPunctuationCharacter (char: any) {
   if (typeof char !== 'string') return false
