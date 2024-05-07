@@ -1,3 +1,11 @@
+## [1.7.1](https://github.com/harttle/md-padding/compare/v1.7.0...v1.7.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* allow escape by \ ([9c89330](https://github.com/harttle/md-padding/commit/9c893307636a0825045bab4705e73d69db7e0ef9))
+* re-parse when block match failed, [#39](https://github.com/harttle/md-padding/issues/39) ([3b6a233](https://github.com/harttle/md-padding/commit/3b6a2331e0221faecc07b00f9fe3565b097de843))
+
 # [1.7.0](https://github.com/harttle/md-padding/compare/v1.6.0...v1.7.0) (2024-05-05)
 
 
