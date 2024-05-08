@@ -114,6 +114,11 @@ describe('padding()', () => {
       expect(padMarkdown(src)).toEqual('a: b')
       expect(padMarkdown(src, { ignoreWords: [':'] })).toEqual('a:b')
     })
+    it('should ignore multiple ignored occurences', () => {
+      const src = '1:2::2:1'
+      expect(padMarkdown(src)).toEqual('1:2:: 2:1')
+      expect(padMarkdown(src, { ignoreWords: [':'] })).toEqual('1:2::2:1')
+    })
   })
 
   describe('emphasis, strong, strikethrough', () => {

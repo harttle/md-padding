@@ -6,7 +6,7 @@ import * as yargs from 'yargs'
 type FileList = (string | number)[]
 
 yargs
-  .usage('$0 [OPTION]... <FILE>')
+  .usage('$0 [OPTION]... [FILE]')
   .option('in-place', {
     alias: 'i',
     type: 'boolean',
