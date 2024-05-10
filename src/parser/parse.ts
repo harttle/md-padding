@@ -38,6 +38,9 @@ import { matchSubstring } from '../utils/string'
 import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
 import { CJK } from '../nodes/cjk'
 
+const RAW_BEGIN = '<!--md-padding-ignore-begin-->'
+const RAW_END = '<!--md-padding-ignore-end-->'
+
 const enum ForceCloseResult {
   Clean,
   ReParse,
@@ -241,6 +244,12 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     else if (c2 === '![' && allow(NodeKind.Image)) {
       push(State.ImageText)
       i += 2
+    }
+    else if (c === '<' && matchSubstring(str, i, RAW_BEGIN)) {
+      const j = str.indexOf(RAW_END, i + RAW_BEGIN.length)
+      if (j === -1) throw new Error(`unmatched ${RAW_BEGIN} at ${i}`)
+      resolve(new Raw(str.slice(i, j + RAW_END.length)))
+      i = j + RAW_END.length
     }
     else if (c === '<' && allow(NodeKind.HTMLTag)) {
       push(State.HTMLTag)
