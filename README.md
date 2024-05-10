@@ -79,7 +79,7 @@ noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 --- | --- | ---
 `mdpadding.ignoreWords` | `Array<string>` | 这些字词内部和前后禁止加空格
 
-## 支持说明
+## 功能说明
 
 ### 中英混排
 中英混排的正文内容，会确保中英之间的空格。
@@ -93,3 +93,15 @@ noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 - cpp, c, java, javascript, typescript, csharp, go
 - sql
 - bash, python, ruby
+
+### 忽略片段
+
+有些片段希望保持原状，这时可以用 `md-padding-ignore` 来包裹起来。
+ 
+```markdown
+下面是一段不需要格式化的文本
+<!--md-padding-ignore-begin-->
+a*b=c, b>1 => a<c
+<!--md-padding-ignore-end-->
+现在开始又可以格式化了。
+```

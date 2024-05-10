@@ -255,6 +255,25 @@ describe('parse()', () => {
     })
   })
 
+  describe('<!--md-padding-ignore-->', () => {
+    it('should support ignore block', () => {
+      const doc = parse('before<!--md-padding-ignore-begin-->a*b*c<d<!--md-padding-ignore-end--> after', options)
+      expect(doc.children).toMatchObject([{
+        kind: NodeKind.AlphabetNumeric,
+        text: 'before'
+      }, {
+        kind: NodeKind.Raw,
+        content: '<!--md-padding-ignore-begin-->a*b*c<d<!--md-padding-ignore-end-->'
+      }, {
+        kind: NodeKind.Blank,
+        char: ' '
+      }, {
+        kind: NodeKind.AlphabetNumeric,
+        text: 'after'
+      }])
+    })
+  })
+
   describe('InlineCode', () => {
     it('should parse inline code', () => {
       const doc = parse('`code`', options)
