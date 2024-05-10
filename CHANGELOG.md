@@ -1,3 +1,15 @@
+# [1.8.0](https://github.com/harttle/md-padding/compare/v1.7.1...v1.8.0) (2024-05-10)
+
+
+### Bug Fixes
+
+* support < as ignoreWords, [#40](https://github.com/harttle/md-padding/issues/40) ([d788a2d](https://github.com/harttle/md-padding/commit/d788a2d11621a46e5000304ce0043df030713ce7))
+
+
+### Features
+
+* md-padding-ignore ([85f9cf3](https://github.com/harttle/md-padding/commit/85f9cf38a9c1b01d425e02eed73fdd9ea9465d54))
+
 ## [1.7.1](https://github.com/harttle/md-padding/compare/v1.7.0...v1.7.1) (2024-05-07)
 
 
