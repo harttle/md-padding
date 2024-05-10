@@ -238,6 +238,21 @@ describe('parse()', () => {
         }]
       })
     })
+    it('should support ignore during re-parse', () => {
+      const doc = parse('a<b', { ignoreWords: new Set('<') })
+      expect(doc).toMatchObject({
+        children: [{
+          kind: NodeKind.AlphabetNumeric,
+          text: 'a'
+        }, {
+          kind: NodeKind.Raw,
+          content: '<'
+        }, {
+          kind: NodeKind.AlphabetNumeric,
+          text: 'b'
+        }]
+      })
+    })
   })
 
   describe('InlineCode', () => {
