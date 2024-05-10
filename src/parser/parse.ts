@@ -308,29 +308,12 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
     } else if (c === '"' && allow(NodeKind.Quoted)) {
       push(State.Quoted)
       i++
-    } else if (Blank.is(c)) {
-      resolve(new Blank(c))
-      i++
-    } else if (handleIgnores()) {
-      // do nothing, already handled
-    } else if (AlphabetNumeric.is(c)) {
-      resolve(AlphabetNumeric.create(c))
-      i++
     } else if (matchSubstring(str, i, '@import') && allow(NodeKind.BlockCode)) {
       const j = str.indexOf('\n', i)
       const end = j === -1 ? str.length : j
       resolve(new Raw(str.slice(i, end)))
       i = end
-    } else if (Punctuation.is(c)) {
-      resolve(Punctuation.create(c))
-      i++
-    } else if (CJK.is(c)) {
-      resolve(CJK.create(c))
-      i++
-    } else {
-      resolve(new UnicodeString(c))
-      i++
-    }
+    } else handleText(c)
 
     if (c === '\n') {
       blankLine = true
@@ -347,6 +330,27 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
 
   return compactTree(new Document(popNodes()))
 
+  function handleText (c: string) {
+    if (handleIgnores()) {
+      // do nothing, already handled
+    } else if (Punctuation.is(c)) {
+      resolve(Punctuation.create(c))
+      i++
+    } else if (Blank.is(c)) {
+      resolve(new Blank(c))
+      i++
+    } else if (AlphabetNumeric.is(c)) {
+      resolve(AlphabetNumeric.create(c))
+      i++
+    } else if (CJK.is(c)) {
+      resolve(CJK.create(c))
+      i++
+    } else {
+      resolve(new UnicodeString(c))
+      i++
+    }
+  }
+
   function handleIgnores (): boolean {
     for (const ignore of options.ignoreWords) {
       if (matchSubstring(str, i, ignore)) {
@@ -361,13 +365,11 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
   function forceCloseAllInlineNodes () {
     while (true) {
       const ret = forceCloseInlineNodes()
-      if (ret === false) break
-      else if (typeof ret === 'number') {
-        i = ret
+      if (ret === ForceCloseResult.Clean) return ret
+      else if (ret === ForceCloseResult.ReParse) {
         return ForceCloseResult.ReParse
       }
     }
-    return ForceCloseResult.Clean
   }
 
   function forceCloseInlineNodes () {
@@ -424,12 +426,13 @@ export function parse (str: string, options :NormalizedPadMarkdownOptions): Docu
         )
         break
       case State.HTMLTag:
-        const next = stack.top().begin + 1
+        const next = stack.top().begin
         popNodes()  // discard HTML content
-        resolve(Punctuation.create('<'))
-        return next  // re-parse
+        i = next
+        handleText('<')
+        return ForceCloseResult.ReParse
       default:
-        return false
+        return ForceCloseResult.Clean
     }
   }
 
