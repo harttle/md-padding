@@ -18,6 +18,12 @@ yargs
     description: 'ignore padding within/before/after these words',
     coerce: (arr) => arr.map((item: any) => String(item))
   })
+  .option('ignore-patterns', {
+    alias: 'I',
+    type: 'array',
+    description: 'ignore by a list of regexp',
+    coerce: (arr) => arr.map((item: any) => String(item))
+  })
   .option('file', {
     alias: 'f',
     type: 'array',
@@ -37,7 +43,8 @@ yargs
 for (const inputFile of getInputFiles()) {
   const input = readFileSync(inputFile, 'utf-8')
   const output = padMarkdown(input, {
-    ignoreWords: yargs.argv.ignoreWords as (undefined | string[])
+    ignoreWords: yargs.argv.ignoreWords as (undefined | string[]),
+    ignorePatterns: yargs.argv.ignorePatterns as (undefined | string[])
   })
 
   if (yargs.argv.i) {

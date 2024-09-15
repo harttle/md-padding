@@ -45,4 +45,10 @@ describe('cli', () => {
     expect(result.output).toEqual('')
     expect(getContent('a.md')).toEqual('1:2::2:1 a<b')
   })
+  it('mdp -i --ignore-patterns="-+" "[:<]" -f a.md', () => {
+    createFiles({ 'a.md': '1:2::2:1 a<b' })
+    const result = runCMD("{mdp} --ignore-patterns='-+' '[:<]' -f a.md -i")
+    expect(result.output).toEqual('')
+    expect(getContent('a.md')).toEqual('1:2::2:1 a<b')
+  })
 })
