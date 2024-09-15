@@ -46,7 +46,24 @@ const enum ForceCloseResult {
   ReParse,
   Error
 }
-export function parse (str: string, options :NormalizedPadMarkdownOptions): Document {
+export function parse (str: string, options: NormalizedPadMarkdownOptions): Document {
+  if (options.ignorePatterns.length) {
+    const pattern = options.ignorePatterns.shift()!
+    const children: Node[] = []
+    const ignores = str.matchAll(pattern)
+    let prev = 0
+    for (const match of ignores) {
+      for (const child of parse(str.slice(prev, match.index), options).children) {
+        children.push(child)
+      }
+      children.push(new Raw(match[0]))
+      prev = match.index! + match[0].length
+    }
+    for (const child of parse(str.slice(prev, str.length), options).children) {
+      children.push(child)
+    }
+    return compactTree(new Document(children))
+  }
   const stack = new Stack<Context>()
   const mask = new Mask()
 

@@ -3,7 +3,7 @@ import { NodeKind } from '../../src/nodes/node-kind'
 import { BlockCode } from '../../src/nodes/block-code'
 
 describe('parse()', () => {
-  const options = { ignoreWords: new Set<string>() }
+  const options = { ignoreWords: new Set<string>(), ignorePatterns: [] }
 
   describe('AlphabetNumeric', () => {
     it('should parse a single word', () => {
@@ -239,7 +239,7 @@ describe('parse()', () => {
       })
     })
     it('should support ignore during re-parse', () => {
-      const doc = parse('a<b', { ignoreWords: new Set('<') })
+      const doc = parse('a<b', { ignoreWords: new Set('<'), ignorePatterns: [] })
       expect(doc).toMatchObject({
         children: [{
           kind: NodeKind.AlphabetNumeric,

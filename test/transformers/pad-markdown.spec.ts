@@ -81,7 +81,7 @@ describe('padding()', () => {
       expect(padMarkdown('我是Yang先生'))
         .toEqual('我是 Yang 先生')
     })
-    it('should ignore paded zh_CN/en_US border', () => {
+    it('should ignore padded zh_CN/en_US border', () => {
       expect(padMarkdown('我是 Yang 先生'))
         .toEqual('我是 Yang 先生')
     })
@@ -114,10 +114,37 @@ describe('padding()', () => {
       expect(padMarkdown(src)).toEqual('a: b')
       expect(padMarkdown(src, { ignoreWords: [':'] })).toEqual('a:b')
     })
-    it('should ignore multiple ignored occurences', () => {
+    it('should ignore multiple ignored occurrences', () => {
       const src = '1:2::2:1'
       expect(padMarkdown(src)).toEqual('1:2:: 2:1')
       expect(padMarkdown(src, { ignoreWords: [':'] })).toEqual('1:2::2:1')
+    })
+    it('should support ignore patterns', () => {
+      const src = 'begin{%if bar="BAR"%}true{%endif%}end'
+      expect(padMarkdown(src)).toEqual('begin{%if bar = "BAR"%}true{%endif%}end')
+      expect(padMarkdown(src, { ignorePatterns: ['{%.+%}'] })).toEqual('begin{%if bar="BAR"%}true{%endif%}end')
+    })
+    it('should support multiple ignore patterns', () => {
+      const src = 'begin{%if bar="BAR"%}true{%endif%}end'
+      expect(padMarkdown(src)).toEqual('begin{%if bar = "BAR"%}true{%endif%}end')
+      expect(padMarkdown(src, { ignorePatterns: ['{%if.+%}', '{%endif%}'] })).toEqual('begin{%if bar="BAR"%}true{%endif%}end')
+    })
+    it('should support multiple ignore patterns for nunjucks', () => {
+      const src = `
+        {% codeblock title lang:c line_number:true highlight:true %}
+        我的code
+        {% endcodeblock %}
+      `
+      expect(padMarkdown(src)).toEqual(`
+        {% codeblock title lang: c line_number: true highlight: true %}
+        我的 code
+        {% endcodeblock %}
+      `)
+      expect(padMarkdown(src, { ignorePatterns: ['{%.+%}'] })).toEqual(`
+        {% codeblock title lang:c line_number:true highlight:true %}
+        我的 code
+        {% endcodeblock %}
+      `)
     })
   })
 
