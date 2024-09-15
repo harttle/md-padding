@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/harttle/md-padding/compare/v1.8.0...v1.9.0) (2024-09-15)
+
+
+### Features
+
+* cli support for --ignore-patterns ([c3ee2ee](https://github.com/harttle/md-padding/commit/c3ee2eee03159ee825e8f332b1bc4ffa98a4916f))
+
 # [1.8.0](https://github.com/harttle/md-padding/compare/v1.7.1...v1.8.0) (2024-05-10)
 
 
