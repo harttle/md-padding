@@ -146,6 +146,10 @@ describe('padding()', () => {
         {% endcodeblock %}
       `)
     })
+    it("should support patterns after UnorderedListItem", () => {
+      const src = "- <u>123</u>\n- <u>456</u>"
+      expect(padMarkdown(src, { ignorePatterns: ['<u>.+?</u>'] })).toEqual(src)
+    })
   })
 
   describe('emphasis, strong, strikethrough', () => {
