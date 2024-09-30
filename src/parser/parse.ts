@@ -356,11 +356,11 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
 
   const state = stack.top().state
   if (state === State.UnorderedListItem) {
-    resolve(new UnorderedListItem(listPrefix, popNodes()), new Blank(""))
+    resolve(new UnorderedListItem(listPrefix, popNodes()), new Blank(''))
   } else if (state === State.OrderedListItem) {
-    resolve(new OrderedListItem(listPrefix, popNodes()), new Blank(""))
+    resolve(new OrderedListItem(listPrefix, popNodes()), new Blank(''))
   } else if (state === State.BlockquoteItem) {
-    resolve(new BlockquoteItem(blockquotePrefix, popNodes()), new Blank(""))
+    resolve(new BlockquoteItem(blockquotePrefix, popNodes()), new Blank(''))
   }
 
   return compactTree(new Document(popNodes()))

@@ -829,7 +829,7 @@ describe('parse()', () => {
       })
     })
     it('should recognize unfinished list', () => {
-      const doc = parse("- ", options)
+      const doc = parse('- ', options)
       expect(doc.children).toHaveLength(2)
       const [u, b] = doc.children
       expect(u).toMatchObject({
