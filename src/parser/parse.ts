@@ -350,18 +350,10 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
 
     if (i >= str.length) {
       if (forceCloseAllInlineNodes() === ForceCloseResult.ReParse) continue
-      while (stack.size() > 1) forceCloseBlockNodes()
     }
   }
 
-  const state = stack.top().state
-  if (state === State.UnorderedListItem) {
-    resolve(new UnorderedListItem(listPrefix, popNodes()), new Blank(''))
-  } else if (state === State.OrderedListItem) {
-    resolve(new OrderedListItem(listPrefix, popNodes()), new Blank(''))
-  } else if (state === State.BlockquoteItem) {
-    resolve(new BlockquoteItem(blockquotePrefix, popNodes()), new Blank(''))
-  }
+  while (stack.size() > 1) forceCloseBlockNodes()
 
   return compactTree(new Document(popNodes()))
 

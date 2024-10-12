@@ -830,15 +830,11 @@ describe('parse()', () => {
     })
     it('should recognize unfinished list', () => {
       const doc = parse('- ', options)
-      expect(doc.children).toHaveLength(2)
-      const [u, b] = doc.children
+      expect(doc.children).toHaveLength(1)
+      const [u] = doc.children
       expect(u).toMatchObject({
         kind: NodeKind.UnorderedListItem,
         prefix: '- '
-      })
-      expect(b).toMatchObject({
-        kind: NodeKind.Blank,
-        char: ''
       })
     })
   })
