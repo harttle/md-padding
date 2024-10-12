@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/harttle/md-padding/compare/v1.9.0...v1.9.1) (2024-10-12)
+
+
+### Bug Fixes
+
+* When the scanning cursor is at the end of the input string, parsing should NOT stop, fixes [#43](https://github.com/harttle/md-padding/issues/43) ([#44](https://github.com/harttle/md-padding/issues/44)) ([97ccdfd](https://github.com/harttle/md-padding/commit/97ccdfd13d7e15a15dbfe447f2882c11208afdea))
+
 # [1.9.0](https://github.com/harttle/md-padding/compare/v1.8.0...v1.9.0) (2024-09-15)
 
 
