@@ -789,7 +789,6 @@ describe('parse()', () => {
       })
       expect(item2.toMarkdown()).toEqual('*\tbar')
     })
-
     it('should recognize fenced code block in UnorderedListItem', () => {
       const doc = parse('- ```js\n  alert("123")\n  ```\n- 前word后', options)
       expect(doc.children).toHaveLength(3)
@@ -827,6 +826,15 @@ describe('parse()', () => {
       expect(u2).toMatchObject({
         kind: NodeKind.CJK,
         text: '后'
+      })
+    })
+    it('should recognize unfinished list', () => {
+      const doc = parse('- ', options)
+      expect(doc.children).toHaveLength(1)
+      const [u] = doc.children
+      expect(u).toMatchObject({
+        kind: NodeKind.UnorderedListItem,
+        prefix: '- '
       })
     })
   })

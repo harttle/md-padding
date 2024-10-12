@@ -350,9 +350,10 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
 
     if (i >= str.length) {
       if (forceCloseAllInlineNodes() === ForceCloseResult.ReParse) continue
-      while (stack.size() > 1) forceCloseBlockNodes()
     }
   }
+
+  while (stack.size() > 1) forceCloseBlockNodes()
 
   return compactTree(new Document(popNodes()))
 
