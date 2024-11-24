@@ -150,6 +150,11 @@ describe('padding()', () => {
       const src = '- <u>123</u>\n- <u>456</u>'
       expect(padMarkdown(src, { ignorePatterns: ['<u>.+?</u>'] })).toEqual(src)
     })
+    it("should support tow pattern matches in same line", () => {
+      const src = '<u>前</u>**中**后'
+      const ignorePatterns = ["<u>.+?</u>", "\\*\\*.+?\\*\\*"]
+      expect(padMarkdown(src, { ignorePatterns })).toEqual(src)
+    })
   })
 
   describe('emphasis, strong, strikethrough', () => {
