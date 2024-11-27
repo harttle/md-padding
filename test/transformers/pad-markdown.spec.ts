@@ -48,6 +48,10 @@ describe('padding()', () => {
       const output = 'sample: \n```bash\necho X11就很好 # X11 就很好\n```'
       expect(padMarkdown(input)).toEqual(output)
     })
+    it('should not delete sharp comment', () => {
+      const input = '```sh\n# abc\n```'
+      expect(padMarkdown(input)).toEqual(input)
+    })
   })
 
   describe('math', () => {
