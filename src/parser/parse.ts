@@ -48,18 +48,19 @@ const enum ForceCloseResult {
 }
 export function parse (str: string, options: NormalizedPadMarkdownOptions): Document {
   if (options.ignorePatterns.length) {
-    const pattern = options.ignorePatterns.shift()!
+    const pattern = options.ignorePatterns[0]!
+    const newOptions = { ...options, ignorePatterns: options.ignorePatterns.slice(1) }
     const children: Node[] = []
     const ignores = str.matchAll(pattern)
     let prev = 0
     for (const match of ignores) {
-      for (const child of parse(str.slice(prev, match.index), options).children) {
+      for (const child of parse(str.slice(prev, match.index), newOptions).children) {
         children.push(child)
       }
       children.push(new Raw(match[0]))
       prev = match.index! + match[0].length
     }
-    for (const child of parse(str.slice(prev, str.length), options).children) {
+    for (const child of parse(str.slice(prev, str.length), newOptions).children) {
       children.push(child)
     }
     return compactTree(new Document(children))

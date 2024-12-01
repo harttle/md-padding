@@ -48,6 +48,10 @@ describe('padding()', () => {
       const output = 'sample: \n```bash\necho X11就很好 # X11 就很好\n```'
       expect(padMarkdown(input)).toEqual(output)
     })
+    it('should not delete sharp comment', () => {
+      const input = '```sh\n# abc\n```'
+      expect(padMarkdown(input)).toEqual(input)
+    })
   })
 
   describe('math', () => {
@@ -149,6 +153,11 @@ describe('padding()', () => {
     it('should support patterns after UnorderedListItem', () => {
       const src = '- <u>123</u>\n- <u>456</u>'
       expect(padMarkdown(src, { ignorePatterns: ['<u>.+?</u>'] })).toEqual(src)
+    })
+    it('should support tow pattern matches in same line', () => {
+      const src = '<u>前</u>**中**后'
+      const ignorePatterns = ['<u>.+?</u>', '\\*\\*.+?\\*\\*']
+      expect(padMarkdown(src, { ignorePatterns })).toEqual(src)
     })
   })
 

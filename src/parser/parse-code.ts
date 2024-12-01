@@ -92,7 +92,7 @@ function * bash (code: string, parseMarkdown: documentParser, options: Normalize
     if (c1 === '#') {
       const j = code.indexOf('\n', i)
       const end = j === -1 ? N : j
-      if (i > prevI) {
+      if (i >= prevI) {
         yield new Raw(code.slice(prevI, i + 2))
       }
       yield parseMarkdown(code.slice(i + 2, end), options)
