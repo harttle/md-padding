@@ -1,3 +1,11 @@
+## [1.9.2](https://github.com/harttle/md-padding/compare/v1.9.1...v1.9.2) (2024-12-15)
+
+
+### Bug Fixes
+
+* ignore words break fences, [#45](https://github.com/harttle/md-padding/issues/45) ([eb92ac0](https://github.com/harttle/md-padding/commit/eb92ac0ece28e9de5535bbb95dbf558efc1cc7c8))
+* support triple tick inline code, [#35](https://github.com/harttle/md-padding/issues/35) ([5746f01](https://github.com/harttle/md-padding/commit/5746f011a5fdf28d83ead28be264d58d6ea118a1))
+
 ## [1.9.1](https://github.com/harttle/md-padding/compare/v1.9.0...v1.9.1) (2024-10-12)
 
 
