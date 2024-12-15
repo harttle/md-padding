@@ -283,7 +283,7 @@ describe('parse()', () => {
         code: 'code'
       })
     })
-    it('should support doulbe `` inline code', () => {
+    it('should support double `` inline code', () => {
       const doc = parse('``code``', options)
       expect(doc.children).toHaveLength(1)
       expect(doc.children[0]).toMatchObject({
@@ -328,6 +328,35 @@ describe('parse()', () => {
         kind: NodeKind.InlineCode,
         code: 'code'
       })
+    })
+    it('should parse ```triple tick``` inline code', () => {
+      const doc = parse('```code```', options)
+      expect(doc.children).toHaveLength(1)
+      expect(doc.children[0]).toMatchObject({
+        kind: NodeKind.InlineCode,
+        code: 'code'
+      })
+    })
+    it('should parse ```triple tick``` inline code in context', () => {
+      const doc = parse('bar ```code``` foo', options)
+      expect(doc.children).toMatchObject([{
+        children: [],
+        kind: NodeKind.AlphabetNumeric,
+        text: 'bar'
+      }, {
+        kind: NodeKind.Blank,
+        char: ' '
+      }, {
+        kind: NodeKind.InlineCode,
+        code: 'code'
+      }, {
+        kind: NodeKind.Blank,
+        char: ' '
+      }, {
+        children: [],
+        kind: NodeKind.AlphabetNumeric,
+        text: 'foo'
+      }])
     })
   })
 

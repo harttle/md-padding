@@ -1,10 +1,14 @@
 import { padMarkdown } from '../../src/transformers/pad-markdown'
 
 describe('padding()', () => {
-  describe('code', () => {
-    it('should pad between code fence', () => {
+  describe('inline code', () => {
+    it('should pad between inline code', () => {
       expect(padMarkdown('file`/foo.txt`not exists'))
         .toEqual('file `/foo.txt` not exists')
+    })
+    it('should pad between triple tick inline code', () => {
+      expect(padMarkdown('```foo```\nfile```/foo.txt```not exists'))
+        .toEqual('```foo```\nfile ```/foo.txt``` not exists')
     })
     it('should ignore padded code fence', () => {
       expect(padMarkdown('file `/foo.txt` not exists'))

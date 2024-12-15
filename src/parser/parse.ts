@@ -109,6 +109,10 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       codeLang = popMarkdown()
       push(State.BlockCodeBody)
       i++
+    } else if (state === State.BlockCodeLang && c3 === '```') {
+      const children = popMarkdown()
+      resolve(new InlineCode(children, c3))
+      i += 3
     }
     else if (state === State.BlockCodeBody && c3 === blockCodeDelimiter) {
       resolve(new BlockCode(codeLang, blockCodeDelimiter, parseCode(popMarkdown(), codeLang, parse, options)))
@@ -277,13 +281,15 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       push(State.BlockCodeLang)
       blockCodeDelimiter = c3
       i += 3
-    }
-    else if (c3 === '---' && allowFrontMatter()) {
+    } else if (!blankLine && c3 === '```' && allow(NodeKind.InlineCode)) {
+      inlineCodeDelimiter = c3
+      push(State.InlineCode)
+      i += 3
+    } else if (c3 === '---' && allowFrontMatter()) {
       push(State.BlockCodeLang)
       blockCodeDelimiter = c3
       i += 3
-    }
-    else if (c2 === '``' && allow(NodeKind.InlineCode)) {
+    } else if (c2 === '``' && allow(NodeKind.InlineCode)) {
       inlineCodeDelimiter = c2
       push(State.InlineCode)
       i += 2

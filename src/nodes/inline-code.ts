@@ -1,7 +1,7 @@
 import { NodeKind } from './node-kind'
 import { Node } from './node'
 
-export type InlineCodeDelimiter = '`' | '``'
+export type InlineCodeDelimiter = '`' | '``' | '```'
 
 export class InlineCode implements Node {
   readonly children: Node[] = []
