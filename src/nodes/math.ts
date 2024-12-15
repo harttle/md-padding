@@ -3,7 +3,7 @@ import { Node } from './node'
 
 export type MathDelimiter = '$' | '$$'
 
-export class Math implements Node {
+export class MathNode implements Node {
   readonly children: Node[] = []
   readonly code: string
   readonly kind = NodeKind.Math
