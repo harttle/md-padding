@@ -20,7 +20,7 @@ import { ReferenceDefinition } from '../nodes/reference-definition'
 import { InlineLink } from '../nodes/inline-link'
 import { Node } from '../nodes/node'
 import { InlineCode, InlineCodeDelimiter } from '../nodes/inline-code'
-import { Math, MathDelimiter } from '../nodes/math'
+import { MathNode, MathDelimiter } from '../nodes/math'
 import { BlockCode, BlockCodeDelimiter } from '../nodes/block-code'
 import { Blank } from '../nodes/blank'
 import { Raw } from '../nodes/raw'
@@ -37,6 +37,7 @@ import { parseCode } from './parse-code'
 import { matchSubstring } from '../utils/string'
 import { NormalizedPadMarkdownOptions } from '../transformers/pad-markdown-options'
 import { CJK } from '../nodes/cjk'
+import { preprocessIgnores } from './ignore'
 
 const RAW_BEGIN = '<!--md-padding-ignore-begin-->'
 const RAW_END = '<!--md-padding-ignore-end-->'
@@ -46,25 +47,9 @@ const enum ForceCloseResult {
   ReParse,
   Error
 }
+
 export function parse (str: string, options: NormalizedPadMarkdownOptions): Document {
-  if (options.ignorePatterns.length) {
-    const pattern = options.ignorePatterns[0]!
-    const newOptions = { ...options, ignorePatterns: options.ignorePatterns.slice(1) }
-    const children: Node[] = []
-    const ignores = str.matchAll(pattern)
-    let prev = 0
-    for (const match of ignores) {
-      for (const child of parse(str.slice(prev, match.index), newOptions).children) {
-        children.push(child)
-      }
-      children.push(new Raw(match[0]))
-      prev = match.index! + match[0].length
-    }
-    for (const child of parse(str.slice(prev, str.length), newOptions).children) {
-      children.push(child)
-    }
-    return compactTree(new Document(children))
-  }
+  const ignoreLengths = preprocessIgnores(str, options)
   const stack = new Stack<Context>()
   const mask = new Mask()
 
@@ -97,6 +82,9 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       resolve(Punctuation.create(str[i + 1], str.slice(i, i + 2)))
       i += 2
     }
+    else if (handleIgnores()) {
+      // do nothing, already handled
+    }
 
     // Inline Code
     else if (state === State.InlineCode && matchSubstring(str, i, inlineCodeDelimiter)) {
@@ -119,9 +107,9 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       i += 3
     }
 
-    // Math
+    // MathNode
     else if (state === State.Math && matchSubstring(str, i, mathDelimiter)) {
-      resolve(new Math(popMarkdown(), mathDelimiter))
+      resolve(new MathNode(popMarkdown(), mathDelimiter))
       i += mathDelimiter.length
     }
 
@@ -365,9 +353,7 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
   return compactTree(new Document(popNodes()))
 
   function handleText (c: string) {
-    if (handleIgnores()) {
-      // do nothing, already handled
-    } else if (Punctuation.is(c)) {
+    if (Punctuation.is(c)) {
       resolve(Punctuation.create(c))
       i++
     } else if (Blank.is(c)) {
@@ -386,12 +372,11 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
   }
 
   function handleIgnores (): boolean {
-    for (const ignore of options.ignoreWords) {
-      if (matchSubstring(str, i, ignore)) {
-        resolve(new Raw(ignore))
-        i += ignore.length
-        return true
-      }
+    const len = ignoreLengths.get(i)
+    if (len) {
+      resolve(new Raw(str.slice(i, i + len)))
+      i += len
+      return true
     }
     return false
   }

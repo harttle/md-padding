@@ -163,6 +163,11 @@ describe('padding()', () => {
       const ignorePatterns = ['<u>.+?</u>', '\\*\\*.+?\\*\\*']
       expect(padMarkdown(src, { ignorePatterns })).toEqual(src)
     })
+    it('should support ignorePatterns inside code fences', () => {
+      const src = '```html\n<br/>\nlet a=3;```\nfoo'
+      const ignorePatterns = ['<br/>']
+      expect(padMarkdown(src, { ignorePatterns })).toEqual(src)
+    })
   })
 
   describe('emphasis, strong, strikethrough', () => {

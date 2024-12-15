@@ -1,5 +1,5 @@
 import { InlineCode } from './inline-code'
-import { Math } from './math'
+import { MathNode } from './math'
 import { ReferenceLink } from './reference-link'
 import { Punctuation } from './punctuation'
 import { UnicodeString } from './unicode-string'
@@ -48,7 +48,7 @@ export function isLatin (node: Node) {
   return isUnicodeString(node) || isAlphabetNumeric(node)
 }
 
-export function isMath (node: Node): node is Math {
+export function isMath (node: Node): node is MathNode {
   return node.kind === NodeKind.Math
 }
 
