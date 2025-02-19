@@ -39,10 +39,10 @@ md-padding [OPTION]... <FILE>
 Options:
   --help, -h      Show help                  [boolean]
   --version       Show version number        [boolean]
-  --in-place, -i  edit file in place         [boolean]
-  --ignore-words, -I  ignore padding within/before/after these words  [string]
-  --ignore-patterns, -P  ignore by a list of regexp  [string]
-  --read-files, -r    read a file list containing one file per line, use empty value to read from STDIN  [string]
+  --in-place, -i  Edit file in place         [boolean]
+  --ignore-words, -I  Ignore padding within/before/after these words  [string]
+  --ignore-patterns, -P  Ignore by a list of regexp  [string]
+  --read-files, -r    Read a file list containing one file per line, use empty value to read from STDIN  [string]
 
 Examples:
   stdout    md-padding README.md

@@ -67,7 +67,7 @@ Examples:
 Map the `F6` key to format Markdown files:
 
 ```vim
-" Vim filter
+" Hotkey for md-padding format
 noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 ```
 
