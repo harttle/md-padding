@@ -1,48 +1,56 @@
 # Markdown Padding
-[![npm version](https://img.shields.io/npm/v/md-padding.svg)](https://www.npmjs.org/package/md-padding)
-[![downloads](https://img.shields.io/npm/dm/md-padding.svg)](https://www.npmjs.org/package/md-padding)
-[![Check](https://github.com/harttle/md-padding/actions/workflows/check.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/check.yml)
-[![Release](https://github.com/harttle/md-padding/actions/workflows/release.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/release.yml)
-[![Coveralls](https://img.shields.io/coveralls/harttle/md-padding.svg)](https://coveralls.io/github/harttle/md-padding?branch=master)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/harttle/md-padding)
-[![GitHub issues](https://img.shields.io/github/issues-closed/harttle/md-padding.svg)](https://github.com/harttle/md-padding/issues)
-[![DUB license](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/harttle/md-padding/blob/master/LICENSE)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)
 
-**排版中只有空格不能忍**，修复你 Markdown 中缺少的空格：
+[![npm version](https://img.shields.io/npm/v/md-padding.svg)](https://www.npmjs.org/package/md-padding)  
+[![downloads](https://img.shields.io/npm/dm/md-padding.svg)](https://www.npmjs.org/package/md-padding)  
+[![Check](https://github.com/harttle/md-padding/actions/workflows/check.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/check.yml)  
+[![Release](https://github.com/harttle/md-padding/actions/workflows/release.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/release.yml)  
+[![Coveralls](https://img.shields.io/coveralls/harttle/md-padding.svg)](https://coveralls.io/github/harttle/md-padding?branch=master)  
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/harttle/md-padding)  
+[![GitHub issues](https://img.shields.io/github/issues-closed/harttle/md-padding.svg)](https://github.com/harttle/md-padding/issues)  
+[![DUB license](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/harttle/md-padding/blob/master/LICENSE)  
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)  
 
-* 中英文混排时，*中文* 与 *英文* 之间，*中文* 与 *数字* 之间添加空格。
-* *特定英文标点* 后面添加空格，但 *全角标点* 前后不加空格。
-* 文字和 *行内代码* 之间、文字与 *链接* 之间、文字与 *加粗*、*强调*、*删除线* 之间添加空格。
-* 会解析生成 Markdown + 自然语言构成的 AST，最大限度解决问题同时避免误处理。
+[中文](https://github.com/harttle/md-padding/blob/master/README.zh.md)
 
-[这里](https://github.com/harttle/md-padding/tree/master/demo) 有个例子：
+**A tool for formatting Markdown content with padding**  
 
-![raw.md 和 formated.md 之间的 Diff](https://user-images.githubusercontent.com/4427974/73588871-6e8d5600-4509-11ea-8c42-9debaaad9008.png)
+- *Ensures consistent spacing* before and after Markdown elements like *headings*, *lists*, and *code blocks*.
+- *Aligns tables* by formatting column spacing properly.
+- Supports formatting inside *code blocks* and recognizes *mathematical expressions*, *HTML elements*, *YAML front matter*, and *fenced code blocks* for correct formatting.
+- Applies an extended AST parsing to ensure natural language structures like punctuations and latin characters are padded correctly.
 
-## 使用说明
-### 在命令行使用
+Here's a [demo](https://github.com/harttle/md-padding/tree/master/demo) showing changes made by formatting:
 
-可以 `npm i -g md-padding` 后使用，也可以用 `npx md-padding`：
+![raw.md vs formatted.md - Diff](https://user-images.githubusercontent.com/4427974/73588871-6e8d5600-4509-11ea-8c42-9debaaad9008.png)
+
+## Command Line Interface
+
+Install globally via `npm`:
 
 ```bash
-# 输出 README.md 格式化后的内容
+npm i -g md-padding
+```
+
+Or run directly using `npx`:
+
+```bash
+# Format README.md in place
 npx md-padding README.md
 ```
 
-还可以接受标准输入（用在管道中），也可以原址（in-place）更改文件。详见 `md-padding --help`。
+For more options:
 
-```none
+```bash
 > npx md-padding --help
 md-padding [OPTION]... <FILE>
 
 Options:
   --help, -h      Show help                  [boolean]
   --version       Show version number        [boolean]
-  --in-place, -i  edit file in place         [boolean]
-  --ignore-words, -I  ignore padding within/before/after these words  [string]
-  --ignore-patterns, -P  ignore by a list of regexp  [string]
-  --read-files, -r    read a file list containing one file per line, use empty value to read from STDIN  [string]
+  --in-place, -i  Edit file in place         [boolean]
+  --ignore-words, -I  Ignore padding for specific words  [string]
+  --ignore-patterns, -P  Ignore specific patterns using regex  [string]
+  --read-files, -r    Read file list from input, one file per line  [string]
 
 Examples:
   stdout    md-padding README.md
@@ -54,57 +62,42 @@ Examples:
   equivalent w/ md-padding -r list.txt -i
 ```
 
-### 在 Vim 中使用
+## Vim Integration
 
-可以绑定一个快捷键 `F6` 来修复当前文件：
+Map the `F6` key to format Markdown files:
 
 ```vim
-" 绑一个 Vim Filter
+" Hotkey for md-padding format
 noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 ```
 
-### 在 VS Code 中使用
+## VS Code Integration
 
-从 Marketplace 安装 [Markdown Padding](https://marketplace.visualstudio.com/items?itemName=harttle.md-padding-vscode)。
-打开一个 Markdown 文件后，支持这些操作：
+Install the [Markdown Padding](https://marketplace.visualstudio.com/items?itemName=harttle.md-padding-vscode) extension.
 
-- Command。打开 *命令面板*，输入 Markdown Padding 并回车。*命令面板* 快捷键：
-  - Windows：Ctrl + Shift + P
-  - Mac：Command + Shift + P
-  - Linux：Ctrl + Shift + P
-- Formatting。在编辑器里右键点格式化，或者：
-  - Windows：Shift + Alt + F
-  - Mac：Shift + Option + F
-  - Linux：Ctrl + Shift + I
+- Open Command Palette (`Ctrl + Shift + P` on Windows/Linux, `Cmd + Shift + P` on macOS) and run `Markdown Padding`.
+- Use the default formatting shortcut:
+  - `Shift + Alt + F` (Windows)
+  - `Shift + Option + F` (Mac)
+  - `Ctrl + Shift + I` (Linux)
 
-参数 | 类型 | 描述
---- | --- | ---
-`mdpadding.ignoreWords` | `Array<string>` | 这些字词内部和前后禁止加空格
-`mdpadding.ignorePatterns` | `Array<string>` | 这些正则内部和前后禁止加空格
+### Configuration
 
-## 功能说明
+| Setting                    | Type            | Description                                     |
+| -------------------------- | --------------- | ----------------------------------------------- |
+| `mdpadding.ignoreWords`    | `Array<string>` | Words to exclude from padding adjustments       |
+| `mdpadding.ignorePatterns` | `Array<string>` | Regular expressions defining patterns to ignore |
 
-### 中英混排
-中英混排的正文内容，会确保中英之间的空格。
+## Q & A
 
-### 标点符号
-需要空格的标点（比如半角逗号），会在适当的位置追加空格。
+### How to ignore a specific section
 
-### 代码注释
-代码格式化不是本仓库的功能之一，请使用对应语言的 prettifier。但代码中的注释会被当做 Markdown 正文来格式化，目前支持这些语言的注释：
+You can exclude certain sections from formatting using the `md-padding-ignore` directive:
 
-- cpp, c, java, javascript, typescript, csharp, go
-- sql
-- bash, python, ruby
-
-### 忽略片段
-
-有些片段希望保持原状，这时可以用 `md-padding-ignore` 来包裹起来。
- 
 ```markdown
-下面是一段不需要格式化的文本
+Some text before the ignored section.
 <!--md-padding-ignore-begin-->
-a*b=c, b>1 => a<c
+a*b=c, b>1 => a&lt;c
 <!--md-padding-ignore-end-->
-现在开始又可以格式化了。
+This text will be formatted as usual.
 ```

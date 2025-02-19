@@ -10,30 +10,30 @@ yargs
   .option('in-place', {
     alias: 'i',
     type: 'boolean',
-    description: 'edit file in place'
+    description: 'Edit file in place'
   })
   .option('ignore-words', {
     alias: 'I',
     type: 'array',
-    description: 'ignore padding within/before/after these words',
+    description: 'Ignore padding within/before/after these words',
     coerce: (arr) => arr.map((item: any) => String(item))
   })
   .option('ignore-patterns', {
     alias: 'I',
     type: 'array',
-    description: 'ignore by a list of regexp',
+    description: 'Ignore by a list of regexp',
     coerce: (arr) => arr.map((item: any) => String(item))
   })
   .option('file', {
     alias: 'f',
     type: 'array',
-    description: 'to specify file list, used with -I',
+    description: 'To specify file list, used with -I',
     coerce: (arr) => arr.map((item: any) => String(item))
   })
   .option('read-files', {
     alias: 'r',
     type: 'string',
-    description: 'read a file list containing one file per line, use empty value to read from STDIN'
+    description: 'Read a file list containing one file per line, use empty value to read from STDIN'
   })
   .alias('help', 'h')
   .example('stdout', 'mdp README.md')
