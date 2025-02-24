@@ -4,7 +4,6 @@
 [![Check](https://github.com/harttle/md-padding/actions/workflows/check.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/check.yml)
 [![Release](https://github.com/harttle/md-padding/actions/workflows/release.yml/badge.svg)](https://github.com/harttle/md-padding/actions/workflows/release.yml)
 [![Coveralls](https://img.shields.io/coveralls/harttle/md-padding.svg)](https://coveralls.io/github/harttle/md-padding?branch=master)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/harttle/md-padding)
 [![GitHub issues](https://img.shields.io/github/issues-closed/harttle/md-padding.svg)](https://github.com/harttle/md-padding/issues)
 [![DUB license](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/harttle/md-padding/blob/master/LICENSE)
 

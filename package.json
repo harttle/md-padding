@@ -1,12 +1,11 @@
 {
   "name": "md-padding",
   "version": "1.9.2",
-  "description": "修复 Markdown 中的混排空格：中英文、数字、链接等。",
+  "description": "AST-based padding for Markdown and natural language, improving readability in multilingual documents. Supports Vim and VSCode.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
-    "test": "test",
-    "example": "example"
+    "test": "test"
   },
   "files": [
     "bin",
