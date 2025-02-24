@@ -19,9 +19,21 @@
 - Supports formatting inside *code blocks* and recognizes *mathematical expressions*, *HTML elements*, *YAML front matter*, and *fenced code blocks* for correct formatting.
 - Applies an extended AST parsing to ensure natural language structures like punctuations and latin characters are padded correctly.
 
-Here's a [demo](https://github.com/harttle/md-padding/tree/master/demo) showing changes made by formatting:
+Here's a change made by md-padding:
 
-![raw.md vs formatted.md - Diff](https://user-images.githubusercontent.com/4427974/73588871-6e8d5600-4509-11ea-8c42-9debaaad9008.png)
+```diff
+- # 如何中ArchLinux中安装X11？
++ # 如何中 ArchLinux 中安装 X11？
+
+- 首先要安装ArchLinux，然后安装`xorg-server`软件包：
++ 首先要安装 ArchLinux，然后安装 `xorg-server` 软件包：
+
+- 确保你的xorg-server版本已经足够高，比如>=1.20，然后安装**合适**的驱动：
++ 确保你的 xorg-server 版本已经足够高，比如 >= 1.20，然后安装 **合适** 的驱动：
+
+- 如果你需要3D加速等新的功能，可能还需要安装*闭源驱动*。详情请参考[ArchWiki里的对应章节](https://wiki.archlinux.org/index.php/Xorg)。
++ 如果你需要 3D 加速等新的功能，可能还需要安装 *闭源驱动*。详情请参考 [ArchWiki 里的对应章节](https://wiki.archlinux.org/index.php/Xorg)。
+```
 
 ## Command Line Interface
 
@@ -88,7 +100,7 @@ Install the [Markdown Padding](https://marketplace.visualstudio.com/items?itemNa
 | `mdpadding.ignoreWords`    | `Array<string>` | Words to exclude from padding adjustments       |
 | `mdpadding.ignorePatterns` | `Array<string>` | Regular expressions defining patterns to ignore |
 
-## Q & A
+## Q&A
 
 ### How to ignore a specific section
 
