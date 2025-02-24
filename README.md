@@ -8,11 +8,10 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/harttle/md-padding)
 [![GitHub issues](https://img.shields.io/github/issues-closed/harttle/md-padding.svg)](https://github.com/harttle/md-padding/issues)
 [![DUB license](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/harttle/md-padding/blob/master/LICENSE)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)
 
-[中文](https://github.com/harttle/md-padding/blob/master/README.zh.md)
+English | [简体中文](https://github.com/harttle/md-padding/blob/master/README.zh.md)
 
-**A tool for formatting Markdown content with padding**  
+**A tool for formatting Markdown content with padding**.
 
 - *Ensures consistent spacing* before and after Markdown elements like *headings*, *lists*, and *code blocks*.
 - *Aligns tables* by formatting column spacing properly.
@@ -37,17 +36,9 @@ Here's a change made by md-padding:
 
 ## Command Line Interface
 
-Install globally via `npm`:
-
 ```bash
-npm i -g md-padding
-```
-
-Or run directly using `npx`:
-
-```bash
-# Format README.md in place
-npx md-padding README.md
+npx md-padding -i README.md   # fix the file in place
+npx md-padding README.md      # output the fixed content
 ```
 
 For more options:
