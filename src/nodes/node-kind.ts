@@ -26,6 +26,8 @@ export const enum NodeKind {
   CalloutItem = 1 << 23,
   Highlight = 1 << 24,
   CJK = 1 << 25,
+  FootnoteReference = 1 << 26,
+  FootnoteDefinition = 1 << 27,
 
   // combinations
   All = -1,
@@ -36,6 +38,6 @@ export const enum NodeKind {
   Link = InlineLink | ReferenceLink,
   Image = InlineImage | ReferenceImage,
   Style = Strong | Emphasis | Strikethrough | Highlight,
-  Inline = NaturualConstructs | InlineCode | Link | Style | HTMLTag | InlineImage | ReferenceImage | Math,
+  Inline = NaturualConstructs | InlineCode | Link | Style | HTMLTag | InlineImage | ReferenceImage | Math | FootnoteReference,
   Block = ~Inline,
 }

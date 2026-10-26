@@ -13,6 +13,8 @@ export const stateMasks = {
   [State.ImageText]: ~NodeKind.Inline | NodeKind.Image,
   [State.ImageReferingUrl]: ~NodeKind.Text,
   [State.ReferenceLinkUrl]: ~NodeKind.Text,
+  [State.FootnoteLabel]: ~NodeKind.Text,
+  [State.FootnoteDefinition]: NodeKind.Block,
   [State.HTMLTag]: ~NodeKind.Text,
   [State.ReferingID]: ~NodeKind.Text,
   [State.BlockCodeLang]: ~NodeKind.Text,

@@ -4,6 +4,8 @@ export enum State {
   ReferingUrl,        // [xx](
   ReferingID,         // [xx][
   ReferenceLinkUrl,   // [xx]:
+  FootnoteLabel,      // [^
+  FootnoteDefinition, // [^xx]:
   ImageText,          // ![
   ImageReferingUrl,   // ![xx](
   ImageReferingID,    // ![xx][
