@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/harttle/md-padding/compare/v1.9.2...v1.10.0) (2026-10-27)
+
+
+### Features
+
+* parsing footnote ([#57](https://github.com/harttle/md-padding/issues/57)) ([3503765](https://github.com/harttle/md-padding/commit/35037658bb36c9917ff252fcdb6c079d263af50f))
+
 ## [1.9.2](https://github.com/harttle/md-padding/compare/v1.9.1...v1.9.2) (2024-12-15)
 
 

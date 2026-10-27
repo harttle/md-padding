@@ -3,103 +3,80 @@
 <a href="https://github.com/harttle/md-padding/actions/workflows/check.yml" target="_blank" class="external"><img src="https://github.com/harttle/md-padding/actions/workflows/check.yml/badge.svg" alt="Check"></a>
 <a href="https://github.com/harttle/md-padding/actions/workflows/release.yml" target="_blank" class="external"><img src="https://github.com/harttle/md-padding/actions/workflows/release.yml/badge.svg" alt="Release"></a>
 <a href="https://coveralls.io/github/harttle/md-padding?branch=master" target="_blank" class="external"><img src="https://img.shields.io/coveralls/harttle/md-padding.svg" alt="Coveralls"></a>
-<a href="https://github.com/harttle/md-padding" target="_blank" class="external"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
 <a href="https://github.com/harttle/md-padding/issues" target="_blank" class="external"><img src="https://img.shields.io/github/issues-closed/harttle/md-padding.svg" alt="GitHub issues"></a>
-<a href="https://github.com/harttle/md-padding/blob/master/LICENSE" target="_blank" class="external"><img src="https://img.shields.io/dub/l/vibe-d.svg" alt="DUB license"></a>
-<a href="https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits" target="_blank" class="external"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly"></a></p>
-<p><strong>排版中只有空格不能忍</strong>，修复你 Markdown 中缺少的空格：</p>
+<a href="https://github.com/harttle/md-padding/blob/master/LICENSE" target="_blank" class="external"><img src="https://img.shields.io/dub/l/vibe-d.svg" alt="DUB license"></a></p>
+<p>English | <a href="https://github.com/harttle/md-padding/blob/master/README.zh.md" target="_blank" class="external">简体中文</a></p>
+<p><strong>A tool for formatting Markdown content with padding</strong>.</p>
 <ul>
-<li>中英文混排时，<em>中文</em> 与 <em>英文</em> 之间，<em>中文</em> 与 <em>数字</em> 之间添加空格。</li>
-<li><em>特定英文标点</em> 后面添加空格，但 <em>全角标点</em> 前后不加空格。</li>
-<li>文字和 <em>行内代码</em> 之间、文字与 <em>链接</em> 之间、文字与 <em>加粗</em>、<em>强调</em>、<em>删除线</em> 之间添加空格。</li>
-<li>会解析生成 Markdown + 自然语言构成的 AST，最大限度解决问题同时避免误处理。</li>
+<li><em>Ensures consistent spacing</em> before and after Markdown elements like <em>headings</em>, <em>lists</em>, and <em>code blocks</em>.</li>
+<li><em>Aligns tables</em> by formatting column spacing properly.</li>
+<li>Supports formatting inside <em>code blocks</em> and recognizes <em>mathematical expressions</em>, <em>HTML elements</em>, <em>YAML front matter</em>, and <em>fenced code blocks</em> for correct formatting.</li>
+<li>Applies an extended AST parsing to ensure natural language structures like punctuations and latin characters are padded correctly.</li>
 </ul>
-<p><a href="https://github.com/harttle/md-padding/tree/master/demo" target="_blank" class="external">这里</a> 有个例子：</p>
-<p><img src="https://user-images.githubusercontent.com/4427974/73588871-6e8d5600-4509-11ea-8c42-9debaaad9008.png" alt="raw.md 和 formated.md 之间的 Diff"></p>
-<a id="md:使用说明" class="tsd-anchor"></a><h2 class="tsd-anchor-link">使用说明<a href="#md:使用说明" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="md:在命令行使用" class="tsd-anchor"></a><h3 class="tsd-anchor-link">在命令行使用<a href="#md:在命令行使用" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>可以 <code>npm i -g md-padding</code> 后使用，也可以用 <code>npx md-padding</code>：</p>
-<pre><code class="bash"><span class="hl-0"># 输出 README.md 格式化后的内容</span><br/><span class="hl-1">npx</span><span class="hl-2"> </span><span class="hl-3">md-padding</span><span class="hl-2"> </span><span class="hl-3">README.md</span>
+<p>Here's a change made by md-padding:</p>
+<pre><code class="diff">- # 如何中ArchLinux中安装X11？
++ # 如何中 ArchLinux 中安装 X11？
+
+- 首先要安装ArchLinux，然后安装`xorg-server`软件包：
++ 首先要安装 ArchLinux，然后安装 `xorg-server` 软件包：
+
+- 确保你的xorg-server版本已经足够高，比如>=1.20，然后安装**合适**的驱动：
++ 确保你的 xorg-server 版本已经足够高，比如 >= 1.20，然后安装 **合适** 的驱动：
+
+- 如果你需要3D加速等新的功能，可能还需要安装*闭源驱动*。详情请参考[ArchWiki里的对应章节](https://wiki.archlinux.org/index.php/Xorg)。
++ 如果你需要 3D 加速等新的功能，可能还需要安装 *闭源驱动*。详情请参考 [ArchWiki 里的对应章节](https://wiki.archlinux.org/index.php/Xorg)。
 </code><button type="button">Copy</button></pre>
 
-<p>还可以接受标准输入（用在管道中），也可以原址（in-place）更改文件。详见 <code>md-padding --help</code>。</p>
-<pre><code class="none">> npx md-padding --help
-md-padding [OPTION]... <FILE>
-
-Options:
-  --help, -h      Show help                  [boolean]
-  --version       Show version number        [boolean]
-  --in-place, -i  edit file in place         [boolean]
-  --ignore-words, -I  ignore padding within/before/after these words  [string]
-  --ignore-patterns, -P  ignore by a list of regexp  [string]
-  --read-files, -r    read a file list containing one file per line, use empty value to read from STDIN  [string]
-
-Examples:
-  stdout    md-padding README.md
-  in-place  md-padding -i README.md
-  pipe      cat README.md | md-padding
-  ignore-words  cat README.md | md-padding -I '=' '::'
-  ignore-patterns  cat README.md | md-padding -P '=' ':+'
-  batch format  cat list.txt | md-padding -r -i
-  equivalent w/ md-padding -r list.txt -i
+<a id="md:command-line-interface" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Command Line Interface<a href="#md:command-line-interface" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="bash"><span class="hl-0">npx</span><span class="hl-1"> </span><span class="hl-2">md-padding</span><span class="hl-1"> </span><span class="hl-3">-i</span><span class="hl-1"> </span><span class="hl-2">README.md</span><span class="hl-1">   </span><span class="hl-4"># fix the file in place</span><br/><span class="hl-0">npx</span><span class="hl-1"> </span><span class="hl-2">md-padding</span><span class="hl-1"> </span><span class="hl-2">README.md</span><span class="hl-1">      </span><span class="hl-4"># output the fixed content</span>
 </code><button type="button">Copy</button></pre>
 
-<a id="md:在-vim-中使用" class="tsd-anchor"></a><h3 class="tsd-anchor-link">在 Vim 中使用<a href="#md:在-vim-中使用" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>可以绑定一个快捷键 <code>F6</code> 来修复当前文件：</p>
-<pre><code class="vim">" 绑一个 Vim Filter
+<p>For more options:</p>
+<pre><code class="bash"><span class="hl-1">&gt; npx md-padding --help</span><br/><span class="hl-0">md-padding</span><span class="hl-1"> [OPTION]... &lt;FILE&gt;</span><br/><br/><span class="hl-0">Options:</span><br/><span class="hl-1">  </span><span class="hl-0">--help,</span><span class="hl-1"> </span><span class="hl-3">-h</span><span class="hl-1">      </span><span class="hl-2">Show</span><span class="hl-1"> </span><span class="hl-2">help</span><span class="hl-1">                  [boolean]</span><br/><span class="hl-1">  </span><span class="hl-0">--version</span><span class="hl-1">       </span><span class="hl-2">Show</span><span class="hl-1"> </span><span class="hl-2">version</span><span class="hl-1"> </span><span class="hl-2">number</span><span class="hl-1">        [boolean]</span><br/><span class="hl-1">  </span><span class="hl-0">--in-place,</span><span class="hl-1"> </span><span class="hl-3">-i</span><span class="hl-1">  </span><span class="hl-2">Edit</span><span class="hl-1"> </span><span class="hl-2">file</span><span class="hl-1"> </span><span class="hl-2">in</span><span class="hl-1"> </span><span class="hl-2">place</span><span class="hl-1">         [boolean]</span><br/><span class="hl-1">  </span><span class="hl-0">--ignore-words,</span><span class="hl-1"> </span><span class="hl-3">-I</span><span class="hl-1">  </span><span class="hl-2">Ignore</span><span class="hl-1"> </span><span class="hl-2">padding</span><span class="hl-1"> </span><span class="hl-2">for</span><span class="hl-1"> </span><span class="hl-2">specific</span><span class="hl-1"> </span><span class="hl-2">words</span><span class="hl-1">  [string]</span><br/><span class="hl-1">  </span><span class="hl-0">--ignore-patterns,</span><span class="hl-1"> </span><span class="hl-3">-P</span><span class="hl-1">  </span><span class="hl-2">Ignore</span><span class="hl-1"> </span><span class="hl-2">specific</span><span class="hl-1"> </span><span class="hl-2">patterns</span><span class="hl-1"> </span><span class="hl-2">using</span><span class="hl-1"> </span><span class="hl-2">regex</span><span class="hl-1">  [string]</span><br/><span class="hl-1">  </span><span class="hl-0">--read-files,</span><span class="hl-1"> </span><span class="hl-3">-r</span><span class="hl-1">    </span><span class="hl-2">Read</span><span class="hl-1"> </span><span class="hl-2">file</span><span class="hl-1"> </span><span class="hl-2">list</span><span class="hl-1"> </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-2">input,</span><span class="hl-1"> </span><span class="hl-2">one</span><span class="hl-1"> </span><span class="hl-2">file</span><span class="hl-1"> </span><span class="hl-2">per</span><span class="hl-1"> </span><span class="hl-2">line</span><span class="hl-1">  [string]</span><br/><br/><span class="hl-0">Examples:</span><br/><span class="hl-1">  </span><span class="hl-0">stdout</span><span class="hl-1">    </span><span class="hl-2">md-padding</span><span class="hl-1"> </span><span class="hl-2">README.md</span><br/><span class="hl-1">  in-place  md-padding -i README.md</span><br/><span class="hl-1">  </span><span class="hl-0">pipe</span><span class="hl-1">      </span><span class="hl-2">cat</span><span class="hl-1"> </span><span class="hl-2">README.md</span><span class="hl-1"> | </span><span class="hl-0">md-padding</span><br/><span class="hl-1">  </span><span class="hl-0">ignore-words</span><span class="hl-1">  </span><span class="hl-2">cat</span><span class="hl-1"> </span><span class="hl-2">README.md</span><span class="hl-1"> | </span><span class="hl-0">md-padding</span><span class="hl-1"> </span><span class="hl-3">-I</span><span class="hl-1"> </span><span class="hl-2">&#39;=&#39;</span><span class="hl-1"> </span><span class="hl-2">&#39;::&#39;</span><br/><span class="hl-1">  </span><span class="hl-0">ignore-patterns</span><span class="hl-1">  </span><span class="hl-2">cat</span><span class="hl-1"> </span><span class="hl-2">README.md</span><span class="hl-1"> | </span><span class="hl-0">md-padding</span><span class="hl-1"> </span><span class="hl-3">-P</span><span class="hl-1"> </span><span class="hl-2">&#39;=&#39;</span><span class="hl-1"> </span><span class="hl-2">&#39;:+&#39;</span><br/><span class="hl-1">  </span><span class="hl-0">batch</span><span class="hl-1"> </span><span class="hl-2">format</span><span class="hl-1">  </span><span class="hl-2">cat</span><span class="hl-1"> </span><span class="hl-2">list.txt</span><span class="hl-1"> | </span><span class="hl-0">md-padding</span><span class="hl-1"> </span><span class="hl-3">-r</span><span class="hl-1"> </span><span class="hl-3">-i</span><br/><span class="hl-1">  </span><span class="hl-0">equivalent</span><span class="hl-1"> </span><span class="hl-2">w/</span><span class="hl-1"> </span><span class="hl-2">md-padding</span><span class="hl-1"> </span><span class="hl-3">-r</span><span class="hl-1"> </span><span class="hl-2">list.txt</span><span class="hl-1"> </span><span class="hl-3">-i</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="md:vim-integration" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Vim Integration<a href="#md:vim-integration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Map the <code>F6</code> key to format Markdown files:</p>
+<pre><code class="vim">" Hotkey for md-padding format
 noremap <buffer> <F6> <Esc>:%!npx md-padding<CR>
 </code><button type="button">Copy</button></pre>
 
-<a id="md:在-vs-code-中使用" class="tsd-anchor"></a><h3 class="tsd-anchor-link">在 VS Code 中使用<a href="#md:在-vs-code-中使用" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>从 Marketplace 安装 <a href="https://marketplace.visualstudio.com/items?itemName=harttle.md-padding-vscode" target="_blank" class="external">Markdown Padding</a>。
-打开一个 Markdown 文件后，支持这些操作：</p>
+<a id="md:vs-code-integration" class="tsd-anchor"></a><h2 class="tsd-anchor-link">VS Code Integration<a href="#md:vs-code-integration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=harttle.md-padding-vscode" target="_blank" class="external">Markdown Padding</a> extension.</p>
 <ul>
-<li>Command。打开 <em>命令面板</em>，输入 Markdown Padding 并回车。<em>命令面板</em> 快捷键：
+<li>Open Command Palette (<code>Ctrl + Shift + P</code> on Windows/Linux, <code>Cmd + Shift + P</code> on macOS) and run <code>Markdown Padding</code>.</li>
+<li>Use the default formatting shortcut:
 <ul>
-<li>Windows：Ctrl + Shift + P</li>
-<li>Mac：Command + Shift + P</li>
-<li>Linux：Ctrl + Shift + P</li>
-</ul>
-</li>
-<li>Formatting。在编辑器里右键点格式化，或者：
-<ul>
-<li>Windows：Shift + Alt + F</li>
-<li>Mac：Shift + Option + F</li>
-<li>Linux：Ctrl + Shift + I</li>
+<li><code>Shift + Alt + F</code> (Windows)</li>
+<li><code>Shift + Option + F</code> (Mac)</li>
+<li><code>Ctrl + Shift + I</code> (Linux)</li>
 </ul>
 </li>
 </ul>
-<table>
+<a id="md:configuration" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Configuration<a href="#md:configuration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><table>
 <thead>
 <tr>
-<th>参数</th>
-<th>类型</th>
-<th>描述</th>
+<th>Setting</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>mdpadding.ignoreWords</code></td>
 <td><code>Array&lt;string&gt;</code></td>
-<td>这些字词内部和前后禁止加空格</td>
+<td>Words to exclude from padding adjustments</td>
 </tr>
 <tr>
 <td><code>mdpadding.ignorePatterns</code></td>
 <td><code>Array&lt;string&gt;</code></td>
-<td>这些正则内部和前后禁止加空格</td>
+<td>Regular expressions defining patterns to ignore</td>
 </tr>
 </tbody>
 </table>
-<a id="md:功能说明" class="tsd-anchor"></a><h2 class="tsd-anchor-link">功能说明<a href="#md:功能说明" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="md:中英混排" class="tsd-anchor"></a><h3 class="tsd-anchor-link">中英混排<a href="#md:中英混排" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>中英混排的正文内容，会确保中英之间的空格。</p>
-<a id="md:标点符号" class="tsd-anchor"></a><h3 class="tsd-anchor-link">标点符号<a href="#md:标点符号" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>需要空格的标点（比如半角逗号），会在适当的位置追加空格。</p>
-<a id="md:代码注释" class="tsd-anchor"></a><h3 class="tsd-anchor-link">代码注释<a href="#md:代码注释" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>代码格式化不是本仓库的功能之一，请使用对应语言的 prettifier。但代码中的注释会被当做 Markdown 正文来格式化，目前支持这些语言的注释：</p>
-<ul>
-<li>cpp, c, java, javascript, typescript, csharp, go</li>
-<li>sql</li>
-<li>bash, python, ruby</li>
-</ul>
-<a id="md:忽略片段" class="tsd-anchor"></a><h3 class="tsd-anchor-link">忽略片段<a href="#md:忽略片段" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>有些片段希望保持原状，这时可以用 <code>md-padding-ignore</code> 来包裹起来。</p>
-<pre><code class="markdown">下面是一段不需要格式化的文本
+<a id="md:qa" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Q&amp;A<a href="#md:qa" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="md:how-to-ignore-a-specific-section" class="tsd-anchor"></a><h3 class="tsd-anchor-link">How to ignore a specific section<a href="#md:how-to-ignore-a-specific-section" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>You can exclude certain sections from formatting using the <code>md-padding-ignore</code> directive:</p>
+<pre><code class="markdown">Some text before the ignored section.
 <!--md-padding-ignore-begin-->
-a*b=c, b>1 => a<c
+a*b=c, b>1 => a&lt;c
 <!--md-padding-ignore-end-->
-现在开始又可以格式化了。
+This text will be formatted as usual.
 </code><button type="button">Copy</button></pre>
 
-</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:markdown-padding"><span>Markdown <wbr/>Padding</span></a><ul><li><a href="#md:使用说明"><span>使用说明</span></a></li><li><ul><li><a href="#md:在命令行使用"><span>在命令行使用</span></a></li><li><a href="#md:在-vim-中使用"><span>在 <wbr/>Vim 中使用</span></a></li><li><a href="#md:在-vs-code-中使用"><span>在 VS <wbr/>Code 中使用</span></a></li></ul></li><li><a href="#md:功能说明"><span>功能说明</span></a></li><li><ul><li><a href="#md:中英混排"><span>中英混排</span></a></li><li><a href="#md:标点符号"><span>标点符号</span></a></li><li><a href="#md:代码注释"><span>代码注释</span></a></li><li><a href="#md:忽略片段"><span>忽略片段</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>md-padding</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:markdown-padding"><span>Markdown <wbr/>Padding</span></a><ul><li><a href="#md:command-line-interface"><span>Command <wbr/>Line <wbr/>Interface</span></a></li><li><a href="#md:vim-integration"><span>Vim <wbr/>Integration</span></a></li><li><a href="#md:vs-code-integration"><span>VS <wbr/>Code <wbr/>Integration</span></a></li><li><ul><li><a href="#md:configuration"><span>Configuration</span></a></li></ul></li><li><a href="#md:qa"><span>Q&amp;A</span></a></li><li><ul><li><a href="#md:how-to-ignore-a-specific-section"><span>How to ignore a specific section</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>md-padding</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

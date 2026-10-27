@@ -1,6 +1,6 @@
 {
   "name": "md-padding",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "description": "AST-based padding for Markdown and natural language, improving readability in multilingual documents. Supports Vim and VSCode.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -72,7 +72,9 @@
     "yargs": "^17.7.2"
   },
   "release": {
-    "branches": ["master"],
+    "branches": [
+      "master"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
