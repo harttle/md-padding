@@ -208,6 +208,27 @@ describe('padding()', () => {
     })
   })
 
+  describe('footnotes', () => {
+    it('should pad inside footnote definition body', () => {
+      expect(padMarkdown('[^1]: 说明内容123结束'))
+        .toEqual('[^1]: 说明内容 123 结束')
+    })
+    it('should not pad the footnote label itself', () => {
+      expect(padMarkdown('text[^1]more text'))
+        .toEqual('text [^1] more text')
+    })
+    it('should not pad non-numeric footnote labels', () => {
+      expect(padMarkdown('[^foo-bar]: 说明内容abc结束'))
+        .toEqual('[^foo-bar]: 说明内容 abc 结束')
+      expect(padMarkdown('[^id不应该pad]: 说明内容123结束'))
+        .toEqual('[^id不应该pad]: 说明内容 123 结束')
+    })
+    it('should pad between footnote reference and surrounding CJK text', () => {
+      expect(padMarkdown('这是正文[^1]继续写'))
+        .toEqual('这是正文 [^1] 继续写')
+    })
+  })
+
   describe('images', () => {
     it('should pad between footnote links', () => {
       expect(padMarkdown('refer to![foo][bar]please'))

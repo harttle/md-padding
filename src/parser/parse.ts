@@ -17,6 +17,8 @@ import { HTMLTag } from '../nodes/html-tag'
 import { Punctuation } from '../nodes/punctuation'
 import { ReferenceLink } from '../nodes/reference-link'
 import { ReferenceDefinition } from '../nodes/reference-definition'
+import { FootnoteReference } from '../nodes/footnote-reference'
+import { FootnoteDefinition } from '../nodes/footnote-definition'
 import { InlineLink } from '../nodes/inline-link'
 import { Node } from '../nodes/node'
 import { InlineCode, InlineCodeDelimiter } from '../nodes/inline-code'
@@ -58,6 +60,7 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
   let listPrefix = ''
   let codeLang = ''
   let calloutType = ''
+  let footnoteLabel = ''
   const blockquotePrefix: BlockquotePrefix = '>'
   let strongDelimiter: StrongDelimiter = '**'
   let emphasisDelimiter: EmphasisDelimiter = '*'
@@ -178,6 +181,21 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       resolve(new Blank(c))
       i++
     }
+    else if (state === State.FootnoteLabel && c === ']') {
+      if (c2 === ']:') {
+        footnoteLabel = popMarkdown()
+        i += 2
+        push(State.FootnoteDefinition)
+      } else {
+        resolve(new FootnoteReference(popMarkdown()))
+        i++
+      }
+    }
+    else if (state === State.FootnoteDefinition && c === '\n') {
+      resolve(new FootnoteDefinition(footnoteLabel, popNodes()))
+      resolve(new Blank(c))
+      i++
+    }
     else if (state === State.LinkText && c === ']') {
       linkText = popNodes()
       if (c2 === ']:') {
@@ -247,6 +265,10 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       i += 2
     }
     // state === State.Text
+    else if (c2 === '[^' && allow(NodeKind.FootnoteReference)) {
+      push(State.FootnoteLabel)
+      i += 2
+    }
     else if (c === '[' && allow(NodeKind.Link)) {
       push(State.LinkText)
       i++
@@ -423,6 +445,9 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
       case State.LinkText:
         resolve(Punctuation.create('['), ...popNodes())
         break
+      case State.FootnoteLabel:
+        resolve(Punctuation.create('['), Punctuation.create('^'), ...popNodes())
+        break
       case State.ReferingUrl:
         resolve(new SquareQuoted(linkText), Punctuation.create('('), ...popNodes())
         break
@@ -459,6 +484,9 @@ export function parse (str: string, options: NormalizedPadMarkdownOptions): Docu
     switch (stack.top().state) {
       case State.ReferenceLinkUrl:
         resolve(new ReferenceDefinition(linkText, popMarkdown()))
+        break
+      case State.FootnoteDefinition:
+        resolve(new FootnoteDefinition(footnoteLabel, popNodes()))
         break
       case State.OrderedListItem:
         resolve(new OrderedListItem(listPrefix, popNodes()))

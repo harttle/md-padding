@@ -199,6 +199,108 @@ describe('parse()', () => {
     })
   })
 
+  describe('FootnoteReference/FootnoteDefinition', () => {
+    it('should parse footnote reference', () => {
+      const doc = parse('text[^1]', options)
+      expect(doc.children).toHaveLength(2)
+
+      const [text, ref] = doc.children
+      expect(text).toMatchObject({
+        kind: NodeKind.AlphabetNumeric,
+        text: 'text'
+      })
+      expect(ref).toMatchObject({
+        kind: NodeKind.FootnoteReference,
+        label: '1'
+      })
+      expect(ref.toMarkdown()).toEqual('[^1]')
+    })
+
+    it('should parse footnote reference with non-numeric label', () => {
+      const doc = parse('[^foo-bar]', options)
+      expect(doc.children).toHaveLength(1)
+      expect(doc.children[0]).toMatchObject({
+        kind: NodeKind.FootnoteReference,
+        label: 'foo-bar'
+      })
+      expect(doc.children[0].toMarkdown()).toEqual('[^foo-bar]')
+    })
+
+    it('should parse footnote definition and split its body into inline nodes', () => {
+      const doc = parse('[^1]: 脚注的具体解释内容123结束', options)
+      expect(doc.children).toHaveLength(1)
+
+      const dfn = doc.children[0]
+      expect(dfn).toMatchObject({
+        kind: NodeKind.FootnoteDefinition,
+        label: '1'
+      })
+      expect(dfn.toMarkdown()).toEqual('[^1]: 脚注的具体解释内容123结束')
+
+      const numberNode = dfn.children.find(
+        (n: any) => n.kind === NodeKind.AlphabetNumeric && n.text === '123'
+      )
+      expect(numberNode).toBeDefined()
+    })
+
+    it('should parse multiple footnote definitions separated by newline', () => {
+      const doc = parse('[^1]: foo\n[^2]: bar', options)
+      expect(doc.children).toHaveLength(3)
+
+      const [dfn1, blank, dfn2] = doc.children
+      expect(dfn1).toMatchObject({
+        kind: NodeKind.FootnoteDefinition,
+        label: '1'
+      })
+      expect(dfn1.toMarkdown()).toEqual('[^1]: foo')
+
+      expect(blank).toMatchObject({
+        kind: NodeKind.Blank,
+        char: '\n'
+      })
+
+      expect(dfn2).toMatchObject({
+        kind: NodeKind.FootnoteDefinition,
+        label: '2'
+      })
+      expect(dfn2.toMarkdown()).toEqual('[^2]: bar')
+    })
+
+    it('should close unterminated footnote definition at EOF (no trailing newline)', () => {
+      const doc = parse('[^1]: foo', options)
+      expect(doc.children).toHaveLength(1)
+      expect(doc.children[0]).toMatchObject({
+        kind: NodeKind.FootnoteDefinition,
+        label: '1'
+      })
+      expect(doc.children[0].toMarkdown()).toEqual('[^1]: foo')
+    })
+
+    it('should not break existing ReferenceLink/ReferenceDefinition parsing', () => {
+      const doc1 = parse('[foo][bar]', options)
+      expect(doc1.children[0]).toMatchObject({
+        kind: NodeKind.ReferenceLink,
+        target: 'bar'
+      })
+
+      const doc2 = parse('[foo]: http://harttle.land', options)
+      expect(doc2.children[0]).toMatchObject({
+        kind: NodeKind.ReferenceDefinition,
+        target: ' http://harttle.land'
+      })
+    })
+
+    // Known limitation: kept consistent with ReferenceLinkUrl's existing lenient
+    // behavior — a "[^x]:" appearing mid-line (not at the start of a block) is
+    // still parsed as a footnote definition, swallowing the rest of the line.
+    it('should (leniently) treat "[^x]:" mid-line as a footnote definition, matching ReferenceLinkUrl behavior', () => {
+      const doc = parse('text [^1]: not really a definition', options)
+      const dfn = doc.children.find((n: any) => n.kind === NodeKind.FootnoteDefinition)
+      expect(dfn).toBeDefined()
+      expect((dfn as any).label).toEqual('1')
+    })
+  })
+
   describe('HTMLTag', () => {
     it('should parse anchor tag', () => {
       const doc = parse('<http://harttle.land>', options)
